@@ -1,0 +1,21 @@
+.body {
+    --background: #FFD057;
+}
+
+.input {
+    --background: #212529;
+    --color: #FFC107;
+}
+
+.button-login {
+    --background: #155263;
+    --color: #FFC107;
+}
+
+.button-register {
+    --background: #FFD057;
+    --color: #212529;
+    --border-color: #212529;
+    --border-style: solid;
+    --border-width: 2px;
+}

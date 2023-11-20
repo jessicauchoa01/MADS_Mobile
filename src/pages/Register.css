@@ -1,0 +1,13 @@
+ion-content {
+    --background: #FFD057;
+}
+
+.input {
+    --background: #212529;
+    --color: #FFC107;
+}
+
+.button-create {
+    --background: #155263;
+    --color: #FFC107;
+}

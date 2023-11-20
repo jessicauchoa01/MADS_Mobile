@@ -1,101 +1,35 @@
-import {
-  IonBackButton,
-  IonButton,
-  IonButtons,
-  IonCol,
-  IonContent,
-  IonGrid,
-  IonIcon,
-  IonInput,
-  IonPage,
-  IonRow,
-} from "@ionic/react";
-import React from "react";
-import {
-  arrowBack,
-  arrowBackOutline,
-  logInOutline,
-  personAddOutline,
-} from "ionicons/icons";
-import goeat from "../pages/assets/goeat.svg";
+import { IonButton, IonCard, IonCardContent, IonContent, IonHeader, IonIcon, IonInput, IonPage, IonTitle, IonToolbar, useIonRouter } from '@ionic/react';
+import React from 'react';
+import { logInOutline, personAdd } from 'ionicons/icons';
+import logo from '../assets/logo.svg'
+import './Login.css';
 
 const Login: React.FC = () => {
-  const doLogin = (event: any) => {
-    event.preventDefault();
-    console.log("doLogin");
-  };
-  return (
-    <IonPage>
-      <IonButtons slot="start">
-        <IonBackButton defaultHref="/" className="custom-back-button" />
-      </IonButtons>
-      <IonContent scrollY={false} color={"warning"}>
-        <div className="ion-text-center ion-padding">
-          <img src={goeat} width={"50%"} />
-        </div>
-        <form onSubmit={doLogin}>
-          <IonGrid>
-            <IonRow>
-              <IonCol>
-                <div className="texto">
-                  <IonInput
-                    labelPlacement="floating"
-                    label="Utilizador"
-                    type="text"
-                    placeholder="Utilizador"
-                    color={"light"}
-                  ></IonInput>
-                  <IonInput
-                    labelPlacement="floating"
-                    label="Palavra-Passe"
-                    type="password"
-                    color={"light"}
-                  ></IonInput>
-                </div>
-              </IonCol>
-            </IonRow>
-          </IonGrid>
-        </form>
-        <form onSubmit={doLogin}>
-          <IonGrid>
-            <IonRow>
-              <IonCol>
-                <div className="button">
-                  <IonButton
-                    className="login"
-                    id="login"
-                    size="large"
-                    shape="round"
-                    type="submit"
-                    expand="block"
-                    color={"tertiary"}
-                  >
-                    Login
-                    <IonIcon icon={logInOutline} slot="end" />
-                  </IonButton>
+    const doLogin = (event: any) => {
+        event.preventDefault();
+        console.log('doLogin');
+    }
 
-                  <IonButton
-                    id="registar"
-                    size="large"
-                    fill="outline"
-                    shape="round"
-                    routerLink="/register"
-                    type="button"
-                    expand="block"
-                    className="ion-margin-top"
-                    color={"light"}
-                  >
-                    Registar
-                    <IonIcon icon={personAddOutline} slot="end" />
-                  </IonButton>
+    return (
+        <IonPage>
+            <IonHeader>
+                <IonToolbar>
+                    <IonTitle>Fazer login</IonTitle>
+                </IonToolbar>
+            </IonHeader>
+            <IonContent scrollY={false} className='body'>
+                <div className='ion-text-center ion-padding'>
+                    <img src={logo} alt="GoEat logo" width={'50%'}/>
                 </div>
-              </IonCol>
-            </IonRow>
-          </IonGrid>
-        </form>
-      </IonContent>
-    </IonPage>
-  );
+                <form onSubmit={doLogin}>
+                    <IonInput className='ion-margin-top input' fill='outline' labelPlacement='floating' placeholder='Introduza o seu email' label='Email' type='email'></IonInput>
+                    <IonInput className='ion-margin-top input' fill='outline' labelPlacement='floating' placeholder='Introduza a sua palavra-passe' label='Palavra-passe' type='password'></IonInput>
+                    <IonButton routerLink='/homepage' type='submit' expand='block' className='ion-margin-top button-login'>Login<IonIcon icon={logInOutline} slot='end'/></IonButton>
+                    <IonButton routerLink='/register' type='button' expand='block' className='ion-margin-top button-register'>Registar<IonIcon icon={personAdd} slot='end'/></IonButton>
+                </form>
+            </IonContent>
+        </IonPage>
+    );
 };
 
 export default Login;
