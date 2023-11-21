@@ -43,14 +43,17 @@ const Login: React.FC = () => {
                   </div>
                   <div className="texto">
                     <IonInput
+                      className="input"
                       labelPlacement="floating"
+                      placeholder="Introduza o seu nome de utilizador"
                       label="Utilizador"
                       type="text"
-                      placeholder="Utilizador"
                     ></IonInput>
                     <IonInput
+                      className="input"
                       labelPlacement="floating"
-                      label="Palavra-Passe"
+                      placeholder="Introduza a sua password"
+                      label="Password"
                       type="password"
                     ></IonInput>
                   </div>
