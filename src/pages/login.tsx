@@ -11,12 +11,7 @@ import {
   IonRow,
 } from "@ionic/react";
 import React from "react";
-import {
-  arrowBack,
-  arrowBackOutline,
-  logInOutline,
-  personAddOutline,
-} from "ionicons/icons";
+import { logInOutline, personAddOutline } from "ionicons/icons";
 import goeat from "../pages/assets/goeat.svg";
 
 const Login: React.FC = () => {
