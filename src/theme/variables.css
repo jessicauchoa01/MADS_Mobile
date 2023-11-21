@@ -3,6 +3,11 @@ http://ionicframework.com/docs/theming/ */
 
 ion-input {
   background-color: #212529;
+  margin-top: 2rem;
+}
+
+ion-button {
+  margin-top: 17rem;
 }
 
 ion-img {
