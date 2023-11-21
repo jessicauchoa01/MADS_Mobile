@@ -4,10 +4,14 @@ http://ionicframework.com/docs/theming/ */
 ion-input {
   background-color: #212529;
   margin-top: 2rem;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
 }
 
 ion-button {
   margin-top: 17rem;
+  margin-left: 3rem;
+  margin-right: 3rem;
 }
 
 ion-img {
