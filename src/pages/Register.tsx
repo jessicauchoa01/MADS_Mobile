@@ -2,8 +2,6 @@ import {
   IonBackButton,
   IonButton,
   IonButtons,
-  IonCard,
-  IonCardContent,
   IonContent,
   IonHeader,
   IonIcon,
@@ -13,11 +11,7 @@ import {
   IonToolbar,
   useIonRouter,
 } from "@ionic/react";
-import {
-  checkmarkDoneCircleOutline,
-  logInOutline,
-  personAdd,
-} from "ionicons/icons";
+import {} from "ionicons/icons";
 
 import checkmarkDoneOutline from "./assets/criarConta.svg";
 import React from "react";
