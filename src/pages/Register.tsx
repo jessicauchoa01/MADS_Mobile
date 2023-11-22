@@ -27,7 +27,7 @@ const Register: React.FC = () => {
   };
 
   return (
-    <IonPage>
+    <IonPage className="registerPage">
       <IonHeader>
         <IonToolbar>
           <IonButtons slot="start">

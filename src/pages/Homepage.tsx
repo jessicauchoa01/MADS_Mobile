@@ -17,19 +17,8 @@ import {
 } from "@ionic/react";
 import React from "react";
 import logo from "../assets/logo.svg";
-import entrada from "../assets/entrada.svg";
-import sopa from "../assets/sopa.svg";
-import peixe from "../assets/peixe.svg";
-import carne from "../assets/carne.svg";
-import vegetariano from "../assets/vegetariano.svg";
-import sobremesa from "../assets/sobremesa.svg";
-import bebida from "../assets/bebida.svg";
-import home from "../assets/home.svg";
-import profile from "../assets/profile.svg";
-import orders from "../assets/orders.png";
-import cart from "../assets/cart.svg";
+import pizza from "../assets/pizza.svg";
 import "./Homepage.css";
-import "swiper/css";
 
 const Homepage: React.FC = () => {
   return (
@@ -44,7 +33,6 @@ const Homepage: React.FC = () => {
               <IonCol>
                 <IonButton className="carrosel" shape="round" size="small">
                   <div>
-                    <img src={entrada} alt="" />
                     <p>Entradas</p>
                   </div>
                 </IonButton>
@@ -52,7 +40,6 @@ const Homepage: React.FC = () => {
               <IonCol>
                 <IonButton className="carrosel" shape="round">
                   <div>
-                    <img src={sopa} alt="" />
                     <p>Sopas</p>
                   </div>
                 </IonButton>
@@ -60,7 +47,6 @@ const Homepage: React.FC = () => {
               <IonCol>
                 <IonButton className="carrosel" shape="round">
                   <div>
-                    <img src={peixe} alt="" />
                     <p>Peixe</p>
                   </div>
                 </IonButton>
@@ -68,7 +54,6 @@ const Homepage: React.FC = () => {
               <IonCol>
                 <IonButton className="carrosel" shape="round">
                   <div>
-                    <img src={carne} alt="" />
                     <p>Carne</p>
                   </div>
                 </IonButton>
@@ -76,7 +61,6 @@ const Homepage: React.FC = () => {
               <IonCol>
                 <IonButton className="carrosel" shape="round" size="small">
                   <div>
-                    <img src={vegetariano} alt="" />
                     <p>Vegatariano</p>
                   </div>
                 </IonButton>
@@ -84,7 +68,6 @@ const Homepage: React.FC = () => {
               <IonCol>
                 <IonButton className="carrosel" shape="round" size="small">
                   <div>
-                    <img src={sobremesa} alt="" />
                     <p>Sobremesas</p>
                   </div>
                 </IonButton>
@@ -92,7 +75,6 @@ const Homepage: React.FC = () => {
               <IonCol>
                 <IonButton className="carrosel" shape="round">
                   <div>
-                    <img src={bebida} alt="" />
                     <p>Bebidas</p>
                   </div>
                 </IonButton>
@@ -101,9 +83,12 @@ const Homepage: React.FC = () => {
           </IonGrid>
         </IonToolbar>
       </IonHeader>
-      <IonContent>
-        <IonCard>
+      <IonContent className="body">
+        <IonCard className="comidas">
+          <img className="pizza" src={pizza} alt="" />
           <h2>Título</h2>
+          <h4>Descrição</h4>
+          <h4>Preço</h4>
         </IonCard>
       </IonContent>
       <IonFooter></IonFooter>
