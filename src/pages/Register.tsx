@@ -33,7 +33,7 @@ const Register: React.FC = () => {
 
   return (
     <IonPage className="registerPage">
-      <IonContent className="body">
+      <IonContent>
         <div className="ion-text-center ion-padding">
           <img src={logo} alt="GoEat logo" width={"150px"} />
         </div>
@@ -120,11 +120,7 @@ const Register: React.FC = () => {
               label="Confirmação palavra-passe"
               type="password"
             ></IonInput>
-            <IonButton
-              type="submit"
-              expand="block"
-              className="ion-margin-top button-create"
-            >
+            <IonButton type="submit" expand="block" className="btn-hp">
               Criar conta
               <IonIcon icon={checkmarkDoneOutline} slot="end" />
             </IonButton>

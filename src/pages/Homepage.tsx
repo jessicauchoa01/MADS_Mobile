@@ -27,7 +27,7 @@ const Homepage: React.FC = () => {
       <IonHeader className="header">
         <IonToolbar>
           <div className="ion-text-center ion-padding">
-            <img src={logo} alt="GoEat logo" width={"25%"} />
+            <img src={logo} alt="GoEat logo" width={"150px"} />
           </div>
           <IonGrid>
             <IonRow className="scroll">
@@ -90,13 +90,19 @@ const Homepage: React.FC = () => {
         </IonGrid>
         <IonCard className="comidas">
           <img className="pizza" src={pizza} alt="" />
-          <h2>Título</h2>
-          <h4>Descrição</h4>
-          <h4>Preço</h4>
+          <div className="descricao">
+            <h2>Título</h2>
+            <h4>Descrição</h4>
+            <h4>Preço</h4>
+          </div>
           <img className="carrinho" src={iconCarrinho} alt="" />
         </IonCard>
       </IonContent>
-      <IonFooter></IonFooter>
+      <IonFooter className="footer">
+        <IonToolbar>
+          <IonText></IonText>
+        </IonToolbar>
+      </IonFooter>
     </IonPage>
   );
 };

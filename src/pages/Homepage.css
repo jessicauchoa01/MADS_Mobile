@@ -3,6 +3,10 @@ ion-toolbar {
   --background: #ffc107;
 }
 
+.footer ion-toolbar {
+  --background: #212529;
+}
+
 .scroll {
   flex-wrap: nowrap;
   overflow-y: hidden;
@@ -23,6 +27,8 @@ ion-img {
 }
 
 .comidas {
+  border-radius: 5px;
+  margin: 0px 25px;
   --background: white;
 }
 
@@ -30,13 +36,14 @@ ion-img {
   margin-top: 2px;
   width: 100%;
 }
-.body {
-  --background: white;
+
+.descricao {
+  margin-left: 1rem;
 }
 
 .carrinho {
   display: flex;
   position: absolute;
   margin-top: -3rem;
-  margin-left: 20.5rem;
+  margin-left: 19.2rem;
 }
