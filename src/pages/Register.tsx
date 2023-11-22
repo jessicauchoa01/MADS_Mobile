@@ -13,9 +13,9 @@ import {
 } from "@ionic/react";
 import {} from "ionicons/icons";
 
-import checkmarkDoneOutline from "./assets/criarConta.svg";
+import checkmarkDoneOutline from "../assets/criarConta.svg";
 import React from "react";
-import logo from "./assets/logo.svg";
+import logo from "../assets/logo.svg";
 import "./Register.css";
 
 const Register: React.FC = () => {

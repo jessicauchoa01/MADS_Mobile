@@ -1,53 +1,28 @@
 ion-toolbar {
   --background: #ffd057;
 }
-/* 
- {
-  --background: #212529;
-  --color: white;
-} */
 
-.homePage {
+.homepage {
   --background: #ffffff;
 }
 
-/* p {
-  font-size: 7px;
-} */
-
-.img {
-  size: 1px;
+.scroll {
+  flex-wrap: nowrap;
+  overflow-x: scroll !important;
+  overflow-y: hidden;
 }
 
-.wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  text-align: center;
-  height: 170px;
-  width: 400px;
-  margin: 0 auto;
+.carrosel {
+  --background: #212529;
+  --color: #ffc107;
+  --padding-top: 10px;
+  --padding-bottom: 10px;
 }
 
-.ripple-parent {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
-  border: 1px solid #ddd;
-  user-select: none;
+ion-img {
+  --width: 10px;
+  --height: 10px;
 }
 
-.rounded-rectangle {
-  width: 250px;
-  height: 75px;
-  border-radius: 8px;
-}
-
-.circle {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
+.button {
 }
