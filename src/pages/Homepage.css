@@ -11,7 +11,7 @@ ion-toolbar {
 
 .carrosel {
   --background: #212529;
-  --color: #ffc107;
+  --color: #ffffff;
   --padding-top: 10px;
   --padding-bottom: 10px;
   height: 3rem;
@@ -20,4 +20,16 @@ ion-toolbar {
 ion-img {
   --width: 10px;
   --height: 10px;
+}
+
+.comidas {
+  --background: white;
+}
+
+.pizza {
+  margin-top: 2px;
+  width: 100%;
+}
+.body {
+  --background: white;
 }
