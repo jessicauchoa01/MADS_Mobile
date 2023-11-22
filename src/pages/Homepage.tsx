@@ -20,14 +20,18 @@ import logo from "../assets/logo.svg";
 import pizza from "../assets/pizza.svg";
 import iconCarrinho from "../assets/iconCarrinho.svg";
 import "./Homepage.css";
+import carrinhoFooter from "../assets/carrinhoFooter.svg";
+import perfilFooter from "../assets/perfilFooter.svg";
+import restauranteFooter from "../assets/restauranteFooter.svg";
+import homeFooter from "../assets/homeFooter.svg";
 
 const Homepage: React.FC = () => {
   return (
     <IonPage className="homePage">
       <IonHeader className="header">
         <IonToolbar>
-          <div className="ion-text-center ion-padding">
-            <img src={logo} alt="GoEat logo" width={"150px"} />
+          <div className="imagem ion-text-center">
+            <img src={logo} alt="GoEat logo" width={"100px"} />
           </div>
           <IonGrid>
             <IonRow className="scroll">
@@ -99,8 +103,31 @@ const Homepage: React.FC = () => {
         </IonCard>
       </IonContent>
       <IonFooter className="footer">
-        <IonToolbar>
-          <IonText></IonText>
+        <IonToolbar class="footer-icons ion-text-center">
+          <IonGrid>
+            <IonRow className="ion-justify-content-center">
+              <IonCol>
+                <div className="icons">
+                  <IonIcon icon={homeFooter} size="large" />
+                </div>
+              </IonCol>
+              <IonCol>
+                <div className="icons">
+                  <IonIcon icon={restauranteFooter} size="large" />
+                </div>
+              </IonCol>
+              <IonCol>
+                <div className="icons">
+                  <IonIcon icon={carrinhoFooter} size="large" />
+                </div>
+              </IonCol>
+              <IonCol>
+                <div className="icons">
+                  <IonIcon icon={perfilFooter} size="large" />
+                </div>
+              </IonCol>
+            </IonRow>
+          </IonGrid>
         </IonToolbar>
       </IonFooter>
     </IonPage>

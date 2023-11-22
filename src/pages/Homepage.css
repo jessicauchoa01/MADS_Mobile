@@ -3,8 +3,16 @@ ion-toolbar {
   --background: #ffc107;
 }
 
+.imagem {
+  margin-top: -3rem;
+}
+
 .footer ion-toolbar {
   --background: #212529;
+}
+
+.footer .footer-icons {
+  justify-content: flex-end;
 }
 
 .scroll {
