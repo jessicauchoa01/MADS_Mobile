@@ -1,15 +1,12 @@
+/* Ajuste a cor de fundo da ion-toolbar */
 ion-toolbar {
-  --background: #ffd057;
-}
-
-.homepage {
-  --background: #ffffff;
+  --background: #ffc107;
 }
 
 .scroll {
   flex-wrap: nowrap;
-  overflow-x: scroll !important;
   overflow-y: hidden;
+  overflow-x: scroll !important;
 }
 
 .carrosel {
@@ -17,12 +14,10 @@ ion-toolbar {
   --color: #ffc107;
   --padding-top: 10px;
   --padding-bottom: 10px;
+  height: 3rem;
 }
 
 ion-img {
   --width: 10px;
   --height: 10px;
-}
-
-.button {
 }

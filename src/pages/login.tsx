@@ -39,10 +39,6 @@ const Login: React.FC = () => {
             <IonGrid>
               <IonRow>
                 <IonCol>
-                  <div className="introduza">
-                    <p id="a">Introduza o utilizador</p>
-                    <p id="b">Introduza a palavra-passe</p>
-                  </div>
                   <div className="texto">
                     <IonInput
                       className="input"

@@ -1,5 +1,5 @@
-ion-content {
-  --background: #ffd057;
+.registerPage {
+  background-color: #155263; /* Altere para a cor desejada */
 }
 
 .input {
