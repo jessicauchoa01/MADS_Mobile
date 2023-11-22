@@ -11,7 +11,12 @@ import {
   IonToolbar,
   useIonRouter,
 } from "@ionic/react";
-import {} from "ionicons/icons";
+import { arrowBackOutline } from "../../node_modules/ionicons/icons";
+import {
+  checkmarkDoneCircleOutline,
+  logInOutline,
+  personAdd,
+} from "ionicons/icons";
 
 import checkmarkDoneOutline from "../assets/criarConta.svg";
 import React from "react";
@@ -28,19 +33,15 @@ const Register: React.FC = () => {
 
   return (
     <IonPage className="registerPage">
-      <IonHeader>
-        <IonToolbar>
-          <IonButtons slot="start">
-            <IonBackButton defaultHref="/" />
-          </IonButtons>
-          <IonTitle>Criar conta</IonTitle>
-        </IonToolbar>
-      </IonHeader>
       <IonContent className="body">
         <div className="ion-text-center ion-padding">
           <img src={logo} alt="GoEat logo" width={"150px"} />
         </div>
+        <IonButtons slot="start" className="arrow-back"></IonButtons>
         <div className="form">
+          <div className="seta">
+            <IonIcon id="seta" icon={arrowBackOutline} />
+          </div>
           <form onSubmit={doRegister}>
             <IonInput
               className="input"

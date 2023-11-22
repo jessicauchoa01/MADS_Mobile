@@ -1,8 +1,5 @@
 .registerPage {
-}
-
-.body {
-  --background: #ffd057;
+  background-color: #155263; /* Altere para a cor desejada */
 }
 
 .input {

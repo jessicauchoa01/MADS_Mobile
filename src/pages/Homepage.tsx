@@ -22,7 +22,7 @@ import "./Homepage.css";
 
 const Homepage: React.FC = () => {
   return (
-    <IonPage className="homepage">
+    <IonPage className="homePage">
       <IonHeader>
         <IonToolbar>
           <div className="ion-text-center ion-padding">
@@ -31,10 +31,8 @@ const Homepage: React.FC = () => {
           <IonGrid>
             <IonRow className="scroll">
               <IonCol>
-                <IonButton className="carrosel" shape="round" size="small">
-                  <div>
-                    <p>Entradas</p>
-                  </div>
+                <IonButton className="carrosel" shape="round">
+                  <p>Entradas</p>
                 </IonButton>
               </IonCol>
               <IonCol>
@@ -59,14 +57,14 @@ const Homepage: React.FC = () => {
                 </IonButton>
               </IonCol>
               <IonCol>
-                <IonButton className="carrosel" shape="round" size="small">
+                <IonButton className="carrosel" shape="round">
                   <div>
                     <p>Vegatariano</p>
                   </div>
                 </IonButton>
               </IonCol>
               <IonCol>
-                <IonButton className="carrosel" shape="round" size="small">
+                <IonButton className="carrosel" shape="round">
                   <div>
                     <p>Sobremesas</p>
                   </div>
