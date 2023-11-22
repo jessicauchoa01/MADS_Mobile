@@ -1,5 +1,6 @@
 import {
   IonButton,
+  IonCard,
   IonCol,
   IonContent,
   IonFooter,
@@ -99,7 +100,11 @@ const Homepage: React.FC = () => {
           </IonGrid>
         </IonToolbar>
       </IonHeader>
-      <IonContent></IonContent>
+      <IonContent>
+        <IonCard>
+          <h2>Título</h2>
+        </IonCard>
+      </IonContent>
       <IonFooter></IonFooter>
     </IonPage>
   );
