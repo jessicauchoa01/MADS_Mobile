@@ -25,7 +25,7 @@ const Login: React.FC = () => {
   };
 
   return (
-    <IonPage>
+    <IonPage className="loginPage">
       <IonContent scrollY={false}>
         <div className="ion-text-center ion-padding">
           <img src={goeat} width={"150px"} />
@@ -73,6 +73,7 @@ const Login: React.FC = () => {
                       id="login"
                       size="large"
                       shape="round"
+                      routerLink="/homepage"
                       type="submit"
                       expand="block"
                     >

@@ -1,15 +1,15 @@
-/* ion-toolbar {
+ion-toolbar {
   --background: #ffd057;
 }
-
-ion-button {
+/* 
+ {
   --background: #212529;
   --color: white;
 } */
 
-/* ion-content {
+.homePage {
   --background: #ffffff;
-} */
+}
 
 /* p {
   font-size: 7px;
