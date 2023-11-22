@@ -24,8 +24,6 @@ ion-img {
 
 .comidas {
   --background: white;
-  border-radius: 5px;
-  margin: 0px 25px;
 }
 
 .pizza {
@@ -34,15 +32,4 @@ ion-img {
 }
 .body {
   --background: white;
-}
-
-.descrição {
-  margin-left: 1rem;
-}
-
-.carrinho {
-  display: flex;
-  position: absolute;
-  margin-top: -3rem;
-  margin-left: 19.2rem;
 }
