@@ -1,53 +1,53 @@
-ion-toolbar {
-    --background: #FFD057;
+/* ion-toolbar {
+  --background: #ffd057;
 }
 
 ion-button {
-    --background: #212529;
-    --color: white;
-}
+  --background: #212529;
+  --color: white;
+} */
 
-ion-content {
-    --background: #FFFFFF;
-}
+/* ion-content {
+  --background: #ffffff;
+} */
 
-p {
-    font-size: 7px;
-}
+/* p {
+  font-size: 7px;
+} */
 
 .img {
-    size: 1px;
+  size: 1px;
 }
 
 .wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    text-align: center;
-    height: 170px;
-    width: 400px;
-    margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  height: 170px;
+  width: 400px;
+  margin: 0 auto;
 }
 
 .ripple-parent {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
-    border: 1px solid #ddd;
-    user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #ddd;
+  user-select: none;
 }
 
 .rounded-rectangle {
-    width: 250px;
-    height: 75px;
-    border-radius: 8px;
+  width: 250px;
+  height: 75px;
+  border-radius: 8px;
 }
 
 .circle {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
 }

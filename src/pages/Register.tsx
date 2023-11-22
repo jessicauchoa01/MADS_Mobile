@@ -19,9 +19,9 @@ import {
   personAdd,
 } from "ionicons/icons";
 
-import checkmarkDoneOutline from "../assets/criarConta.svg";
+import checkmarkDoneOutline from "./assets/criarConta.svg";
 import React from "react";
-import logo from "../assets/logo.svg";
+import logo from "./assets/logo.svg";
 import "./Register.css";
 
 const Register: React.FC = () => {
@@ -50,7 +50,6 @@ const Register: React.FC = () => {
           <form onSubmit={doRegister}>
             <IonInput
               className="input"
-              fill="outline"
               labelPlacement="floating"
               placeholder="Introduza o seu primeiro e último nome"
               label="Nome"
@@ -58,7 +57,6 @@ const Register: React.FC = () => {
             ></IonInput>
             <IonInput
               className="ion-margin-top input"
-              fill="outline"
               labelPlacement="floating"
               placeholder="Introduza um nº contribuinte válido"
               label="Nº contribuinte"
@@ -66,7 +64,6 @@ const Register: React.FC = () => {
             ></IonInput>
             <IonInput
               className="ion-margin-top input"
-              fill="outline"
               labelPlacement="floating"
               placeholder="Introduza um nº telemóvel"
               label="Nº telemóvel"
@@ -74,7 +71,6 @@ const Register: React.FC = () => {
             ></IonInput>
             <IonInput
               className="ion-margin-top input"
-              fill="outline"
               labelPlacement="floating"
               placeholder="Introduza uma rua válida"
               label="Rua"
@@ -82,7 +78,6 @@ const Register: React.FC = () => {
             ></IonInput>
             <IonInput
               className="ion-margin-top input"
-              fill="outline"
               labelPlacement="floating"
               placeholder="Introduza o nº da porta"
               label="Nº porta"
@@ -90,7 +85,6 @@ const Register: React.FC = () => {
             ></IonInput>
             <IonInput
               className="ion-margin-top input"
-              fill="outline"
               labelPlacement="floating"
               placeholder="Introduza a localização"
               label="Localização"
@@ -98,7 +92,6 @@ const Register: React.FC = () => {
             ></IonInput>
             <IonInput
               className="ion-margin-top input"
-              fill="outline"
               labelPlacement="floating"
               placeholder="Introduza o país"
               label="País"
@@ -106,7 +99,6 @@ const Register: React.FC = () => {
             ></IonInput>
             <IonInput
               className="ion-margin-top input"
-              fill="outline"
               labelPlacement="floating"
               placeholder="Introduza o código postal"
               label="Código Postal"
@@ -114,7 +106,6 @@ const Register: React.FC = () => {
             ></IonInput>
             <IonInput
               className="ion-margin-top input"
-              fill="outline"
               labelPlacement="floating"
               placeholder="Introduza o seu email"
               label="Email"
@@ -122,7 +113,6 @@ const Register: React.FC = () => {
             ></IonInput>
             <IonInput
               className="ion-margin-top input"
-              fill="outline"
               labelPlacement="floating"
               placeholder="Introduza uma palavra-passe válida"
               label="Palavra-passe"
@@ -130,7 +120,6 @@ const Register: React.FC = () => {
             ></IonInput>
             <IonInput
               className="ion-margin-top input"
-              fill="outline"
               labelPlacement="floating"
               placeholder="Introduza de novo a palavra-passe"
               label="Confirmação palavra-passe"

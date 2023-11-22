@@ -10,11 +10,13 @@ import {
   IonPage,
   IonRow,
 } from "@ionic/react";
+
 import React from "react";
-import { arrowBackOutline } from "ionicons/icons";
-import personAddOutline from "../pages/assets/Vector.svg";
-import goeat from "../pages/assets/goeat.svg";
-import logInOutline from "../pages/assets/login.svg";
+import { arrowBackOutline } from "../../node_modules/ionicons/icons";
+import personAddOutline from "./assets/Vector.svg";
+import goeat from "./assets/logo.svg";
+import logInOutline from "./assets/login.svg";
+import "./Login.css";
 
 const Login: React.FC = () => {
   const doLogin = (event: any) => {
