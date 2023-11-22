@@ -15,9 +15,10 @@
 }
 
 .btn-hp {
-  height: 7.5rem;
+  height: 8rem;
   --background: #155263;
-  padding-bottom: 2.5rem;
+  padding-bottom: 2rem;
+  padding-top: 2rem;
   --border-radius: 50px;
   --color: #ffc107;
 }

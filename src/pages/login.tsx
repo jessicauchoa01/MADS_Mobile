@@ -10,7 +10,7 @@ import {
   IonPage,
   IonRow,
 } from "@ionic/react";
-
+import { Link } from "react-router-dom";
 import React from "react";
 import { arrowBackOutline } from "../../node_modules/ionicons/icons";
 import personAddOutline from "../assets/Vector.svg";
@@ -33,7 +33,9 @@ const Login: React.FC = () => {
         <IonButtons slot="start" className="arrow-back"></IonButtons>
         <div className="main">
           <div className="seta">
-            <IonIcon id="seta" icon={arrowBackOutline} />
+            <Link to="/homepage">
+              <IonIcon id="seta" icon={arrowBackOutline} />
+            </Link>
           </div>
           <form onSubmit={doLogin}>
             <IonGrid>

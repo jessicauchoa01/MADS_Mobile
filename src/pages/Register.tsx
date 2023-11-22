@@ -17,7 +17,7 @@ import {
   logInOutline,
   personAdd,
 } from "ionicons/icons";
-
+import { Link } from "react-router-dom";
 import checkmarkDoneOutline from "../assets/criarConta.svg";
 import React from "react";
 import logo from "../assets/logo.svg";
@@ -40,7 +40,9 @@ const Register: React.FC = () => {
         <IonButtons slot="start" className="arrow-back"></IonButtons>
         <div className="form">
           <div className="seta">
-            <IonIcon id="seta" icon={arrowBackOutline} />
+            <Link to="/login">
+              <IonIcon id="seta" icon={arrowBackOutline} />
+            </Link>
           </div>
           <form onSubmit={doRegister}>
             <IonInput
