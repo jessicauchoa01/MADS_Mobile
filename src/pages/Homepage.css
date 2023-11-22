@@ -1,5 +1,6 @@
 ion-toolbar {
     --background: #FFD057;
+
 }
 
 ion-content {
@@ -22,4 +23,8 @@ ion-button {
 ion-img {
     --width: 10px;
     --height: 10px;
+}
+
+.button {
+    
 }

@@ -1,4 +1,4 @@
-import { IonButton, IonCol, IonContent, IonFooter, IonGrid, IonHeader, IonIcon, IonImg, IonPage, IonRow, IonText, IonToolbar } from '@ionic/react';
+import { IonButton, IonCard, IonCardContent, IonCol, IonContent, IonFooter, IonGrid, IonHeader, IonIcon, IonImg, IonMenu, IonPage, IonRow, IonText, IonToolbar } from '@ionic/react';
 import React from 'react';
 import logo from '../assets/logo.svg'
 import entrada from '../assets/entrada.svg';
@@ -8,6 +8,10 @@ import carne from '../assets/carne.svg';
 import vegetariano from '../assets/vegetariano.svg';
 import sobremesa from '../assets/sobremesa.svg';
 import bebida from '../assets/bebida.svg';
+import home from '../assets/home.svg';
+import profile from '../assets/profile.svg';
+import orders from '../assets/orders.png';
+import cart from '../assets/cart.svg';
 import './Homepage.css';
 import 'swiper/css';
 
@@ -82,7 +86,7 @@ const Homepage: React.FC = () => {
                 </IonToolbar>
             </IonHeader>
             <IonContent>
-                
+
             </IonContent>
             <IonFooter>
 
