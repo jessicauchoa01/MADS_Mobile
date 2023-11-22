@@ -24,6 +24,7 @@ import carrinhoFooter from "../assets/carrinhoFooter.svg";
 import perfilFooter from "../assets/perfilFooter.svg";
 import restauranteFooter from "../assets/restauranteFooter.svg";
 import homeFooter from "../assets/homeFooter.svg";
+import { Link } from "react-router-dom";
 
 const Homepage: React.FC = () => {
   return (
@@ -108,22 +109,30 @@ const Homepage: React.FC = () => {
             <IonRow className="ion-justify-content-center">
               <IonCol>
                 <div className="icons">
-                  <IonIcon icon={homeFooter} size="large" />
+                  <Link to="/homepage">
+                    <IonIcon icon={homeFooter} size="large" />
+                  </Link>
                 </div>
               </IonCol>
               <IonCol>
                 <div className="icons">
-                  <IonIcon icon={restauranteFooter} size="large" />
+                  <Link to="/restaurant">
+                    <IonIcon icon={restauranteFooter} size="large" />
+                  </Link>
                 </div>
               </IonCol>
               <IonCol>
                 <div className="icons">
-                  <IonIcon icon={carrinhoFooter} size="large" />
+                  <Link to="/cart">
+                    <IonIcon icon={carrinhoFooter} size="large" />
+                  </Link>
                 </div>
               </IonCol>
               <IonCol>
                 <div className="icons">
-                  <IonIcon icon={perfilFooter} size="large" />
+                  <Link to="/login">
+                    <IonIcon icon={perfilFooter} size="large" />
+                  </Link>
                 </div>
               </IonCol>
             </IonRow>
