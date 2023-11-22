@@ -26,7 +26,7 @@ const Homepage: React.FC = () => {
       <IonHeader>
         <IonToolbar>
           <div className="ion-text-center ion-padding">
-            <img src={logo} alt="GoEat logo" width={"25%"} />
+            <img src={logo} alt="GoEat logo" width={"150px"} />
           </div>
           <IonGrid>
             <IonRow className="scroll">
