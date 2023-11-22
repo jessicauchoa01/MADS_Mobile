@@ -1,0 +1,23 @@
+ion-content {
+  --background: #ffd057;
+}
+
+.input {
+  --background: #212529;
+  --color: #ffc107;
+  margin-top: 3rem;
+}
+
+.button-create {
+  text-transform: initial;
+  --background: #155263;
+  --color: #ffc107;
+  --border-radius: 50px;
+  height: 5rem;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.form {
+  margin: 0px 15px;
+}
