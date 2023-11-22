@@ -19,8 +19,9 @@ import "@ionic/react/css/flex-utils.css";
 import "@ionic/react/css/display.css";
 
 /* Theme variables */
-import "./theme/variables.css";
 import Login from "./pages/login";
+import Register from "./pages/Register";
+import Homepage from "./pages/Homepage";
 
 setupIonicReact();
 
@@ -28,10 +29,9 @@ const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
       <IonRouterOutlet>
-        <Route exact path="/login">
-          <Login />
-        </Route>
-        <Route component={Login} path="/login" exact />
+        <Route component={Register} path="/register" />
+        <Route component={Login} path="/login" />
+        <Route component={Homepage} path="/homepage" />
       </IonRouterOutlet>
     </IonReactRouter>
   </IonApp>
