@@ -31,7 +31,7 @@ import "swiper/css";
 
 const Homepage: React.FC = () => {
   return (
-    <IonPage>
+    <IonPage className="homePage">
       <IonHeader>
         <IonToolbar>
           <div className="ion-text-center ion-padding">
