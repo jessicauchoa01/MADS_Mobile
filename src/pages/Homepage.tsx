@@ -90,9 +90,11 @@ const Homepage: React.FC = () => {
         </IonGrid>
         <IonCard className="comidas">
           <img className="pizza" src={pizza} alt="" />
-          <h2>Título</h2>
-          <h4>Descrição</h4>
-          <h4>Preço</h4>
+          <div className="descrição">
+            <h2>Título</h2>
+            <h4>Descrição</h4>
+            <h4>Preço</h4>
+          </div>
           <img className="carrinho" src={iconCarrinho} alt="" />
         </IonCard>
       </IonContent>
