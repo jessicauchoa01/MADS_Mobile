@@ -13,9 +13,9 @@ import {
 
 import React from "react";
 import { arrowBackOutline } from "../../node_modules/ionicons/icons";
-import personAddOutline from "./assets/Vector.svg";
-import goeat from "./assets/logo.svg";
-import logInOutline from "./assets/login.svg";
+import personAddOutline from "../assets/Vector.svg";
+import goeat from "../assets/logo.svg";
+import logInOutline from "../assets/login.svg";
 import "./Login.css";
 
 const Login: React.FC = () => {
