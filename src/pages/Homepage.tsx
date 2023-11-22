@@ -18,12 +18,13 @@ import {
 import React from "react";
 import logo from "../assets/logo.svg";
 import pizza from "../assets/pizza.svg";
+import iconCarrinho from "../assets/iconCarrinho.svg";
 import "./Homepage.css";
 
 const Homepage: React.FC = () => {
   return (
     <IonPage className="homePage">
-      <IonHeader>
+      <IonHeader className="header">
         <IonToolbar>
           <div className="ion-text-center ion-padding">
             <img src={logo} alt="GoEat logo" width={"25%"} />
@@ -82,11 +83,17 @@ const Homepage: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent className="body">
+        <IonGrid>
+          <IonRow>
+            <IonCol></IonCol>
+          </IonRow>
+        </IonGrid>
         <IonCard className="comidas">
           <img className="pizza" src={pizza} alt="" />
           <h2>Título</h2>
           <h4>Descrição</h4>
           <h4>Preço</h4>
+          <img className="carrinho" src={iconCarrinho} alt="" />
         </IonCard>
       </IonContent>
       <IonFooter></IonFooter>

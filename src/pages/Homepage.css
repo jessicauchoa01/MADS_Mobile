@@ -33,3 +33,10 @@ ion-img {
 .body {
   --background: white;
 }
+
+.carrinho {
+  display: flex;
+  position: absolute;
+  margin-top: -3rem;
+  margin-left: 20.5rem;
+}
