@@ -1,4 +1,4 @@
-import { IonButton, IonContent, IonFooter, IonHeader, IonIcon, IonPage, IonRippleEffect, IonTitle, IonToolbar } from '@ionic/react';
+import { IonButton, IonCol, IonContent, IonFooter, IonGrid, IonHeader, IonIcon, IonImg, IonPage, IonRow, IonText, IonToolbar } from '@ionic/react';
 import React from 'react';
 import logo from '../assets/logo.svg'
 import entrada from '../assets/entrada.svg';
@@ -9,9 +9,9 @@ import vegetariano from '../assets/vegetariano.svg';
 import sobremesa from '../assets/sobremesa.svg';
 import bebida from '../assets/bebida.svg';
 import './Homepage.css';
+import 'swiper/css';
 
 const Homepage: React.FC = () => {
-
     return (
         <IonPage>
             <IonHeader>
@@ -19,57 +19,66 @@ const Homepage: React.FC = () => {
                     <div className='ion-text-center ion-padding'>
                         <img src={logo} alt="GoEat logo" width={'25%'}/>
                     </div>
-                    <div className='wrapper'>
-                        <IonButton className='ion-activatable ripple-parent circle'>
-                            <div>
-                                <img src={entrada} alt="" />
-                                <p>Entradas</p>
-                            </div>
-                            <IonRippleEffect type="unbounded"></IonRippleEffect>
-                        </IonButton>
-                        <IonButton className='ion-activatable ripple-parent circle'>
-                            <div>
-                                <img src={sopa} alt="" />
-                                <p>Sopas</p>
-                            </div>
-                            <IonRippleEffect type="unbounded"></IonRippleEffect>
-                        </IonButton>
-                        <IonButton className='ion-activatable ripple-parent circle'>
-                            <div>
-                                <img src={peixe} alt="" />
-                                <p>Peixe</p>
-                            </div>
-                            <IonRippleEffect type="unbounded"></IonRippleEffect>
-                        </IonButton>
-                        <IonButton className='ion-activatable ripple-parent circle'>
-                            <div>
-                                <img src={carne} alt="" />
-                                <p>Carne</p>
-                            </div>
-                            <IonRippleEffect type="unbounded"></IonRippleEffect>
-                        </IonButton>
-                        <IonButton className='ion-activatable ripple-parent circle'>
-                            <div>
-                                <img src={vegetariano} alt="" />
-                                <p>Vegatariano</p>
-                            </div>
-                            <IonRippleEffect type="unbounded"></IonRippleEffect>
-                        </IonButton>
-                        <IonButton className='ion-activatable ripple-parent circle'>
-                            <div>
-                                <img src={sobremesa} alt="" />
-                                <p>Sobremesa</p>
-                            </div>
-                            <IonRippleEffect type="unbounded"></IonRippleEffect>
-                        </IonButton>
-                        <IonButton className='ion-activatable ripple-parent circle'>
-                            <div>
-                                <img src={bebida} alt="" />
-                                <p>Bebidas</p>
-                            </div>
-                            <IonRippleEffect type="unbounded"></IonRippleEffect>
-                        </IonButton>
-                    </div>
+                    <IonGrid>
+                        <IonRow className='scroll'>
+                            <IonCol>
+                                <IonButton shape='round' size='small'>
+                                    <div>
+                                        <img src={entrada} alt="" />
+                                        <p>Entradas</p>
+                                    </div>
+                                </IonButton>
+                            </IonCol>
+                            <IonCol>
+                                <IonButton shape='round'>
+                                    <div>
+                                        <img src={sopa} alt="" />
+                                        <p>Sopas</p>
+                                    </div>
+                                </IonButton>
+                            </IonCol>
+                            <IonCol>
+                                <IonButton shape='round'>
+                                    <div>
+                                        <img src={peixe} alt="" />
+                                        <p>Peixe</p>
+                                    </div>
+                                </IonButton>
+                            </IonCol>
+                            <IonCol>
+                                <IonButton shape='round'>
+                                    <div>
+                                        <img src={carne} alt="" />
+                                        <p>Carne</p>
+                                    </div>
+                                </IonButton>
+                            </IonCol>
+                            <IonCol>
+                                <IonButton shape='round' size='small'>
+                                    <div>
+                                        <img src={vegetariano} alt="" />
+                                        <p>Vegatariano</p>
+                                    </div>
+                                </IonButton>
+                            </IonCol>
+                            <IonCol>
+                                <IonButton shape='round' size='small'>
+                                    <div>
+                                        <img src={sobremesa} alt="" />
+                                        <p>Sobremesas</p>
+                                    </div>
+                                </IonButton>
+                            </IonCol>
+                            <IonCol>
+                                <IonButton shape='round'>
+                                    <div>
+                                        <img src={bebida} alt="" />
+                                        <p>Bebidas</p>
+                                    </div>
+                                </IonButton>
+                            </IonCol>
+                        </IonRow>
+                    </IonGrid>
                 </IonToolbar>
             </IonHeader>
             <IonContent>

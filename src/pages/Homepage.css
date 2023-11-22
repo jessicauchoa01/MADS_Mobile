@@ -2,52 +2,24 @@ ion-toolbar {
     --background: #FFD057;
 }
 
-ion-button {
-    --background: #212529;
-    --color: white;
-}
-
 ion-content {
     --background: #FFFFFF;
 }
 
-p {
-    font-size: 7px;
+.scroll {
+    flex-wrap: nowrap;
+    overflow-x: scroll!important;
+    overflow-y: hidden;
 }
 
-.img {
-    size: 1px;
+ion-button {
+    --background: #212529; 
+    --color: #FFC107;
+    --padding-top: 10px;
+    --padding-bottom: 10px;
 }
 
-.wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    text-align: center;
-    height: 170px;
-    width: 400px;
-    margin: 0 auto;
-}
-
-.ripple-parent {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
-    border: 1px solid #ddd;
-    user-select: none;
-}
-
-.rounded-rectangle {
-    width: 250px;
-    height: 75px;
-    border-radius: 8px;
-}
-
-.circle {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
+ion-img {
+    --width: 10px;
+    --height: 10px;
 }
