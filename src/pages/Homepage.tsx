@@ -98,9 +98,22 @@ const Homepage: React.FC = () => {
           <div className="descricao">
             <h2>Título</h2>
             <h4>Descrição</h4>
-            <h4>Preço</h4>
+            <div className="ult-linha">
+              <h4>Preço</h4>
+              <img className="carrinho" src={iconCarrinho} alt="" />
+            </div>
           </div>
-          <img className="carrinho" src={iconCarrinho} alt="" />
+        </IonCard>
+        <IonCard className="comidas">
+          <img className="pizza" src={pizza} alt="" />
+          <div className="descricao">
+            <h2>Título</h2>
+            <h4>Descrição</h4>
+            <div className="ult-linha">
+              <h4>Preço</h4>
+              <img className="carrinho" src={iconCarrinho} alt="" />
+            </div>
+          </div>
         </IonCard>
       </IonContent>
       <IonFooter className="footer">
