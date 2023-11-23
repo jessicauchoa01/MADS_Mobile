@@ -1,0 +1,40 @@
+.carrinhoPage {
+  --ion-background-color: #ffc107;
+}
+
+.carrinhoPage h1 {
+  display: flex;
+  margin: 0 25px;
+  padding-top: 65px;
+  font-size: 24px;
+}
+
+.mainCarrinho {
+  margin: 0 25px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.imagemCarrinho {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Para garantir que a imagem esteja sem bordas, contornos ou margens internas */
+.imagemCarrinho img {
+  width: 200px;
+  margin-top: 100px;
+}
+
+.addCarrinho {
+  font-size: 20px;
+}
+
+.btnComprar {
+  font-size: 16px;
+  --background: #155263;
+  display: block;
+  width: 280px;
+  margin: 0 auto;
+}

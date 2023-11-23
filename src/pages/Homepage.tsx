@@ -136,7 +136,7 @@ const Homepage: React.FC = () => {
               </IonCol>
               <IonCol>
                 <div className="icons">
-                  <Link to="/cart">
+                  <Link to="/carrinho">
                     <IonIcon icon={carrinhoFooter} size="large" />
                   </Link>
                 </div>
