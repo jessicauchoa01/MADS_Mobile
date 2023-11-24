@@ -17,18 +17,68 @@ import {
   logInOutline,
   personAdd,
 } from "ionicons/icons";
-import { Link } from "react-router-dom";
+import { Link, Route } from "react-router-dom";
 import checkmarkDoneOutline from "../assets/criarConta.svg";
-import React from "react";
+import React, { useState } from "react";
 import logo from "../assets/logo.svg";
 import "./Register.css";
 
 const Register: React.FC = () => {
-  const router = useIonRouter();
-  const doRegister = (event: any) => {
+  const [nome, setNome] = useState("");
+  const [contribuinte, setContribuinte] = useState("");
+  const [telemovel, setTelemovel] = useState("");
+  const [rua, setRua] = useState("");
+  const [porta, setPorta] = useState("");
+  const [localizacao, setLocalizacao] = useState("");
+  const [pais, setPais] = useState("");
+  const [codPostal, setCodPostal] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmacao, setConfirmacao] = useState("");
+
+  const doRegister = async (event: React.FormEvent) => {
     event.preventDefault();
-    console.log("doRegister");
-    router.goBack();
+
+    try {
+      const response = await fetch(
+        "https://goeat:8890/sourceMobile/registoMobile.php",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ 
+            nome: nome,
+            contribuinte: contribuinte,
+            telemovel: telemovel,
+            rua: rua,
+            porta: porta,
+            localizacao: localizacao,
+            pais: pais,
+            codPostal: codPostal,
+            email: email,
+            password: password,
+            confirmacao: confirmacao
+          }),
+        }
+      );
+
+      const responseData = await response.json();
+
+      if (response.ok) {
+        // Registo bem-sucedido, redirecione ou faça qualquer outra ação necessária
+        console.log("Registo bem-sucedido");
+        window.location.href = "/login";
+      } else {
+        // Exiba uma mensagem de erro ou realize ações específicas em caso de falha
+        
+        console.error("Falha no registo");
+        console.log(responseData);
+        //window.location.href = "/register";
+      }
+    } catch (error) {
+      console.error("Erro na solicitação:", error);
+    }
   };
 
   return (
@@ -51,6 +101,8 @@ const Register: React.FC = () => {
               placeholder="Introduza o seu primeiro e último nome"
               label="Nome"
               type="text"
+              value={nome}
+              onIonChange={(e) => setNome(e.detail.value!)}
             ></IonInput>
             <IonInput
               className="ion-margin-top input"
@@ -58,6 +110,8 @@ const Register: React.FC = () => {
               placeholder="Introduza um nº contribuinte válido"
               label="Nº contribuinte"
               type="text"
+              value={contribuinte}
+              onIonChange={(e) => setContribuinte(e.detail.value!)}
             ></IonInput>
             <IonInput
               className="ion-margin-top input"
@@ -65,6 +119,8 @@ const Register: React.FC = () => {
               placeholder="Introduza um nº telemóvel"
               label="Nº telemóvel"
               type="text"
+              value={telemovel}
+              onIonChange={(e) => setTelemovel(e.detail.value!)}
             ></IonInput>
             <IonInput
               className="ion-margin-top input"
@@ -72,6 +128,8 @@ const Register: React.FC = () => {
               placeholder="Introduza uma rua válida"
               label="Rua"
               type="text"
+              value={rua}
+              onIonChange={(e) => setRua(e.detail.value!)}
             ></IonInput>
             <IonInput
               className="ion-margin-top input"
@@ -79,6 +137,8 @@ const Register: React.FC = () => {
               placeholder="Introduza o nº da porta"
               label="Nº porta"
               type="text"
+              value={porta}
+              onIonChange={(e) => setPorta(e.detail.value!)}
             ></IonInput>
             <IonInput
               className="ion-margin-top input"
@@ -86,6 +146,8 @@ const Register: React.FC = () => {
               placeholder="Introduza a localização"
               label="Localização"
               type="text"
+              value={localizacao}
+              onIonChange={(e) => setLocalizacao(e.detail.value!)}
             ></IonInput>
             <IonInput
               className="ion-margin-top input"
@@ -93,6 +155,8 @@ const Register: React.FC = () => {
               placeholder="Introduza o país"
               label="País"
               type="text"
+              value={pais}
+              onIonChange={(e) => setPais(e.detail.value!)}
             ></IonInput>
             <IonInput
               className="ion-margin-top input"
@@ -100,6 +164,8 @@ const Register: React.FC = () => {
               placeholder="Introduza o código postal"
               label="Código Postal"
               type="text"
+              value={codPostal}
+              onIonChange={(e) => setCodPostal(e.detail.value!)}
             ></IonInput>
             <IonInput
               className="ion-margin-top input"
@@ -107,6 +173,8 @@ const Register: React.FC = () => {
               placeholder="Introduza o seu email"
               label="Email"
               type="email"
+              value={email}
+              onIonChange={(e) => setEmail(e.detail.value!)}
             ></IonInput>
             <IonInput
               className="ion-margin-top input"
@@ -114,6 +182,8 @@ const Register: React.FC = () => {
               placeholder="Introduza uma palavra-passe válida"
               label="Palavra-passe"
               type="password"
+              value={password}
+              onIonChange={(e) => setPassword(e.detail.value!)}
             ></IonInput>
             <IonInput
               className="ion-margin-top input"
@@ -121,6 +191,8 @@ const Register: React.FC = () => {
               placeholder="Introduza de novo a palavra-passe"
               label="Confirmação palavra-passe"
               type="password"
+              value={confirmacao}
+              onIonChange={(e) => setConfirmacao(e.detail.value!)}
             ></IonInput>
             <IonButton type="submit" expand="block" className="btn-hp">
               Criar conta
