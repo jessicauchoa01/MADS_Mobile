@@ -23,6 +23,9 @@ import restauranteFooter from "../assets/restauranteFooter.svg";
 import homeFooter from "../assets/homeFooter.svg";
 import carrinhoVazio from "../assets/carrinhoVazio.svg";
 import carrinhoBtn from "../assets/carrinhoBtn.svg";
+import imagemPizza from "../assets/image 1.svg";
+import mais from "../assets/mais.svg";
+import lixo from "../assets/lixo.svg";
 import { Link } from "react-router-dom";
 
 const Homepage: React.FC = () => {
@@ -30,6 +33,20 @@ const Homepage: React.FC = () => {
     <IonPage className="carrinhoPage">
       <IonContent>
         <h1>Carrinho</h1>
+        {/* <div className="cardCarrinho">
+          <div className="linha"></div>
+          <div className="contentCard">
+            <img src={imagemPizza} alt="imagem pizza" width={"110px"} />
+            <p className="pizza">Pizza 4 Queijos</p>
+            <div className="quantidade">
+              <img src={lixo} alt="lixo" />
+              <p>1</p>
+              <img src={mais} alt="mais" />
+            </div>
+          </div>
+          <div className="linha"></div>
+        </div> */}
+
         <div className="imagemCarrinho">
           <img src={carrinhoVazio} alt="carrinho Vazio" />
         </div>
