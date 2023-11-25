@@ -22,6 +22,7 @@ import "@ionic/react/css/display.css";
 import Login from "./pages/login";
 import Register from "./pages/Register";
 import Homepage from "./pages/Homepage";
+import Carrinho from "./pages/Carrinho";
 
 setupIonicReact();
 
@@ -35,6 +36,7 @@ const App: React.FC = () => (
         <Route component={Login} path="/login" />
         <Route component={Register} path="/register" />
         <Route component={Homepage} path="/homepage" />
+        <Route component={Carrinho} path="/carrinho" />
       </IonRouterOutlet>
     </IonReactRouter>
   </IonApp>
