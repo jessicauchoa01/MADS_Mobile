@@ -18,9 +18,7 @@ import {
   personAdd,
 } from "ionicons/icons";
 import { Link, Route } from "react-router-dom";
-import { Link, Route } from "react-router-dom";
 import checkmarkDoneOutline from "../assets/criarConta.svg";
-import React, { useState } from "react";
 import React, { useState } from "react";
 import logo from "../assets/logo.svg";
 import "./Register.css";
