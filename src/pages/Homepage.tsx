@@ -25,8 +25,7 @@ import { Link } from "react-router-dom";
 
 const Homepage: React.FC = () => {
   const [pratos, setPratos] = useState<any[]>([]);
-  const [pratosFiltrados, setPratosFiltrados] = useState<any[]>([]);
-  const [tipos, setTipos] = useState<string[]>([]);
+
 
   const buscarPratos = async () => {
     try {

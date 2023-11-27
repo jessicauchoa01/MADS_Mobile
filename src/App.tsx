@@ -24,6 +24,7 @@ import Register from "./pages/Register";
 import Homepage from "./pages/Homepage";
 import Carrinho from "./pages/Carrinho";
 
+
 setupIonicReact();
 
 const App: React.FC = () => (
