@@ -1,7 +1,7 @@
+import React, { useState, useEffect } from "react";
 import {
   IonButton,
   IonCard,
-  IonCardContent,
   IonCol,
   IonContent,
   IonFooter,
@@ -9,24 +9,41 @@ import {
   IonHeader,
   IonIcon,
   IonImg,
-  IonMenu,
   IonPage,
   IonRow,
   IonText,
   IonToolbar,
 } from "@ionic/react";
-import React from "react";
 import logo from "../assets/logo.svg";
-import pizza from "../assets/pizza.svg";
-import iconCarrinho from "../assets/iconCarrinho.svg";
 import "./Homepage.css";
 import carrinhoFooter from "../assets/carrinhoFooter.svg";
 import perfilFooter from "../assets/perfilFooter.svg";
 import restauranteFooter from "../assets/restauranteFooter.svg";
 import homeFooter from "../assets/homeFooter.svg";
+import addCarrinho from "../assets/iconCarrinho.svg";
 import { Link } from "react-router-dom";
 
 const Homepage: React.FC = () => {
+  const [pratos, setPratos] = useState<any[]>([]);
+  const [pratosFiltrados, setPratosFiltrados] = useState<any[]>([]);
+  const [tipos, setTipos] = useState<string[]>([]);
+
+  const buscarPratos = async () => {
+    try {
+      const response = await fetch(
+        "http://localhost/MADS_Web/sourceWeb/sourceMobile/pratos.php"
+      );
+      const data = await response.json();
+      setPratos(data);
+    } catch (error) {
+      console.error("Erro ao buscar pratos:", error);
+    }
+  };
+
+  useEffect(() => {
+    buscarPratos();
+  }, []);
+
   return (
     <IonPage className="homePage">
       <IonHeader className="header">
@@ -93,28 +110,23 @@ const Homepage: React.FC = () => {
             <IonCol></IonCol>
           </IonRow>
         </IonGrid>
-        <IonCard className="comidas">
-          <img className="pizza" src={pizza} alt="" />
-          <div className="descricao">
-            <h2>Título</h2>
-            <h4>Descrição</h4>
-            <div className="ult-linha">
-              <h4>Preço</h4>
-              <img className="carrinho" src={iconCarrinho} alt="" />
-            </div>
-          </div>
-        </IonCard>
-        <IonCard className="comidas">
-          <img className="pizza" src={pizza} alt="" />
-          <div className="descricao">
-            <h2>Título</h2>
-            <h4>Descrição</h4>
-            <div className="ult-linha">
-              <h4>Preço</h4>
-              <img className="carrinho" src={iconCarrinho} alt="" />
-            </div>
-          </div>
-        </IonCard>
+        {pratos.length > 0 ? (
+          pratos.map((prato) => (
+            <IonCard key={prato.id} className="comidas">
+              <img className="pizza" src={prato.imagem} alt="" />
+              <div className="descricao">
+                <h2>{prato.nome}</h2>
+                <h4>{prato.descricao}</h4>
+                <div className="ult-linha">
+                  <h4>{`Preço: ${prato.preco}`}</h4>
+                  <IonIcon icon={addCarrinho} size="large" />
+                </div>
+              </div>
+            </IonCard>
+          ))
+        ) : (
+          <div>Nenhum prato encontrado.</div>
+        )}
       </IonContent>
       <IonFooter className="footer">
         <IonToolbar class="footer-icons ion-text-center">
@@ -155,4 +167,5 @@ const Homepage: React.FC = () => {
     </IonPage>
   );
 };
+
 export default Homepage;
