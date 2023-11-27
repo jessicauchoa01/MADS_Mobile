@@ -1,13 +1,28 @@
-ion-content {
-    --background: #FFD057;
+.registerPage {
+  --ion-background-color: #ffc107;
 }
 
 .input {
-    --background: #212529;
-    --color: #FFC107;
+  --background: #212529;
+  --color: #ffc107;
+  margin-top: 3rem;
 }
 
 .button-create {
-    --background: #155263;
-    --color: #FFC107;
+  text-transform: initial;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.btn-hp {
+  height: 8rem;
+  --background: #155263;
+  padding-bottom: 2rem;
+  padding-top: 2rem;
+  --border-radius: 50px;
+  --color: #ffc107;
+}
+
+.form {
+  margin: 0px 15px;
 }
