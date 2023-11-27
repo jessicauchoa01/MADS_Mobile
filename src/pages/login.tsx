@@ -93,7 +93,7 @@ const Login: React.FC = () => {
                       label="Utilizador"
                       type="text"
                       value={username}
-                      onIonChange={(e) => setUsername(e.detail.value!)}
+                      onIonInput={(e) => setUsername(e.detail.value!)}
                     />
                     <IonInput
                       className="input"
@@ -102,7 +102,7 @@ const Login: React.FC = () => {
                       label="Password"
                       type="password"
                       value={password}
-                      onIonChange={(e) => setPassword(e.detail.value!)}
+                      onIonInput={(e) => setPassword(e.detail.value!)}
                     />
                   </div>
                 </IonCol>

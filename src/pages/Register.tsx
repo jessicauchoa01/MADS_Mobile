@@ -102,7 +102,7 @@ const Register: React.FC = () => {
               label="Nome"
               type="text"
               value={nome}
-              onIonChange={(e) => setNome(e.detail.value!)}
+              onIonInput={(e) => setNome(e.detail.value!)}
             ></IonInput>
             <IonInput
               className="ion-margin-top input"
@@ -111,7 +111,7 @@ const Register: React.FC = () => {
               label="Nº contribuinte"
               type="text"
               value={contribuinte}
-              onIonChange={(e) => setContribuinte(e.detail.value!)}
+              onIonInput={(e) => setContribuinte(e.detail.value!)}
             ></IonInput>
             <IonInput
               className="ion-margin-top input"
@@ -120,7 +120,7 @@ const Register: React.FC = () => {
               label="Nº telemóvel"
               type="text"
               value={telemovel}
-              onIonChange={(e) => setTelemovel(e.detail.value!)}
+              onIonInput={(e) => setTelemovel(e.detail.value!)}
             ></IonInput>
             <IonInput
               className="ion-margin-top input"
@@ -129,7 +129,7 @@ const Register: React.FC = () => {
               label="Rua"
               type="text"
               value={rua}
-              onIonChange={(e) => setRua(e.detail.value!)}
+              onIonInput={(e) => setRua(e.detail.value!)}
             ></IonInput>
             <IonInput
               className="ion-margin-top input"
@@ -138,7 +138,7 @@ const Register: React.FC = () => {
               label="Nº porta"
               type="text"
               value={porta}
-              onIonChange={(e) => setPorta(e.detail.value!)}
+              onIonInput={(e) => setPorta(e.detail.value!)}
             ></IonInput>
             <IonInput
               className="ion-margin-top input"
@@ -147,7 +147,7 @@ const Register: React.FC = () => {
               label="Localização"
               type="text"
               value={localizacao}
-              onIonChange={(e) => setLocalizacao(e.detail.value!)}
+              onIonInput={(e) => setLocalizacao(e.detail.value!)}
             ></IonInput>
             <IonInput
               className="ion-margin-top input"
@@ -156,7 +156,7 @@ const Register: React.FC = () => {
               label="País"
               type="text"
               value={pais}
-              onIonChange={(e) => setPais(e.detail.value!)}
+              onIonInput={(e) => setPais(e.detail.value!)}
             ></IonInput>
             <IonInput
               className="ion-margin-top input"
@@ -165,7 +165,7 @@ const Register: React.FC = () => {
               label="Código Postal"
               type="text"
               value={codPostal}
-              onIonChange={(e) => setCodPostal(e.detail.value!)}
+              onIonInput={(e) => setCodPostal(e.detail.value!)}
             ></IonInput>
             <IonInput
               className="ion-margin-top input"
@@ -174,7 +174,7 @@ const Register: React.FC = () => {
               label="Email"
               type="email"
               value={email}
-              onIonChange={(e) => setEmail(e.detail.value!)}
+              onIonInput={(e) => setEmail(e.detail.value!)}
             ></IonInput>
             <IonInput
               className="ion-margin-top input"
@@ -183,7 +183,7 @@ const Register: React.FC = () => {
               label="Palavra-passe"
               type="password"
               value={password}
-              onIonChange={(e) => setPassword(e.detail.value!)}
+              onIonInput={(e) => setPassword(e.detail.value!)}
             ></IonInput>
             <IonInput
               className="ion-margin-top input"
@@ -192,7 +192,7 @@ const Register: React.FC = () => {
               label="Confirmação palavra-passe"
               type="password"
               value={confirmacao}
-              onIonChange={(e) => setConfirmacao(e.detail.value!)}
+              onIonInput={(e) => setConfirmacao(e.detail.value!)}
             ></IonInput>
             <IonButton type="submit" expand="block" className="btn-hp">
               Criar conta
