@@ -37,7 +37,7 @@ const Homepage: React.FC = () => {
          <div className="cardCarrinho">
           <div className="linha"></div>
           <div className="contentCard">
-            <img src={imagemPizza} alt="imagem pizza" width={"110px"} />
+            <img src={imagemPizza} alt="imagem pizza" width={"80px"} />
             <p className="pizza">Pizza 4 Queijos</p>
             <div className="quantidade">
               <img src={lixo} alt="lixo" />

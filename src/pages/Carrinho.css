@@ -67,16 +67,16 @@
   justify-content: space-between;
   background-color: #212529;
   border-radius: 50px;
-  width: 70vw;
-  margin-top: 0.5rem;
-  height: 2.5rem;
+  width: 35vw;
+  margin-top: 2rem;
+  height: 2.8rem;
   font-size: 17px;
   font-weight: bolder;
 }
 
 .preco{
-  margin-left: 16.7rem;
-  margin-top: -1rem;
+  margin-left: 16.5rem;
+  margin-top: 0rem;
   font-weight: bold;
 }
 
@@ -104,5 +104,7 @@
   color: #000;
   font-weight: 500;
   text-align: center;
-  margin-top: 2.2rem;
+  margin-top: 3rem;
+  font-size: 13px;
+
 }
