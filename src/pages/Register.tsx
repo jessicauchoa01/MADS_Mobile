@@ -18,12 +18,27 @@ import {
   personAdd,
 } from "ionicons/icons";
 import { Link, Route } from "react-router-dom";
+import { Link, Route } from "react-router-dom";
 import checkmarkDoneOutline from "../assets/criarConta.svg";
+import React, { useState } from "react";
 import React, { useState } from "react";
 import logo from "../assets/logo.svg";
 import "./Register.css";
 
 const Register: React.FC = () => {
+  const [nome, setNome] = useState("");
+  const [contribuinte, setContribuinte] = useState("");
+  const [telemovel, setTelemovel] = useState("");
+  const [rua, setRua] = useState("");
+  const [porta, setPorta] = useState("");
+  const [localizacao, setLocalizacao] = useState("");
+  const [pais, setPais] = useState("");
+  const [codPostal, setCodPostal] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmacao, setConfirmacao] = useState("");
+
+  const doRegister = async (event: React.FormEvent) => {
   const [nome, setNome] = useState("");
   const [contribuinte, setContribuinte] = useState("");
   const [telemovel, setTelemovel] = useState("");
@@ -103,6 +118,8 @@ const Register: React.FC = () => {
               type="text"
               value={nome}
               onIonInput={(e) => setNome(e.detail.value!)}
+              value={nome}
+              onIonInput={(e) => setNome(e.detail.value!)}
             ></IonInput>
             <IonInput
               className="ion-margin-top input"
@@ -110,6 +127,8 @@ const Register: React.FC = () => {
               placeholder="Introduza um nº contribuinte válido"
               label="Nº contribuinte"
               type="text"
+              value={contribuinte}
+              onIonInput={(e) => setContribuinte(e.detail.value!)}
               value={contribuinte}
               onIonInput={(e) => setContribuinte(e.detail.value!)}
             ></IonInput>
@@ -121,6 +140,8 @@ const Register: React.FC = () => {
               type="text"
               value={telemovel}
               onIonInput={(e) => setTelemovel(e.detail.value!)}
+              value={telemovel}
+              onIonInput={(e) => setTelemovel(e.detail.value!)}
             ></IonInput>
             <IonInput
               className="ion-margin-top input"
@@ -128,6 +149,8 @@ const Register: React.FC = () => {
               placeholder="Introduza uma rua válida"
               label="Rua"
               type="text"
+              value={rua}
+              onIonInput={(e) => setRua(e.detail.value!)}
               value={rua}
               onIonInput={(e) => setRua(e.detail.value!)}
             ></IonInput>
@@ -139,6 +162,8 @@ const Register: React.FC = () => {
               type="text"
               value={porta}
               onIonInput={(e) => setPorta(e.detail.value!)}
+              value={porta}
+              onIonInput={(e) => setPorta(e.detail.value!)}
             ></IonInput>
             <IonInput
               className="ion-margin-top input"
@@ -146,6 +171,8 @@ const Register: React.FC = () => {
               placeholder="Introduza a localização"
               label="Localização"
               type="text"
+              value={localizacao}
+              onIonInput={(e) => setLocalizacao(e.detail.value!)}
               value={localizacao}
               onIonInput={(e) => setLocalizacao(e.detail.value!)}
             ></IonInput>
@@ -157,6 +184,8 @@ const Register: React.FC = () => {
               type="text"
               value={pais}
               onIonInput={(e) => setPais(e.detail.value!)}
+              value={pais}
+              onIonInput={(e) => setPais(e.detail.value!)}
             ></IonInput>
             <IonInput
               className="ion-margin-top input"
@@ -164,6 +193,8 @@ const Register: React.FC = () => {
               placeholder="Introduza o código postal"
               label="Código Postal"
               type="text"
+              value={codPostal}
+              onIonInput={(e) => setCodPostal(e.detail.value!)}
               value={codPostal}
               onIonInput={(e) => setCodPostal(e.detail.value!)}
             ></IonInput>
@@ -175,6 +206,8 @@ const Register: React.FC = () => {
               type="email"
               value={email}
               onIonInput={(e) => setEmail(e.detail.value!)}
+              value={email}
+              onIonInput={(e) => setEmail(e.detail.value!)}
             ></IonInput>
             <IonInput
               className="ion-margin-top input"
@@ -184,6 +217,8 @@ const Register: React.FC = () => {
               type="password"
               value={password}
               onIonInput={(e) => setPassword(e.detail.value!)}
+              value={password}
+              onIonInput={(e) => setPassword(e.detail.value!)}
             ></IonInput>
             <IonInput
               className="ion-margin-top input"
@@ -191,6 +226,8 @@ const Register: React.FC = () => {
               placeholder="Introduza de novo a palavra-passe"
               label="Confirmação palavra-passe"
               type="password"
+              value={confirmacao}
+              onIonInput={(e) => setConfirmacao(e.detail.value!)}
               value={confirmacao}
               onIonInput={(e) => setConfirmacao(e.detail.value!)}
             ></IonInput>

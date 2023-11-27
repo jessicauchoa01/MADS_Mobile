@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import React, { useState } from "react";
 import {
   IonAlert,
   IonButton,
@@ -18,43 +19,9 @@ import "./Login.css";
 import { Link } from "react-router-dom";
 
 const Login: React.FC = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-
-  const doLogin = async (event: React.FormEvent) => {
+  const doLogin = (event: any) => {
     event.preventDefault();
-
-    try {
-      console.log("Form submitted!");
-      console.log(JSON.stringify({ email: username, password: password }));
-
-      // Log password before the fetch call
-      console.log("Password:", password);
-
-      const response = await fetch(
-        "http://localhost/Mads_web/sourceWeb/sourceMobile/loginValidaMobile.php",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ email: username, password: password }),
-        }
-      );
-
-      const responseData = await response.json();
-      console.log(response.status);
-      console.log(responseData);
-
-      if (response.ok) {
-        console.log(responseData);
-        window.location.href = "/homepage";
-      } else {
-        console.error(responseData);
-      }
-    } catch (error) {
-      console.error("Error:", error);
-    }
+    console.log("doLogin");
   };
 
   return (
