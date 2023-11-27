@@ -25,8 +25,6 @@ import { Link } from "react-router-dom";
 
 const Homepage: React.FC = () => {
   const [pratos, setPratos] = useState<any[]>([]);
-  const [pratosFiltrados, setPratosFiltrados] = useState<any[]>([]);
-  const [tipos, setTipos] = useState<string[]>([]);
 
   const buscarPratos = async () => {
     try {
@@ -113,7 +111,16 @@ const Homepage: React.FC = () => {
         {pratos.length > 0 ? (
           pratos.map((prato) => (
             <IonCard key={prato.id} className="comidas">
-              <img className="pizza" src={prato.imagem} alt="" />
+              <img
+                className="imagemEmenta"
+                src={`http://localhost/MADS_Web/sourceWeb/${prato.imagem}`}
+                alt=""
+                style={{
+                  width: "100%",
+                  height: "150px",
+                  objectFit: "cover",
+                }}
+              />
               <div className="descricao">
                 <h2>{prato.nome}</h2>
                 <h4>{prato.descricao}</h4>
