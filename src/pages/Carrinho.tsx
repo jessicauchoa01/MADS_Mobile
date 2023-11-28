@@ -33,7 +33,7 @@ const Homepage: React.FC = () => {
     <IonPage className="carrinhoPage">
       <IonContent>
         <h1>Carrinho</h1>
-        {/* <div className="cardCarrinho">
+        <div className="cardCarrinho">
           <div className="linha"></div>
           <div className="contentCard">
             <img src={imagemPizza} alt="imagem pizza" width={"110px"} />
@@ -45,9 +45,9 @@ const Homepage: React.FC = () => {
             </div>
           </div>
           <div className="linha"></div>
-        </div> */}
+        </div>
 
-        <div className="imagemCarrinho">
+        {/* <div className="imagemCarrinho">
           <img src={carrinhoVazio} alt="carrinho Vazio" />
         </div>
         <div className="mainCarrinho">
@@ -67,7 +67,7 @@ const Homepage: React.FC = () => {
         >
           Começar a comprar
           <IonIcon icon={carrinhoBtn} slot="end" />
-        </IonButton>
+        </IonButton> */}
       </IonContent>
       <IonFooter className="footer">
         <IonToolbar class="footer-icons ion-text-center">

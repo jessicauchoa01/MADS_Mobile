@@ -21,29 +21,15 @@ const Login: React.FC = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  // const alert = () => {
-  //   <IonAlert
-  //   header="sadas"
-  //   trigger="login"
-  //   buttons={[
-  //     {
-  //       text: 'OK',
-  //       role: 'confirm',
-  //       handler: () => {
-  //         console.log();
-  //       },
-  //     },
-  //   ]}
-  //   onDidDismiss={({ detail }) => console.log(`Dismissed with role: ${detail.role}`)}
-  // ></IonAlert>
-  // }
-
   const doLogin = async (event: React.FormEvent) => {
     event.preventDefault();
 
     try {
+      console.log("Form submitted!");
+      console.log(JSON.stringify({ email: username, password: password }));
+
       const response = await fetch(
-        "http://localhost/MADS_Web/sourceWeb/sourceMobile/loginValidaMobile.php",
+        "http://localhost/Mads_web/sourceWeb/sourceMobile/loginValidaMobile.php",
         {
           method: "POST",
           headers: {
@@ -54,18 +40,17 @@ const Login: React.FC = () => {
       );
 
       const responseData = await response.json();
+      console.log(response.status);
+      console.log(responseData);
 
       if (response.ok) {
-        // Login bem-sucedido, redirecione ou faça qualquer outra ação necessária
         console.log(responseData);
         window.location.href = "/homepage";
       } else {
-        // Exiba uma mensagem de erro ou realize ações específicas em caso de falha
         console.error(responseData);
-        //window.location.href = "/login";
       }
     } catch (error) {
-      console.error("Erro na solicitação:", error);
+      console.error("Error:", error);
     }
   };
 

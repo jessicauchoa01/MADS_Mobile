@@ -132,7 +132,7 @@ const Homepage: React.FC = () => {
             </IonCard>
           ))
         ) : (
-          <div>Nenhum prato encontrado.</div>
+          <div className="noPratos">Nenhum prato encontrado.</div>
         )}
       </IonContent>
       <IonFooter className="footer">
