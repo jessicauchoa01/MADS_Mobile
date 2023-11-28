@@ -29,7 +29,7 @@ const Login: React.FC = () => {
       console.log(JSON.stringify({ email: username, password: password }));
 
       const response = await fetch(
-        "http://localhost/MADS_Web/sourceWeb/sourceMobile/loginValidaMobile.php",
+        "http://localhost/Mads_web/sourceWeb/sourceMobile/loginValidaMobile.php",
         {
           method: "POST",
           headers: {

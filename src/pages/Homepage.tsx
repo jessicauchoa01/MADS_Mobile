@@ -126,13 +126,17 @@ const Homepage: React.FC = () => {
                 <h4>{prato.descricao}</h4>
                 <div className="ult-linha">
                   <h4>{`Preço: ${prato.preco}`}</h4>
-                  <IonIcon icon={addCarrinho} size="large" />
+                  <IonIcon
+                    className="imagemAddCarrinho"
+                    icon={addCarrinho}
+                    size="large"
+                  />
                 </div>
               </div>
             </IonCard>
           ))
         ) : (
-          <div>Nenhum prato encontrado.</div>
+          <div className="noPratos">Nenhum prato encontrado.</div>
         )}
       </IonContent>
       <IonFooter className="footer">

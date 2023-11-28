@@ -21,7 +21,6 @@
   align-items: center;
 }
 
-/* Para garantir que a imagem esteja sem bordas, contornos ou margens internas */
 .imagemCarrinho img {
   width: 200px;
   margin-top: 100px;
@@ -39,7 +38,6 @@
   margin: 0 auto;
 }
 
-/* ///////////////////////////// */
 .cardCarrinho {
   margin: 30px 25px;
 }
