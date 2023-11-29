@@ -41,7 +41,8 @@ const Register: React.FC = () => {
 
     try {
       const response = await fetch(
-        "http://localhost/MADS_Web/sourceWeb/sourceMobile/RegistoMobile.php",
+        // mudar para o vosso localhost
+        "https://goeat:8890/sourceMobile/RegistoMobile.php",
         {
           method: "POST",
           headers: {
@@ -71,7 +72,6 @@ const Register: React.FC = () => {
         window.location.href = "/login";
       } else {
         // Exiba uma mensagem de erro ou realize ações específicas em caso de falha
-
         console.error("Falha no registo");
         console.log(responseData);
         //window.location.href = "/register";

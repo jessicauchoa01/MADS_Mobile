@@ -23,6 +23,8 @@ import Login from "./pages/login";
 import Register from "./pages/Register";
 import Homepage from "./pages/Homepage";
 import Carrinho from "./pages/Carrinho";
+import Menu from "./pages/Menu";
+import Profile from './pages/Profile';
 
 
 setupIonicReact();
@@ -38,6 +40,8 @@ const App: React.FC = () => (
         <Route component={Register} path="/register" />
         <Route component={Homepage} path="/homepage" />
         <Route component={Carrinho} path="/carrinho" />
+        <Route component={Menu} path="/menu" />
+        <Route component={Profile} path="/profile" />
       </IonRouterOutlet>
     </IonReactRouter>
   </IonApp>

@@ -21,7 +21,6 @@
   align-items: center;
 }
 
-/* Para garantir que a imagem esteja sem bordas, contornos ou margens internas */
 .imagemCarrinho img {
   width: 200px;
   margin-top: 100px;
@@ -39,7 +38,6 @@
   margin: 0 auto;
 }
 
-/* ///////////////////////////// */
 .cardCarrinho {
   margin: 30px 25px;
 }
@@ -74,37 +72,49 @@
   font-weight: bolder;
 }
 
-.preco{
-  margin-left: 16.5rem;
-  margin-top: 0rem;
+.quantidade p {
+  margin: 0.9rem;
+}
+
+.preco {
+  display: flex;
+  justify-content: end;
+  margin-right: 12%;
   font-weight: bold;
+  margin-top: -2rem;
 }
 
 .quantidade img {
   margin: 10px;
 }
 
-
-.subTotal{
+.subTotal {
   display: flex;
-  margin-left: 15.5rem;
+  justify-content: center;
+  margin-left: 13rem;
   font-weight: bold;
 }
 
-.btnEncomendar{
+.btnEncomendar {
+  display: flex;
   font-size: 16px;
   --background: #155263;
-  display: block;
-  width: 220px;
-  margin-left: 10rem;
-  margin-top: 10rem;
+  width: 50%;
+  margin: auto;
+  margin-top: 18rem;
 }
 
 .pizza {
+  display: flex;
+  justify-content: center;
   color: #000;
   font-weight: 500;
   text-align: center;
   margin-top: 3rem;
   font-size: 13px;
+}
 
+.imgPizza {
+  display: flex;
+  width: 25%;
 }
