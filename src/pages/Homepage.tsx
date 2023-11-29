@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from "react";
 import {
   IonButton,
   IonCard,
@@ -22,7 +21,6 @@ import carrinhoFooter from "../assets/carrinhoFooter.svg";
 import perfilFooter from "../assets/perfilFooter.svg";
 import restauranteFooter from "../assets/restauranteFooter.svg";
 import homeFooter from "../assets/homeFooter.svg";
-import addCarrinho from "../assets/iconCarrinho.svg";
 import { Link } from "react-router-dom";
 
 
@@ -40,7 +38,7 @@ const Homepage: React.FC = () => {
     try {
       const response = await fetch(
         // mudar para o vosso localhost
-        "https://goeat:8890/sourceMobile/PratosMobile.php",
+        "http://localhost/Mads_web/sourceWeb/sourceMobile/PratosMobile.php",
       );
   
       const pratos = await response.json();
@@ -56,7 +54,7 @@ const Homepage: React.FC = () => {
     try {
       const response = await fetch(
         // mudar para o vosso localhost
-        "https://goeat:8890/sourceMobile/FiltrarPratosMobile.php?tipo_id="+tipo_id,
+        "http://localhost/Mads_web/sourceWeb/sourceMobile/FiltrarPratosMobile.php?tipo_id="+tipo_id,
       );
 
       const pratos = await response.json();
@@ -158,7 +156,7 @@ const Homepage: React.FC = () => {
               <img
                 className="imagemEmenta"
                 // mudar para o vosso localhost
-                src={`https://goeat:8890/${prato.imagem}`}
+                src={`http://localhost/Mads_web/sourceWeb/${prato.imagem}`}
                 alt=""
                 style={{
                   width: "100%",
