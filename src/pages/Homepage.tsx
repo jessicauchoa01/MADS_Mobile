@@ -33,8 +33,8 @@ const Homepage: React.FC = () => {
   //const carrinho = localStorage.getItem("carrinho");
   const [pratos, setPratos] = useState<any[]>([]);
   const [tipo_id, getTipo_id] = useState(Number);
-  console.log("https://goeat:8890/sourceMobile/FiltrarPratosMobile.php?tipo_id=" + tipo_id);
-  console.log(tipo_id);
+  // console.log("https://goeat:8890/sourceMobile/FiltrarPratosMobile.php?tipo_id=" + tipo_id);
+  // console.log(tipo_id);
 
   //TRY PARA O GET DIRETO NA HOMEPAGE
   const listarPratos = async () => {
@@ -61,8 +61,6 @@ const Homepage: React.FC = () => {
       const pratos = await response.json();
 
       setPratos(pratos);
-
-      console.log(pratos);
       
     } catch (error) {
       console.error("Erro na solicitação do filtro:", error);
@@ -208,7 +206,7 @@ const Homepage: React.FC = () => {
               </IonCol>
               <IonCol>
                 <div className="icons">      {/* //DAR RESET AO FILTRO, COLOCAR EM TODOS OS BOTÕES */}
-                  <Link to="/login" onClick={() => getTipo_id(0)}>
+                  <Link to="/login">
                     <IonIcon icon={perfilFooter} size="large" />
                   </Link>
                 </div>
