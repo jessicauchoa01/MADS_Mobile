@@ -72,6 +72,10 @@
   font-weight: bolder;
 }
 
+.quantidade p {
+  margin: 0.9rem;
+}
+
 .preco {
   display: flex;
   justify-content: end;

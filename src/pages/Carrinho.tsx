@@ -35,7 +35,6 @@ const Homepage: React.FC = () => {
       <IonContent>
         <h1>Carrinho</h1>
         <div className="cardCarrinho">
-        <div className="cardCarrinho">
           <div className="linha"></div>
           <div className="contentCard">
             <img className="imgPizza" src={imagemPizza} alt="imagem pizza" />
