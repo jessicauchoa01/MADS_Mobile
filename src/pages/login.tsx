@@ -20,6 +20,7 @@ import { Link } from "react-router-dom";
 const Login: React.FC = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  // const mensagem = "";
 
   const doLogin = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -40,14 +41,28 @@ const Login: React.FC = () => {
       );
 
       const responseData = await response.json();
-      console.log(response.status);
-      console.log(responseData);
+
+      // const mensagem = responseData["message"];
+
+      //JSON TOKEN DE EXEMPLO
+      // const token = '1234';
+      // const carrinho = [2, 4];
 
       if (response.ok) {
+        // Login bem-sucedido, redirecione ou faça qualquer outra ação necessária
+        //COLOCA O TOKEN NA STORAGE
+        // localStorage.setItem("carrinho", JSON.stringify(carrinho));
+        // localStorage.setItem("token", token);
         console.log(responseData);
         window.location.href = "/homepage";
       } else {
+        // Exiba uma mensagem de erro ou realize ações específicas em caso de falha
+        //ELIMINA O TOKEN DA STORAGE
+        //localStorage.setItem("token", "");
+        // console.log(mensagem);
+        // console.log(typeof(mensagem));
         console.error(responseData);
+        // window.location.href = "/login";
       }
     } catch (error) {
       console.error("Error:", error);
@@ -105,7 +120,7 @@ const Login: React.FC = () => {
               <IonIcon icon={logInOutline} slot="end" />
             </IonButton>
             <IonAlert
-              header="Ã© preciso ir buscar a mensagem!"
+              header="{mensagem}"
               trigger="login"
               onDidDismiss={({ detail }) =>
                 console.log(`Dismissed with role: ${detail.role}`)
