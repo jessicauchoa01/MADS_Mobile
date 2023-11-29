@@ -29,7 +29,7 @@ const Login: React.FC = () => {
     try {
       const response = await fetch(
         // mudar para o vosso localhost
-        "https://goeat:8890/sourceMobile/loginValidaMobile.php",
+        "http://localhost/MADS/MADS_Web/sourceWeb/sourceMobile/loginValidaMobile.php",
         {
           method: "POST",
           headers: {
@@ -41,25 +41,11 @@ const Login: React.FC = () => {
 
       const responseData = await response.json();
 
-      // const mensagem = responseData["message"];
-
-      //JSON TOKEN DE EXEMPLO
-      // const token = '1234';
-      // const carrinho = [2, 4];
-
       if (response.ok) {
-        // Login bem-sucedido, redirecione ou faça qualquer outra ação necessária
-        //COLOCA O TOKEN NA STORAGE
-        // localStorage.setItem("carrinho", JSON.stringify(carrinho));
-        // localStorage.setItem("token", token);
+        localStorage.setItem("token", responseData['token']);
         console.log(responseData);
         window.location.href = "/homepage";
       } else {
-        // Exiba uma mensagem de erro ou realize ações específicas em caso de falha
-        //ELIMINA O TOKEN DA STORAGE
-        //localStorage.setItem("token", "");
-        // console.log(mensagem);
-        // console.log(typeof(mensagem));
         console.error(responseData);
         // window.location.href = "/login";
       }

@@ -29,20 +29,16 @@ import { Link } from "react-router-dom";
 
 
 const Homepage: React.FC = () => {
-  //PROCURA O JSON TOKEN NO STORAGE
-  //const token = localStorage.getItem("token");
-  //const carrinho = localStorage.getItem("carrinho");
   const [pratos, setPratos] = useState<any[]>([]);
   const [tipo_id, getTipo_id] = useState(Number);
   // console.log("https://goeat:8890/sourceMobile/FiltrarPratosMobile.php?tipo_id=" + tipo_id);
-  // console.log(tipo_id);
 
   //TRY PARA O GET DIRETO NA HOMEPAGE
   const listarPratos = async () => {
     try {
       const response = await fetch(
         // mudar para o vosso localhost
-        "https://goeat:8890/sourceMobile/PratosMobile.php",
+        "http://localhost/MADS/MADS_Web/sourceWeb/sourceMobile/PratosMobile.php",
       );
   
       const pratos = await response.json();
@@ -58,7 +54,7 @@ const Homepage: React.FC = () => {
     try {
       const response = await fetch(
         // mudar para o vosso localhost
-        "https://goeat:8890/sourceMobile/FiltrarPratosMobile.php?tipo_id="+tipo_id,
+        "http://localhost/MADS/MADS_Web/sourceWeb/sourceMobile/FiltrarPratosMobile.php?tipo_id="+tipo_id,
       );
 
       const pratos = await response.json();
@@ -83,10 +79,7 @@ const Homepage: React.FC = () => {
   }
 
   return (
-    
-  // console.log(token),
-  // console.log(carrinho),
-  //   console.log(typeof(carrinho)),
+
     <IonPage className="homePage">
       <IonHeader className="header">
         <IonToolbar>
@@ -160,7 +153,7 @@ const Homepage: React.FC = () => {
               <img
                 className="imagemEmenta"
                 // mudar para o vosso localhost
-                src={`https://goeat:8890/${prato.imagem}`}
+                src={`http://localhost/MADS/MADS_Web/sourceWeb/${prato.imagem}`}
                 alt=""
                 style={{
                   width: "100%",
