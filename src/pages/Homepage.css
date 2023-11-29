@@ -1,4 +1,3 @@
-/* Ajuste a cor de fundo da ion-toolbar */
 ion-toolbar {
   --background: #ffc107;
 }
@@ -35,6 +34,10 @@ ion-toolbar {
   margin-bottom: 2rem;
 }
 
+.noPratos {
+  margin: 0px 25px;
+}
+
 .imagemEmenta {
   margin-top: 4px;
 }
@@ -47,6 +50,10 @@ ion-toolbar {
 .ult-linha {
   display: flex;
   justify-content: space-between;
+}
+
+.imagemAddCarrinho {
+  margin-top: 1rem;
 }
 
 .carrinho {
