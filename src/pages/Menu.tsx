@@ -28,7 +28,7 @@ const Homepage: React.FC = () => {
   const buscarPratos = async () => {
     try {
       const response = await fetch(
-        "http://localhost/MADS_Web/sourceWeb/sourceMobile/pratos.php"
+        "http://localhost/MADS_Web/sourceWeb/sourceMobile/PratosMobile.php"
       );
       const data = await response.json();
       setPratos(data);
