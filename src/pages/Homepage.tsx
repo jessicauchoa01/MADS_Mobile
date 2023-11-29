@@ -27,6 +27,7 @@ import restauranteFooter from "../assets/restauranteFooter.svg";
 import homeFooter from "../assets/homeFooter.svg";
 import { Link } from "react-router-dom";
 
+
 const Homepage: React.FC = () => {
   //PROCURA O JSON TOKEN NO STORAGE
   //const token = localStorage.getItem("token");
@@ -40,6 +41,7 @@ const Homepage: React.FC = () => {
   const listarPratos = async () => {
     try {
       const response = await fetch(
+        // mudar para o vosso localhost
         "https://goeat:8890/sourceMobile/PratosMobile.php",
       );
   
@@ -55,6 +57,7 @@ const Homepage: React.FC = () => {
   const filtrarPratos = async (tipo_id: number) => {
     try {
       const response = await fetch(
+        // mudar para o vosso localhost
         "https://goeat:8890/sourceMobile/FiltrarPratosMobile.php?tipo_id="+tipo_id,
       );
 
@@ -205,7 +208,7 @@ const Homepage: React.FC = () => {
                 </div>
               </IonCol>
               <IonCol>
-                <div className="icons">      {/* //DAR RESET AO FILTRO, COLOCAR EM TODOS OS BOTÕES */}
+                <div className="icons">  
                   <Link to="/login">
                     <IonIcon icon={perfilFooter} size="large" />
                   </Link>

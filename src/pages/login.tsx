@@ -18,7 +18,6 @@ import "./Login.css";
 import { Link } from "react-router-dom";
 
 
-
 const Login: React.FC = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -29,6 +28,7 @@ const Login: React.FC = () => {
 
     try {
       const response = await fetch(
+        // mudar para o vosso localhost
         "https://goeat:8890/sourceMobile/loginValidaMobile.php",
         {
           method: "POST",
@@ -61,7 +61,7 @@ const Login: React.FC = () => {
         // console.log(mensagem);
         // console.log(typeof(mensagem));
         console.error(responseData);
-        window.location.href = "/login";
+        // window.location.href = "/login";
       }
     } catch (error) {
       console.error("Erro na solicitação:", error);
