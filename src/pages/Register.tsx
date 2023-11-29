@@ -41,7 +41,7 @@ const Register: React.FC = () => {
 
     try {
       const response = await fetch(
-        "http://localhost/MADS_Web/sourceWeb/sourceMobile/RegistoMobile.php",
+        "https://goeat:8890/sourceMobile/RegistoMobile.php",
         {
           method: "POST",
           headers: {

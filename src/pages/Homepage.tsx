@@ -15,11 +15,12 @@ import {
   IonText,
   IonToolbar,
 } from "@ionic/react";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import logo from "../assets/logo.svg";
 import pizza from "../assets/pizza.svg";
 import iconCarrinho from "../assets/iconCarrinho.svg";
 import "./Homepage.css";
+import addCarrinho from "../assets/iconCarrinho.svg";
 import carrinhoFooter from "../assets/carrinhoFooter.svg";
 import perfilFooter from "../assets/perfilFooter.svg";
 import restauranteFooter from "../assets/restauranteFooter.svg";
@@ -27,7 +28,64 @@ import homeFooter from "../assets/homeFooter.svg";
 import { Link } from "react-router-dom";
 
 const Homepage: React.FC = () => {
+  //PROCURA O JSON TOKEN NO STORAGE
+  //const token = localStorage.getItem("token");
+  //const carrinho = localStorage.getItem("carrinho");
+  const [pratos, setPratos] = useState<any[]>([]);
+  const [tipo_id, getTipo_id] = useState(Number);
+  console.log("https://goeat:8890/sourceMobile/FiltrarPratosMobile.php?tipo_id=" + tipo_id);
+  console.log(tipo_id);
+
+  //TRY PARA O GET DIRETO NA HOMEPAGE
+  const listarPratos = async () => {
+    try {
+      const response = await fetch(
+        "https://goeat:8890/sourceMobile/PratosMobile.php",
+      );
+  
+      const pratos = await response.json();
+
+      setPratos(pratos);
+      
+    } catch (error) {
+      console.error("Erro na solicitação de pratos:", error);
+    }
+  };
+
+  const filtrarPratos = async (tipo_id: number) => {
+    try {
+      const response = await fetch(
+        "https://goeat:8890/sourceMobile/FiltrarPratosMobile.php?tipo_id="+tipo_id,
+      );
+
+      const pratos = await response.json();
+
+      setPratos(pratos);
+
+      console.log(pratos);
+      
+    } catch (error) {
+      console.error("Erro na solicitação do filtro:", error);
+    }
+  };
+
+  if (tipo_id == 0) {
+    useEffect(() => {
+      listarPratos();
+    }, []);
+  } 
+
+  if (tipo_id != 0) {
+    useEffect(() => {
+      filtrarPratos(tipo_id);
+    }, []);
+  }
+
   return (
+    
+  // console.log(token),
+  // console.log(carrinho),
+  //   console.log(typeof(carrinho)),
     <IonPage className="homePage">
       <IonHeader className="header">
         <IonToolbar>
@@ -37,47 +95,49 @@ const Homepage: React.FC = () => {
           <IonGrid>
             <IonRow className="scroll">
               <IonCol>
-                <IonButton className="carrosel" shape="round">
-                  <p>Entradas</p>
-                </IonButton>
+                <Link to="/homepage">
+                  <IonButton className="carrosel" shape="round" onClick={() => filtrarPratos(1)}>
+                    <p>Entradas</p>
+                  </IonButton>
+                </Link>
               </IonCol>
               <IonCol>
-                <IonButton className="carrosel" shape="round">
+                <IonButton className="carrosel" shape="round" onClick={() => filtrarPratos(2)}>
                   <div>
                     <p>Sopas</p>
                   </div>
                 </IonButton>
               </IonCol>
               <IonCol>
-                <IonButton className="carrosel" shape="round">
+                <IonButton className="carrosel" shape="round" onClick={() => filtrarPratos(3)}>
                   <div>
                     <p>Peixe</p>
                   </div>
                 </IonButton>
               </IonCol>
               <IonCol>
-                <IonButton className="carrosel" shape="round">
+                <IonButton className="carrosel" shape="round" onClick={() => filtrarPratos(4)}>
                   <div>
                     <p>Carne</p>
                   </div>
                 </IonButton>
               </IonCol>
               <IonCol>
-                <IonButton className="carrosel" shape="round">
+                <IonButton className="carrosel" shape="round" onClick={() => filtrarPratos(5)}>
                   <div>
                     <p>Vegatariano</p>
                   </div>
                 </IonButton>
               </IonCol>
               <IonCol>
-                <IonButton className="carrosel" shape="round">
+                <IonButton className="carrosel" shape="round" onClick={() => filtrarPratos(6)}>
                   <div>
                     <p>Sobremesas</p>
                   </div>
                 </IonButton>
               </IonCol>
               <IonCol>
-                <IonButton className="carrosel" shape="round">
+                <IonButton className="carrosel" shape="round" onClick={() => filtrarPratos(7)}>
                   <div>
                     <p>Bebidas</p>
                   </div>
@@ -93,28 +153,33 @@ const Homepage: React.FC = () => {
             <IonCol></IonCol>
           </IonRow>
         </IonGrid>
-        <IonCard className="comidas">
-          <img className="pizza" src={pizza} alt="" />
-          <div className="descricao">
-            <h2>Título</h2>
-            <h4>Descrição</h4>
-            <div className="ult-linha">
-              <h4>Preço</h4>
-              <img className="carrinho" src={iconCarrinho} alt="" />
-            </div>
-          </div>
-        </IonCard>
-        <IonCard className="comidas">
-          <img className="pizza" src={pizza} alt="" />
-          <div className="descricao">
-            <h2>Título</h2>
-            <h4>Descrição</h4>
-            <div className="ult-linha">
-              <h4>Preço</h4>
-              <img className="carrinho" src={iconCarrinho} alt="" />
-            </div>
-          </div>
-        </IonCard>
+        {pratos.length > 0 ? (
+          pratos.map((prato) => (
+            <IonCard key={prato.id} className="comidas">
+              <img
+                className="imagemEmenta"
+                // mudar para o vosso localhost
+                src={`https://goeat:8890/${prato.imagem}`}
+                alt=""
+                style={{
+                  width: "100%",
+                  height: "150px",
+                  objectFit: "cover",
+                }}
+              />
+              <div className="descricao">
+                <h2>{prato.nome}</h2>
+                <h4>{prato.descricao}</h4>
+                <div className="ult-linha">
+                  <h4>{`Preço: ${prato.preco}.00 €`}</h4>
+                  <IonIcon icon={addCarrinho} size="large" />
+                </div>
+              </div>
+            </IonCard>
+          ))
+        ) : (
+          <div>Nenhum prato encontrado.</div>
+        )}
       </IonContent>
       <IonFooter className="footer">
         <IonToolbar class="footer-icons ion-text-center">
@@ -142,8 +207,8 @@ const Homepage: React.FC = () => {
                 </div>
               </IonCol>
               <IonCol>
-                <div className="icons">
-                  <Link to="/login">
+                <div className="icons">      {/* //DAR RESET AO FILTRO, COLOCAR EM TODOS OS BOTÕES */}
+                  <Link to="/login" onClick={() => getTipo_id(0)}>
                     <IonIcon icon={perfilFooter} size="large" />
                   </Link>
                 </div>

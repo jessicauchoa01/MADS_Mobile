@@ -26,6 +26,7 @@ import carrinhoBtn from "../assets/carrinhoBtn.svg";
 import imagemPizza from "../assets/image 1.svg";
 import mais from "../assets/mais.svg";
 import lixo from "../assets/lixo.svg";
+import encomendar from "../assets/encomendar.svg";
 import { Link } from "react-router-dom";
 
 const Homepage: React.FC = () => {
@@ -33,10 +34,10 @@ const Homepage: React.FC = () => {
     <IonPage className="carrinhoPage">
       <IonContent>
         <h1>Carrinho</h1>
-        {/* <div className="cardCarrinho">
+        <div className="cardCarrinho">
           <div className="linha"></div>
           <div className="contentCard">
-            <img src={imagemPizza} alt="imagem pizza" width={"110px"} />
+            <img className="imgPizza" src={imagemPizza} alt="imagem pizza" />
             <p className="pizza">Pizza 4 Queijos</p>
             <div className="quantidade">
               <img src={lixo} alt="lixo" />
@@ -44,10 +45,21 @@ const Homepage: React.FC = () => {
               <img src={mais} alt="mais" />
             </div>
           </div>
+          <p className="preco">€€,€€ €</p>
           <div className="linha"></div>
-        </div> */}
+        </div>
+        <p className="subTotal">Subtotal:</p>
+        <IonButton
+          className="btnEncomendar"
+          size="large"
+          shape="round"
+          type="button"
+        >
+          Encomendar
+          <IonIcon icon={encomendar} slot="end" />
+        </IonButton>
 
-        <div className="imagemCarrinho">
+        {/*<div className="imagemCarrinho">
           <img src={carrinhoVazio} alt="carrinho Vazio" />
         </div>
         <div className="mainCarrinho">
@@ -67,7 +79,7 @@ const Homepage: React.FC = () => {
         >
           Começar a comprar
           <IonIcon icon={carrinhoBtn} slot="end" />
-        </IonButton>
+  </IonButton> */}
       </IonContent>
       <IonFooter className="footer">
         <IonToolbar class="footer-icons ion-text-center">
