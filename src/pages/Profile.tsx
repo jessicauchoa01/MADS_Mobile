@@ -23,8 +23,8 @@ const Restaurants: React.FC = () => {
                 <div className='image'>
                     <img src={profileImg} alt="" width={'150px'}/>
                 </div>
-                <h1 className='title'>Encomendas</h1>
                 <div className='menus'>
+                    <h1 className='title'>Encomendas</h1>
                     <div className='menu'>
                         <img src={food} alt="" />
                         <p>Bife grelhado com batata frita</p>
