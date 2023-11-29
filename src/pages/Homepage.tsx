@@ -25,13 +25,9 @@ import { Link } from "react-router-dom";
 
 
 const Homepage: React.FC = () => {
-  //PROCURA O JSON TOKEN NO STORAGE
-  //const token = localStorage.getItem("token");
-  //const carrinho = localStorage.getItem("carrinho");
   const [pratos, setPratos] = useState<any[]>([]);
   const [tipo_id, getTipo_id] = useState(Number);
   // console.log("https://goeat:8890/sourceMobile/FiltrarPratosMobile.php?tipo_id=" + tipo_id);
-  // console.log(tipo_id);
 
   //TRY PARA O GET DIRETO NA HOMEPAGE
   const listarPratos = async () => {
@@ -79,10 +75,7 @@ const Homepage: React.FC = () => {
   }
 
   return (
-    
-  // console.log(token),
-  // console.log(carrinho),
-  //   console.log(typeof(carrinho)),
+
     <IonPage className="homePage">
       <IonHeader className="header">
         <IonToolbar>

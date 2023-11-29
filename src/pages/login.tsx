@@ -30,7 +30,8 @@ const Login: React.FC = () => {
       console.log(JSON.stringify({ email: username, password: password }));
 
       const response = await fetch(
-        "http://localhost/Mads_web/sourceWeb/sourceMobile/loginValidaMobile.php",
+        // mudar para o vosso localhost
+        "http://localhost/MADS/MADS_Web/sourceWeb/sourceMobile/loginValidaMobile.php",
         {
           method: "POST",
           headers: {
@@ -41,10 +42,9 @@ const Login: React.FC = () => {
       );
 
       const responseData = await response.json();
-      console.log(response.status);
-      console.log(responseData);
 
       if (response.ok) {
+        localStorage.setItem("token", responseData['token']);
         console.log(responseData);
         window.location.href = "/homepage";
       } else {
