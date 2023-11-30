@@ -48,11 +48,22 @@ ion-toolbar {
   justify-content: space-between;
 }
 
-.imagemAddCarrinho {
-  margin-top: 1rem;
+.btnAdicionarCarrinho {
+  --background: transparent;
+  --box-shadow: none;
+  margin: -0.8rem -2rem;
 }
 
-.carrinho {
-  position: relative;
-  top: -5rem;
+.btnAdicionarCarrinho::part(native) {
+  box-shadow: none;
+}
+
+.imgAddCarrinho {
+  margin: 0 auto;
+  width: 45px;
+  height: 45px;
+}
+
+.noPratos {
+  margin: 0px 25px;
 }

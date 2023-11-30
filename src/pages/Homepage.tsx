@@ -28,6 +28,7 @@ import homeFooter from "../assets/homeFooter.svg";
 import { Link } from "react-router-dom";
 import useBasketStore from "../../src/store/basketStore";
 import { PATH, PATH_imagem } from "./apiConfig";
+import Carrinho from "./Carrinho";
 
 const Homepage: React.FC = () => {
   //PROCURA O JSON TOKEN NO STORAGE
@@ -191,7 +192,6 @@ const Homepage: React.FC = () => {
             <IonCard key={prato.id} className="comidas">
               <img
                 className="imagemEmenta"
-                // mudar para o vosso localhost
                 src={`${PATH_imagem}${prato.imagem}`}
                 alt=""
                 style={{
@@ -205,13 +205,22 @@ const Homepage: React.FC = () => {
                 <h4>{prato.descricao}</h4>
                 <div className="ult-linha">
                   <h4>{`Preço: ${prato.preco}.00 €`}</h4>
-                  <IonButton onClick={() => adicionar(prato)}></IonButton>
+                  <IonButton
+                    className="btnAdicionarCarrinho"
+                    onClick={() => adicionar(prato)}
+                  >
+                    <img
+                      src={addCarrinho}
+                      className="imgAddCarrinho"
+                      alt="mais"
+                    />
+                  </IonButton>
                 </div>
               </div>
             </IonCard>
           ))
         ) : (
-          <div>Nenhum prato encontrado.</div>
+          <div className="noPratos">Nenhum prato encontrado.</div>
         )}
       </IonContent>
       <IonFooter className="footer">

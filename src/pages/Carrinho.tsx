@@ -29,7 +29,7 @@ import lixo from "../assets/lixo.svg";
 import encomendar from "../assets/encomendar.svg";
 import { Link } from "react-router-dom";
 import useBasketStore from "../store/basketStore";
-import {PATH, PATH_imagem} from "./apiConfig";
+import { PATH, PATH_imagem } from "./apiConfig";
 
 const Carrinho: React.FC = () => {
   const { addPrato } = useBasketStore();
@@ -41,56 +41,81 @@ const Carrinho: React.FC = () => {
   return (
     <IonPage className="carrinhoPage">
       <IonContent>
-      <h1>Carrinho</h1>
-      {lista.length > 0 ? (
+        <h1>Carrinho</h1>
+        {lista.length > 0 ? (
           lista.map((prato) => (
-            <><div className="cardCarrinho">
-              <div className="linha"></div>
-              <div className="contentCard">
-                <img className="imgPizza" src={`${PATH_imagem}${prato.imagem}`} alt="imagem pizza" />
-                <p className="pizza">{prato.nome}</p>
-                <div className="quantidade">
-                  <img src={lixo} alt="lixo" />
-                  <p>{prato.quantity}</p>
-                  <img src={mais} alt="mais" />
+            <>
+              <div className="cardCarrinho">
+                <div className="linha"></div>
+                <div className="contentCard">
+                  <img
+                    className="imgPizza"
+                    src={`${PATH_imagem}${prato.imagem}`}
+                    alt="imagem pizza"
+                  />
+                  <p className="pizza">{prato.nome}</p>
+                  <div className="quantidade">
+                    <IonButton
+                      className="removerPrato"
+                      onClick={() => removePrato(prato)}
+                    >
+                      <img src={lixo} alt="lixo" />
+                    </IonButton>
+                    <p>{prato.quantity}</p>
+                    <IonButton
+                      className="adicionarPrato"
+                      onClick={() => addPrato(prato)}
+                    >
+                      <img src={mais} alt="mais" />
+                    </IonButton>
+                  </div>
                 </div>
+                <p className="preco">Preço: {prato.preco * prato.quantity}€</p>
               </div>
-              <p className="preco">Preço: {prato.preco*prato.quantity}€</p>
-            </div></>
+            </>
           ))
         ) : (
-          <><div className="imagemCarrinho">
+          <>
+            <div className="imagemCarrinho">
               <img src={carrinhoVazio} alt="carrinho Vazio" />
-            </div><div className="mainCarrinho">
-                <div className="addCarrinho">
-                  <p>Adicione artigos ao carrinho</p>
-                </div>
-                <p>
-                  Assim que adicionar artigos ao carrinho, os artigos aparecem aqui.
-                </p>
-              </div><IonButton
-                className="btnComprar"
-                size="large"
-                shape="round"
-                routerLink="/homepage"
-                type="button"
-              >
-                Começar a comprar
-                <IonIcon icon={carrinhoBtn} slot="end" />
-              </IonButton></>
+            </div>
+            <div className="mainCarrinho">
+              <div className="addCarrinho">
+                <p>Adicione artigos ao carrinho</p>
+              </div>
+              <p>
+                Assim que adicionar artigos ao carrinho, os artigos aparecem
+                aqui.
+              </p>
+            </div>
+            <IonButton
+              className="btnComprar"
+              size="large"
+              shape="round"
+              routerLink="/homepage"
+              type="button"
+            >
+              Começar a comprar
+              <IonIcon icon={carrinhoBtn} slot="end" />
+            </IonButton>
+          </>
         )}
 
         {lista.length > 0 ? (
-          <><div className="linha"></div><p className="subTotal">Total: {total}€</p><IonButton
-            className="btnEncomendar"
-            size="large"
-            shape="round"
-            type="button"
-          >
-            Encomendar
-            <IonIcon icon={encomendar} slot="end" />
-          </IonButton></>) : null}
-        
+          <>
+            <div className="linha"></div>
+            <p className="subTotal">Total: {total}€</p>
+            <IonButton
+              className="btnEncomendar"
+              size="large"
+              shape="round"
+              type="button"
+            >
+              Encomendar
+              <IonIcon icon={encomendar} slot="end" />
+            </IonButton>
+          </>
+        ) : null}
       </IonContent>
       <IonFooter className="footer">
         <IonToolbar class="footer-icons ion-text-center">

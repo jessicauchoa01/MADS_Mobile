@@ -1,38 +1,38 @@
-.menus{
-    padding-left: 20px;
-    padding-right: 20px;
+.menus {
+  padding-left: 20px;
+  padding-right: 20px;
 }
 .menu {
-    background-color: #FFD057;
-    color: #000000;
-    padding: 10px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    border-style: solid;
-    border-left: #FFD057;
-    border-right: #FFD057;
-    border-bottom: none;
+  background-color: #ffd057;
+  color: #000000;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border-style: solid;
+  border-left: #ffd057;
+  border-right: #ffd057;
+  border-bottom: none;
 }
 
 .image {
-    text-align: center;
+  text-align: center;
 }
 
 .content {
-    --background: #FFD057;
+  --background: #ffd057;
 }
 .button {
-    text-align: end;
-    padding: 10px;
+  text-align: end;
+  padding: 10px;
 }
 .buttonLogout {
-    --background: #1D1B20;
-    margin-bottom: 30px;
+  --background: #1d1b20;
+  margin-bottom: 30px;
 }
 
 .title {
-    color: #000000;
-    padding: 10px;
+  color: #000000;
+  padding: 10px;
 }
