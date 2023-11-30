@@ -29,16 +29,16 @@ import { Link } from "react-router-dom";
 import useBasketStore from "../../src/store/basketStore";
 
 const Homepage: React.FC = () => {
-  //PROCURA O JSON TOKEN NO STORAGE
-  //const token = localStorage.getItem("token");
-  //const carrinho = localStorage.getItem("carrinho");
   const [pratos, setPratos] = useState<any[]>([]);
   const [tipo_id, getTipo_id] = useState(Number);
-  // console.log(
-  //   "http://localhost/MADS_Web/sourceWeb/sourceMobile/FiltrarPratosMobile.php?tipo_id=" +
-  //     tipo_id
-  // );
-  // console.log(tipo_id);
+  const { addPrato } = useBasketStore();
+  const { lista } = useBasketStore();
+  console.log(lista);
+  // console.log("https://goeat:8890/sourceMobile/FiltrarPratosMobile.php?tipo_id=" + tipo_id);
+
+  const adicionar = (prato: any) => {
+    addPrato(prato);
+  };
 
   //TRY PARA O GET DIRETO NA HOMEPAGE
   const listarPratos = async () => {
@@ -85,9 +85,6 @@ const Homepage: React.FC = () => {
   }
 
   return (
-    // console.log(token),
-    // console.log(carrinho),
-    //   console.log(typeof(carrinho)),
     <IonPage className="homePage">
       <IonHeader className="header">
         <IonToolbar>
@@ -202,7 +199,7 @@ const Homepage: React.FC = () => {
                 <h4>{prato.descricao}</h4>
                 <div className="ult-linha">
                   <h4>{`Preço: ${prato.preco}.00 €`}</h4>
-                  <IonIcon icon={addCarrinho} size="large" />
+                  <IonButton onClick={() => adicionar(prato)}></IonButton>
                 </div>
               </div>
             </IonCard>

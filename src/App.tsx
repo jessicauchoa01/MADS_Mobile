@@ -25,7 +25,6 @@ import Homepage from "./pages/Homepage";
 import Carrinho from "./pages/Carrinho";
 import Profile from "./pages/Profile";
 import Menu from "./pages/Menu";
-import Profile from "./pages/Profile";
 
 setupIonicReact();
 
