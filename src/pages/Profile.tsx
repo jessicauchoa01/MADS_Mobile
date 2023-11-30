@@ -69,11 +69,17 @@ const Restaurants: React.FC = () => {
                                 </div>
                             </IonCol>
                             <IonCol>
-                                <div className="icons">
+                            <div className="icons">
+                                {localStorage.getItem("token") === null ? (
                                     <Link to="/login">
-                                        <IonIcon icon={perfilFooter} size="large" />
+                                    <IonIcon icon={perfilFooter} size="large" />
                                     </Link>
-                                </div>
+                                ) : (
+                                    <Link to="/Profile">
+                                    <IonIcon icon={perfilFooter} size="large" />
+                                    </Link>
+                                )}
+                            </div>
                             </IonCol>
                         </IonRow>
                     </IonGrid>

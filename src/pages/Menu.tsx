@@ -107,10 +107,16 @@ const Homepage: React.FC = () => {
                 </div>
               </IonCol>
               <IonCol>
-                <div className="icons">
-                  <Link to="/login">
-                    <IonIcon icon={perfilFooter} size="large" />
-                  </Link>
+              <div className="icons">
+                  {localStorage.getItem("token") === null ? (
+                    <Link to="/login">
+                      <IonIcon icon={perfilFooter} size="large" />
+                    </Link>
+                  ) : (
+                    <Link to="/Profile">
+                      <IonIcon icon={perfilFooter} size="large" />
+                    </Link>
+                  )}
                 </div>
               </IonCol>
             </IonRow>

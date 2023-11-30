@@ -119,9 +119,15 @@ const Carrinho: React.FC = () => {
               </IonCol>
               <IonCol>
                 <div className="icons">
-                  <Link to="/login">
-                    <IonIcon icon={perfilFooter} size="large" />
-                  </Link>
+                  {localStorage.getItem("token") === null ? (
+                    <Link to="/login">
+                      <IonIcon icon={perfilFooter} size="large" />
+                    </Link>
+                  ) : (
+                    <Link to="/Profile">
+                      <IonIcon icon={perfilFooter} size="large" />
+                    </Link>
+                  )}
                 </div>
               </IonCol>
             </IonRow>
