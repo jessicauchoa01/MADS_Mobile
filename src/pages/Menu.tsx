@@ -21,6 +21,7 @@ import perfilFooter from "../assets/perfilFooter.svg";
 import restauranteFooter from "../assets/restauranteFooter.svg";
 import homeFooter from "../assets/homeFooter.svg";
 import { Link } from "react-router-dom";
+import {PATH, PATH_imagem} from "./apiConfig";
 
 const Homepage: React.FC = () => {
   const [pratos, setPratos] = useState<any[]>([]);
@@ -28,7 +29,7 @@ const Homepage: React.FC = () => {
   const buscarPratos = async () => {
     try {
       const response = await fetch(
-        "http://localhost/MADS_Web/sourceWeb/sourceMobile/pratos.php"
+        `${PATH}pratos.php`
       );
       const data = await response.json();
       setPratos(data);
@@ -59,7 +60,7 @@ const Homepage: React.FC = () => {
             <IonCard key={prato.id} className="comidas">
               <img
                 className="imagemEmenta"
-                src={`http://localhost/MADS_Web/sourceWeb/${prato.imagem}`}
+                src={`${PATH}${prato.imagem}`}
                 alt=""
                 style={{
                   width: "100%",

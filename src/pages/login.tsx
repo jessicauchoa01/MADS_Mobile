@@ -16,6 +16,7 @@ import goeat from "../assets/logo.svg";
 import logInOutline from "../assets/login.svg";
 import "./Login.css";
 import { Link } from "react-router-dom";
+import {PATH, PATH_imagem} from "./apiConfig";
 
 
 const Login: React.FC = () => {
@@ -31,7 +32,7 @@ const Login: React.FC = () => {
 
       const response = await fetch(
         // mudar para o vosso localhost
-        "https://goeat:8890/sourceMobile/loginValidaMobile.php",
+        `${PATH}loginValidaMobile.php`,
         {
           method: "POST",
           headers: {

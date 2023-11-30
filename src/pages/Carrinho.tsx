@@ -29,6 +29,7 @@ import lixo from "../assets/lixo.svg";
 import encomendar from "../assets/encomendar.svg";
 import { Link } from "react-router-dom";
 import useBasketStore from "../store/basketStore";
+import {PATH, PATH_imagem} from "./apiConfig";
 
 const Carrinho: React.FC = () => {
   const { addPrato } = useBasketStore();
@@ -46,7 +47,7 @@ const Carrinho: React.FC = () => {
             <><div className="cardCarrinho">
               <div className="linha"></div>
               <div className="contentCard">
-                <img className="imgPizza" src={`https://goeat:8890/${prato.imagem}`} alt="imagem pizza" />
+                <img className="imgPizza" src={`${PATH_imagem}${prato.imagem}`} alt="imagem pizza" />
                 <p className="pizza">{prato.nome}</p>
                 <div className="quantidade">
                   <img src={lixo} alt="lixo" />

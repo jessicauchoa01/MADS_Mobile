@@ -9,6 +9,7 @@ import { logOutOutline } from 'ionicons/icons';
 import profileImg from '../assets/profileImg.svg';
 import food from '../assets/food.svg';
 import { Link } from 'react-router-dom';
+import {PATH, PATH_imagem} from "./apiConfig";
 
 const Restaurants: React.FC = () => {
 
