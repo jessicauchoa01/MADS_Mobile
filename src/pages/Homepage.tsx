@@ -33,7 +33,7 @@ const Homepage: React.FC = () => {
   const [tipo_id, getTipo_id] = useState(Number);
   const { addPrato } = useBasketStore();
   const { lista } = useBasketStore();
-  console.log(lista);
+  // console.log(lista);
   // console.log("https://goeat:8890/sourceMobile/FiltrarPratosMobile.php?tipo_id=" + tipo_id);
 
   const adicionar = (prato: any) => {
@@ -45,7 +45,7 @@ const Homepage: React.FC = () => {
     try {
       const response = await fetch(
         // mudar para o vosso localhost
-        "http://localhost/MADS_Web/sourceWeb/sourceMobile/PratosMobile.php"
+        "https://goeat:8890/sourceMobile/PratosMobile.php"
       );
 
       const pratos = await response.json();
@@ -60,7 +60,7 @@ const Homepage: React.FC = () => {
     try {
       const response = await fetch(
         // mudar para o vosso localhost
-        "http://localhost/MADS_Web/sourceWeb/sourceMobile/FiltrarPratosMobile.php?tipo_id=" +
+        "https://goeat:8890/sourceMobile/FiltrarPratosMobile.php?tipo_id=" +
           tipo_id
       );
 
@@ -186,7 +186,7 @@ const Homepage: React.FC = () => {
               <img
                 className="imagemEmenta"
                 // mudar para o vosso localhost
-                src={`http://localhost/MADS_Web/sourceWeb/${prato.imagem}`}
+                src={`https://goeat:8890/${prato.imagem}`}
                 alt=""
                 style={{
                   width: "100%",

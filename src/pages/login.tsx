@@ -31,7 +31,7 @@ const Login: React.FC = () => {
 
       const response = await fetch(
         // mudar para o vosso localhost
-        "http://localhost/Mads_web/sourceWeb/sourceMobile/loginValidaMobile.php",
+        "https://goeat:8890/sourceMobile/loginValidaMobile.php",
         {
           method: "POST",
           headers: {

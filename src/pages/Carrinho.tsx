@@ -28,58 +28,68 @@ import mais from "../assets/mais.svg";
 import lixo from "../assets/lixo.svg";
 import encomendar from "../assets/encomendar.svg";
 import { Link } from "react-router-dom";
+import useBasketStore from "../store/basketStore";
 
-const Homepage: React.FC = () => {
+const Carrinho: React.FC = () => {
+  const { addPrato } = useBasketStore();
+  const { removePrato } = useBasketStore();
+  const { lista } = useBasketStore();
+  const { total } = useBasketStore();
+  console.log(lista);
+
   return (
     <IonPage className="carrinhoPage">
       <IonContent>
-        <h1>Carrinho</h1>
-        <div className="cardCarrinho">
-          <div className="linha"></div>
-          <div className="contentCard">
-            <img className="imgPizza" src={imagemPizza} alt="imagem pizza" />
-            <p className="pizza">Pizza 4 Queijos</p>
-            <div className="quantidade">
-              <img src={lixo} alt="lixo" />
-              <p>1</p>
-              <img src={mais} alt="mais" />
-            </div>
-          </div>
-          <p className="preco">€€,€€ €</p>
-          <div className="linha"></div>
-        </div>
-        <p className="subTotal">Subtotal:</p>
-        <IonButton
-          className="btnEncomendar"
-          size="large"
-          shape="round"
-          type="button"
-        >
-          Encomendar
-          <IonIcon icon={encomendar} slot="end" />
-        </IonButton>
+      <h1>Carrinho</h1>
+      {lista.length > 0 ? (
+          lista.map((prato) => (
+            <><div className="cardCarrinho">
+              <div className="linha"></div>
+              <div className="contentCard">
+                <img className="imgPizza" src={`https://goeat:8890/${prato.imagem}`} alt="imagem pizza" />
+                <p className="pizza">{prato.nome}</p>
+                <div className="quantidade">
+                  <img src={lixo} alt="lixo" />
+                  <p>{prato.quantity}</p>
+                  <img src={mais} alt="mais" />
+                </div>
+              </div>
+              <p className="preco">Preço: {prato.preco*prato.quantity}€</p>
+            </div></>
+          ))
+        ) : (
+          <><div className="imagemCarrinho">
+              <img src={carrinhoVazio} alt="carrinho Vazio" />
+            </div><div className="mainCarrinho">
+                <div className="addCarrinho">
+                  <p>Adicione artigos ao carrinho</p>
+                </div>
+                <p>
+                  Assim que adicionar artigos ao carrinho, os artigos aparecem aqui.
+                </p>
+              </div><IonButton
+                className="btnComprar"
+                size="large"
+                shape="round"
+                routerLink="/homepage"
+                type="button"
+              >
+                Começar a comprar
+                <IonIcon icon={carrinhoBtn} slot="end" />
+              </IonButton></>
+        )}
 
-        {/*<div className="imagemCarrinho">
-          <img src={carrinhoVazio} alt="carrinho Vazio" />
-        </div>
-        <div className="mainCarrinho">
-          <div className="addCarrinho">
-            <p>Adicione artigos ao carrinho</p>
-          </div>
-          <p>
-            Assim que adicionar artigos ao carrinho, os artigos aparecem aqui.
-          </p>
-        </div>
-        <IonButton
-          className="btnComprar"
-          size="large"
-          shape="round"
-          routerLink="/homepage"
-          type="button"
-        >
-          Começar a comprar
-          <IonIcon icon={carrinhoBtn} slot="end" />
-  </IonButton> */}
+        {lista.length > 0 ? (
+          <><div className="linha"></div><p className="subTotal">Total: {total}€</p><IonButton
+            className="btnEncomendar"
+            size="large"
+            shape="round"
+            type="button"
+          >
+            Encomendar
+            <IonIcon icon={encomendar} slot="end" />
+          </IonButton></>) : null}
+        
       </IonContent>
       <IonFooter className="footer">
         <IonToolbar class="footer-icons ion-text-center">
@@ -120,4 +130,4 @@ const Homepage: React.FC = () => {
     </IonPage>
   );
 };
-export default Homepage;
+export default Carrinho;
