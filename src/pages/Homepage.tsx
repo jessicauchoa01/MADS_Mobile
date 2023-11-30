@@ -23,7 +23,6 @@ import restauranteFooter from "../assets/restauranteFooter.svg";
 import homeFooter from "../assets/homeFooter.svg";
 import { Link } from "react-router-dom";
 
-
 const Homepage: React.FC = () => {
   //PROCURA O JSON TOKEN NO STORAGE
   //const token = localStorage.getItem("token");
@@ -53,45 +52,16 @@ const Homepage: React.FC = () => {
   };
 
   const filtrarPratos = async (tipo_id: number) => {
-  const [tipo_id, getTipo_id] = useState(Number);
-  // console.log("https://goeat:8890/sourceMobile/FiltrarPratosMobile.php?tipo_id=" + tipo_id);
-  // console.log(tipo_id);
-
-  //TRY PARA O GET DIRETO NA HOMEPAGE
-  const listarPratos = async () => {
-    try {
-      const response = await fetch(
-        // mudar para o vosso localhost
-        "https://goeat:8890/sourceMobile/PratosMobile.php",
-      );
-  
-      const pratos = await response.json();
-
-      setPratos(pratos);
-      
-    } catch (error) {
-      console.error("Erro na solicitação de pratos:", error);
-    }
-  };
-
-  const filtrarPratos = async (tipo_id: number) => {
     try {
       const response = await fetch(
         // mudar para o vosso localhost
         "http://localhost/MADS_Web/sourceWeb/sourceMobile/FiltrarPratosMobile.php?tipo_id=" +
           tipo_id
-        // mudar para o vosso localhost
-        "https://goeat:8890/sourceMobile/FiltrarPratosMobile.php?tipo_id="+tipo_id,
       );
 
       const pratos = await response.json();
 
       setPratos(pratos);
-
-      const pratos = await response.json();
-
-      setPratos(pratos);
-      
     } catch (error) {
       console.error("Erro na solicitação do filtro:", error);
     }
@@ -108,26 +78,11 @@ const Homepage: React.FC = () => {
       filtrarPratos(tipo_id);
     }, []);
   }
-  if (tipo_id == 0) {
-    useEffect(() => {
-      listarPratos();
-    }, []);
-  } 
-
-  if (tipo_id != 0) {
-    useEffect(() => {
-      filtrarPratos(tipo_id);
-    }, []);
-  }
 
   return (
     // console.log(token),
     // console.log(carrinho),
     //   console.log(typeof(carrinho)),
-    
-  // console.log(token),
-  // console.log(carrinho),
-  //   console.log(typeof(carrinho)),
     <IonPage className="homePage">
       <IonHeader className="header">
         <IonToolbar>
@@ -146,11 +101,6 @@ const Homepage: React.FC = () => {
                     <p>Entradas</p>
                   </IonButton>
                 </Link>
-                <Link to="/homepage">
-                  <IonButton className="carrosel" shape="round" onClick={() => filtrarPratos(1)}>
-                    <p>Entradas</p>
-                  </IonButton>
-                </Link>
               </IonCol>
               <IonCol>
                 <IonButton
@@ -158,7 +108,6 @@ const Homepage: React.FC = () => {
                   shape="round"
                   onClick={() => filtrarPratos(2)}
                 >
-                <IonButton className="carrosel" shape="round" onClick={() => filtrarPratos(2)}>
                   <div>
                     <p>Sopas</p>
                   </div>
@@ -170,7 +119,6 @@ const Homepage: React.FC = () => {
                   shape="round"
                   onClick={() => filtrarPratos(3)}
                 >
-                <IonButton className="carrosel" shape="round" onClick={() => filtrarPratos(3)}>
                   <div>
                     <p>Peixe</p>
                   </div>
@@ -182,7 +130,6 @@ const Homepage: React.FC = () => {
                   shape="round"
                   onClick={() => filtrarPratos(4)}
                 >
-                <IonButton className="carrosel" shape="round" onClick={() => filtrarPratos(4)}>
                   <div>
                     <p>Carne</p>
                   </div>
@@ -194,7 +141,6 @@ const Homepage: React.FC = () => {
                   shape="round"
                   onClick={() => filtrarPratos(5)}
                 >
-                <IonButton className="carrosel" shape="round" onClick={() => filtrarPratos(5)}>
                   <div>
                     <p>Vegatariano</p>
                   </div>
@@ -206,15 +152,21 @@ const Homepage: React.FC = () => {
                   shape="round"
                   onClick={() => filtrarPratos(6)}
                 >
-                <IonButton className="carrosel" shape="round" onClick={() => filtrarPratos(6)}>
                   <div>
                     <p>Sobremesas</p>
                   </div>
                 </IonButton>
               </IonCol>
               <IonCol>
-                <IonButton className="carrosel" shape="round" onClick={() => filtrarPratos(7)}>
+                <IonButton
+                  className="carrosel"
+                  shape="round"
+                  onClick={() => filtrarPratos(7)}
+                >
                   <div>
+                    <p>Bebidas</p>
+                  </div>
+                </IonButton>
               </IonCol>
             </IonRow>
           </IonGrid>
@@ -233,8 +185,6 @@ const Homepage: React.FC = () => {
                 className="imagemEmenta"
                 // mudar para o vosso localhost
                 src={`http://localhost/MADS_Web/sourceWeb/${prato.imagem}`}
-                // mudar para o vosso localhost
-                src={`https://goeat:8890/${prato.imagem}`}
                 alt=""
                 style={{
                   width: "100%",
@@ -282,7 +232,7 @@ const Homepage: React.FC = () => {
                 </div>
               </IonCol>
               <IonCol>
-                <div className="icons">  
+                <div className="icons">
                   <Link to="/login">
                     <IonIcon icon={perfilFooter} size="large" />
                   </Link>
