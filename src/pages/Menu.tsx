@@ -21,15 +21,14 @@ import perfilFooter from "../assets/perfilFooter.svg";
 import restauranteFooter from "../assets/restauranteFooter.svg";
 import homeFooter from "../assets/homeFooter.svg";
 import { Link } from "react-router-dom";
+import { PATH, PATH_imagem } from "./apiConfig";
 
 const Homepage: React.FC = () => {
   const [pratos, setPratos] = useState<any[]>([]);
 
   const buscarPratos = async () => {
     try {
-      const response = await fetch(
-        "http://localhost/MADS_Web/sourceWeb/sourceMobile/PratosMobile.php"
-      );
+      const response = await fetch(`${PATH}pratos.php`);
       const data = await response.json();
       setPratos(data);
     } catch (error) {
@@ -59,7 +58,7 @@ const Homepage: React.FC = () => {
             <IonCard key={prato.id} className="comidas">
               <img
                 className="imagemEmenta"
-                src={`http://localhost/MADS_Web/sourceWeb/${prato.imagem}`}
+                src={`${PATH}${prato.imagem}`}
                 alt=""
                 style={{
                   width: "100%",
@@ -107,9 +106,15 @@ const Homepage: React.FC = () => {
               </IonCol>
               <IonCol>
                 <div className="icons">
-                  <Link to="/login">
-                    <IonIcon icon={perfilFooter} size="large" />
-                  </Link>
+                  {localStorage.getItem("token") === null ? (
+                    <Link to="/login">
+                      <IonIcon icon={perfilFooter} size="large" />
+                    </Link>
+                  ) : (
+                    <Link to="/Profile">
+                      <IonIcon icon={perfilFooter} size="large" />
+                    </Link>
+                  )}
                 </div>
               </IonCol>
             </IonRow>

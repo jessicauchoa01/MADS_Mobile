@@ -16,6 +16,7 @@ import goeat from "../assets/logo.svg";
 import logInOutline from "../assets/login.svg";
 import "./Login.css";
 import { Link } from "react-router-dom";
+import { PATH, PATH_imagem } from "./apiConfig";
 
 const Login: React.FC = () => {
   const [username, setUsername] = useState("");
@@ -30,7 +31,8 @@ const Login: React.FC = () => {
       console.log(JSON.stringify({ email: username, password: password }));
 
       const response = await fetch(
-        "http://localhost/Mads_web/sourceWeb/sourceMobile/loginValidaMobile.php",
+        // mudar para o vosso localhost
+        `${PATH}loginValidaMobile.php`,
         {
           method: "POST",
           headers: {
@@ -42,17 +44,8 @@ const Login: React.FC = () => {
 
       const responseData = await response.json();
 
-      // const mensagem = responseData["message"];
-
-      //JSON TOKEN DE EXEMPLO
-      // const token = '1234';
-      // const carrinho = [2, 4];
-
       if (response.ok) {
-        // Login bem-sucedido, redirecione ou faça qualquer outra ação necessária
-        //COLOCA O TOKEN NA STORAGE
-        // localStorage.setItem("carrinho", JSON.stringify(carrinho));
-        // localStorage.setItem("token", token);
+        localStorage.setItem("token", responseData["token"]);
         console.log(responseData);
         window.location.href = "/homepage";
       } else {
@@ -120,7 +113,7 @@ const Login: React.FC = () => {
               <IonIcon icon={logInOutline} slot="end" />
             </IonButton>
             <IonAlert
-              header="{mensagem}"
+              header="é preciso ir buscar a mensagem!"
               trigger="login"
               onDidDismiss={({ detail }) =>
                 console.log(`Dismissed with role: ${detail.role}`)

@@ -22,6 +22,7 @@ import checkmarkDoneOutline from "../assets/criarConta.svg";
 import React, { useState } from "react";
 import logo from "../assets/logo.svg";
 import "./Register.css";
+import { PATH, PATH_imagem } from "./apiConfig";
 
 const Register: React.FC = () => {
   const [nome, setNome] = useState("");
@@ -42,7 +43,7 @@ const Register: React.FC = () => {
     try {
       const response = await fetch(
         // mudar para o vosso localhost
-        "http://localhost/MADS_Web/sourceWeb/sourceMobile/RegistoMobile.php",
+        `${PATH}RegistoMobile.php`,
         {
           method: "POST",
           headers: {
