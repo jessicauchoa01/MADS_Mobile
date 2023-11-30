@@ -27,6 +27,7 @@ import restauranteFooter from "../assets/restauranteFooter.svg";
 import homeFooter from "../assets/homeFooter.svg";
 import { Link } from "react-router-dom";
 import useBasketStore from "../../src/store/basketStore";
+import {PATH, PATH_imagem} from "./apiConfig";
 
 const Homepage: React.FC = () => {
   const [pratos, setPratos] = useState<any[]>([]);
@@ -45,7 +46,7 @@ const Homepage: React.FC = () => {
     try {
       const response = await fetch(
         // mudar para o vosso localhost
-        "https://goeat:8890/sourceMobile/PratosMobile.php"
+        `${PATH}PratosMobile.php`
       );
 
       const pratos = await response.json();
@@ -60,7 +61,7 @@ const Homepage: React.FC = () => {
     try {
       const response = await fetch(
         // mudar para o vosso localhost
-        "https://goeat:8890/sourceMobile/FiltrarPratosMobile.php?tipo_id=" +
+        `${PATH}FiltrarPratosMobile.php?tipo_id=` +
           tipo_id
       );
 
@@ -186,7 +187,7 @@ const Homepage: React.FC = () => {
               <img
                 className="imagemEmenta"
                 // mudar para o vosso localhost
-                src={`https://goeat:8890/${prato.imagem}`}
+                src={`${PATH_imagem}${prato.imagem}`}
                 alt=""
                 style={{
                   width: "100%",

@@ -27,3 +27,6 @@ yarn-error.log*
 
 # Optional eslint cache
 .eslintcache
+
+#ignora os PATHs
+src/pages/apiConfig.tsx
