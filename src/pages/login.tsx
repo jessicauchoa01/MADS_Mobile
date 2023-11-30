@@ -31,6 +31,7 @@ const Login: React.FC = () => {
       console.log(JSON.stringify({ email: username, password: password }));
 
       const response = await fetch(
+        // mudar para o vosso localhost
         "http://localhost/Mads_web/sourceWeb/sourceMobile/loginValidaMobile.php",
         {
           method: "POST",

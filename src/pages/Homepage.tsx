@@ -1,6 +1,7 @@
 import {
   IonButton,
   IonCard,
+  IonCardContent,
   IonCol,
   IonContent,
   IonFooter,
@@ -8,6 +9,7 @@ import {
   IonHeader,
   IonIcon,
   IonImg,
+  IonMenu,
   IonPage,
   IonRow,
   IonText,
@@ -15,6 +17,8 @@ import {
 } from "@ionic/react";
 import React, { useEffect, useState } from "react";
 import logo from "../assets/logo.svg";
+import pizza from "../assets/pizza.svg";
+import iconCarrinho from "../assets/iconCarrinho.svg";
 import "./Homepage.css";
 import addCarrinho from "../assets/iconCarrinho.svg";
 import carrinhoFooter from "../assets/carrinhoFooter.svg";
@@ -22,18 +26,19 @@ import perfilFooter from "../assets/perfilFooter.svg";
 import restauranteFooter from "../assets/restauranteFooter.svg";
 import homeFooter from "../assets/homeFooter.svg";
 import { Link } from "react-router-dom";
+import useBasketStore from "../../src/store/basketStore";
 
 const Homepage: React.FC = () => {
-  //PROCURA O JSON TOKEN NO STORAGE
-  //const token = localStorage.getItem("token");
-  //const carrinho = localStorage.getItem("carrinho");
   const [pratos, setPratos] = useState<any[]>([]);
   const [tipo_id, getTipo_id] = useState(Number);
-  // console.log(
-  //   "http://localhost/MADS_Web/sourceWeb/sourceMobile/FiltrarPratosMobile.php?tipo_id=" +
-  //     tipo_id
-  // );
-  // console.log(tipo_id);
+  const { addPrato } = useBasketStore();
+  const { lista } = useBasketStore();
+  console.log(lista);
+  // console.log("https://goeat:8890/sourceMobile/FiltrarPratosMobile.php?tipo_id=" + tipo_id);
+
+  const adicionar = (prato: any) => {
+    addPrato(prato);
+  };
 
   //TRY PARA O GET DIRETO NA HOMEPAGE
   const listarPratos = async () => {
@@ -80,9 +85,6 @@ const Homepage: React.FC = () => {
   }
 
   return (
-    // console.log(token),
-    // console.log(carrinho),
-    //   console.log(typeof(carrinho)),
     <IonPage className="homePage">
       <IonHeader className="header">
         <IonToolbar>
@@ -197,7 +199,7 @@ const Homepage: React.FC = () => {
                 <h4>{prato.descricao}</h4>
                 <div className="ult-linha">
                   <h4>{`Preço: ${prato.preco}.00 €`}</h4>
-                  <IonIcon icon={addCarrinho} size="large" />
+                  <IonButton onClick={() => adicionar(prato)}></IonButton>
                 </div>
               </div>
             </IonCard>
@@ -245,5 +247,4 @@ const Homepage: React.FC = () => {
     </IonPage>
   );
 };
-
 export default Homepage;
