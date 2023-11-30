@@ -31,7 +31,7 @@ const Login: React.FC = () => {
 
       const response = await fetch(
         // mudar para o vosso localhost
-        "http://localhost/MADS/MADS_Web/sourceWeb/sourceMobile/loginValidaMobile.php",
+        "http://localhost/Mads_web/sourceWeb/sourceMobile/loginValidaMobile.php",
         {
           method: "POST",
           headers: {
@@ -106,7 +106,7 @@ const Login: React.FC = () => {
               <IonIcon icon={logInOutline} slot="end" />
             </IonButton>
             <IonAlert
-              header="Ã© preciso ir buscar a mensagem!"
+              header="é preciso ir buscar a mensagem!"
               trigger="login"
               onDidDismiss={({ detail }) =>
                 console.log(`Dismissed with role: ${detail.role}`)
