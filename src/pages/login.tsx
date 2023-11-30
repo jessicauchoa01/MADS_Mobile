@@ -17,6 +17,7 @@ import logInOutline from "../assets/login.svg";
 import "./Login.css";
 import { Link } from "react-router-dom";
 
+
 const Login: React.FC = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -36,7 +37,7 @@ const Login: React.FC = () => {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ email: username, password: password }),
+          body: JSON.stringify({email: username, password: password}),
         }
       );
 
