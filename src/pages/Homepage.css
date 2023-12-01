@@ -41,6 +41,8 @@ ion-toolbar {
 .descricao {
   height: 8rem;
   margin: 1rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .ult-linha {
