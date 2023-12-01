@@ -187,7 +187,7 @@ const Homepage: React.FC = () => {
             <IonCol></IonCol>
           </IonRow>
         </IonGrid>
-        {pratos.length > 0 ? (
+        {pratos != null && pratos.length > 0 ? (
           pratos.map((prato) => (
             <IonCard key={prato.id} className="comidas">
               <img
@@ -217,13 +217,13 @@ const Homepage: React.FC = () => {
                       />
                     </IonButton>
                   ): 
-                   null}
+                  null}
                 </div>
               </div>
             </IonCard>
           ))
         ) : (
-          <div className="noPratos">Nenhum prato encontrado.</div>
+          <div className="noPratos"><h4>Desculpe, nenhum prato foi encontrado.</h4></div>
         )}
       </IonContent>
       <IonFooter className="footer">
