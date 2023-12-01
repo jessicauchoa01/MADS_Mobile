@@ -25,6 +25,7 @@ import Homepage from "./pages/Homepage";
 import Carrinho from "./pages/Carrinho";
 import Profile from "./pages/Profile";
 import Menu from "./pages/Menu";
+import Restaurantes from "./pages/Restaurantes";
 
 setupIonicReact();
 
@@ -42,6 +43,7 @@ const App: React.FC = () => (
         <Route component={Profile} path="/profile" />
         <Route component={Menu} path="/menu" />
         <Route component={Profile} path="/profile" />
+        <Route component={Restaurantes} path="/restaurantes" />
       </IonRouterOutlet>
     </IonReactRouter>
   </IonApp>

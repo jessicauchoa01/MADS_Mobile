@@ -1,0 +1,14 @@
+.imgRestaurante{
+    margin: 0 auto;
+    object-fit: cover;
+    width: 100%;
+    height: 245px;
+}
+
+.restName{
+    position: relative;
+    font-size: 14px;
+    font-weight: bold;
+    left: 1rem;
+
+}
