@@ -205,16 +205,19 @@ const Homepage: React.FC = () => {
                 <h4>{prato.descricao}</h4>
                 <div className="ult-linha">
                   <h4>{`Preço: ${prato.preco}.00 €`}</h4>
-                  <IonButton
-                    className="btnAdicionarCarrinho"
-                    onClick={() => adicionar(prato)}
-                  >
-                    <img
-                      src={addCarrinho}
-                      className="imgAddCarrinho"
-                      alt="mais"
-                    />
-                  </IonButton>
+                  {localStorage.getItem("token") !== null ? (
+                    <IonButton
+                      className="btnAdicionarCarrinho"
+                      onClick={() => adicionar(prato)}
+                    >
+                      <img
+                        src={addCarrinho}
+                        className="imgAddCarrinho"
+                        alt="mais"
+                      />
+                    </IonButton>
+                  ): 
+                   null}
                 </div>
               </div>
             </IonCard>

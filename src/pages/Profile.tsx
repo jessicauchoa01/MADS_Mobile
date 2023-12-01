@@ -21,12 +21,18 @@ import food from "../assets/food.svg";
 import { Link } from "react-router-dom";
 import { PATH, PATH_imagem } from "./apiConfig";
 
-const Restaurants: React.FC = () => {
+const Profile: React.FC = () => {
+  console.log(localStorage.getItem('token'));
+  const logout = async () => {
+    localStorage.clear();
+    window.location.href = "/homepage";
+  };
+
   return (
     <IonPage>
       <IonContent className="content">
         <div className="button">
-          <IonButton className="buttonLogout">
+          <IonButton className="buttonLogout" onClick={() => logout()}>
             <IonIcon slot="end" icon={logOutOutline}></IonIcon>Logout
           </IonButton>
         </div>
@@ -98,4 +104,4 @@ const Restaurants: React.FC = () => {
   );
 };
 
-export default Restaurants;
+export default Profile;
