@@ -20,8 +20,8 @@
    overflow: hidden;
    font-size: 16px;
    text-overflow: ellipsis;
-   -webkit-line-clamp: 6;
    -webkit-box-orient: vertical;
+   -webkit-line-clamp: 6;
 }
 
 .btnMenu{
