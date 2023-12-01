@@ -1,0 +1,38 @@
+.asd {
+    --background: #FFD057;
+}
+
+.image {
+    text-align: center;
+    padding-bottom: 60px;
+    margin: 30px;
+}
+
+.content {
+    --background: #FFFFFF;
+    --color: black;
+}
+
+.scroll {
+    flex-wrap: nowrap;
+    overflow-y: hidden;
+    overflow-x: scroll !important;
+}
+
+.menu1 {
+    background-image: url('https://www.foodandwine.com/thmb/Wd4lBRZz3X_8qBr69UOu2m7I2iw=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/classic-cheese-pizza-FT-RECIPE0422-31a2c938fc2546c9a07b7011658cfd05.jpg');
+    background-size: cover;
+    background-position: center;
+    width: 200px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: end;
+}
+
+.texto {
+    color: black;
+    padding-top: 10px;
+    margin: 10px;
+}

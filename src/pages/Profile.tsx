@@ -1,11 +1,11 @@
-import { IonButton, IonCol, IonContent, IonFooter, IonGrid, IonIcon, IonPage, IonRow, IonToolbar } from '@ionic/react';
+import { IonButton, IonCol, IonContent, IonFab, IonFabButton, IonFooter, IonGrid, IonIcon, IonPage, IonRow, IonToolbar } from '@ionic/react';
 import React from 'react';
 import carrinhoFooter from "../assets/carrinhoFooter.svg";
 import perfilFooter from "../assets/perfilFooter.svg";
 import restauranteFooter from "../assets/restauranteFooter.svg";
 import homeFooter from "../assets/homeFooter.svg";
 import '../pages/Profile.css';
-import { logOutOutline } from 'ionicons/icons';
+import { chevronUpCircle, logOutOutline } from 'ionicons/icons';
 import profileImg from '../assets/profileImg.svg';
 import food from '../assets/food.svg';
 import { Link } from 'react-router-dom';
@@ -35,12 +35,63 @@ const Restaurants: React.FC = () => {
                         <p>Bife grelhado com batata frita</p>
                         <p>15,00€</p>
                     </div>
-                        <div className='menu'>
+                    <div className='menu'>
                         <img src={food} alt="" />
                         <p>Bife grelhado com batata frita</p>
                         <p>15,00€</p>
                     </div>
+                    <div className='menu'>
+                        <img src={food} alt="" />
+                        <p>Bife grelhado com batata frita</p>
+                        <p>15,00€</p>
+                    </div>
+                    <div className='menu'>
+                        <img src={food} alt="" />
+                        <p>Bife grelhado com batata frita</p>
+                        <p>15,00€</p>
+                    </div>
+                    <div className='menu'>
+                        <img src={food} alt="" />
+                        <p>Bife grelhado com batata frita</p>
+                        <p>15,00€</p>
+                    </div>
+                    <div className='menu'>
+                        <img src={food} alt="" />
+                        <p>Bife grelhado com batata frita</p>
+                        <p>15,00€</p>
+                    </div>
+                    <div className='menu'>
+                        <img src={food} alt="" />
+                        <p>Bife grelhado com batata frita</p>
+                        <p>15,00€</p>
+                    </div>
+                    <div className='menu'>
+                        <img src={food} alt="" />
+                        <p>Bife grelhado com batata frita</p>
+                        <p>15,00€</p>
+                    </div>
+                    <div className='menu'>
+                        <img src={food} alt="" />
+                        <p>Bife grelhado com batata frita</p>
+                        <p>15,00€</p>
+                    </div>
+                    <div className='menu'>
+                        <img src={food} alt="" />
+                        <p>Bife grelhado com batata frita</p>
+                        <p>15,00€</p>
+                    </div>
+                    <div className='menu'>
+                        <img src={food} alt="" />
+                        <p>Bife grelhado com batata frita</p>
+                        <p>15,00€</p>
+                    </div>
+
                 </div>
+                <IonFab slot='fixed' vertical='bottom' horizontal='end'>
+                    <IonFabButton>
+                        <IonIcon icon={chevronUpCircle}></IonIcon>
+                    </IonFabButton>
+                </IonFab>
             </IonContent>
             <IonFooter className="footer">
                 <IonToolbar class="footer-icons ion-text-center">
@@ -55,7 +106,7 @@ const Restaurants: React.FC = () => {
                             </IonCol>
                             <IonCol>
                                 <div className="icons">
-                                    <Link to="/restaurant">
+                                    <Link to="/restaurants">
                                         <IonIcon icon={restauranteFooter} size="large" />
                                     </Link>
                                 </div>
