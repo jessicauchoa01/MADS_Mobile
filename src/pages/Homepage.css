@@ -66,6 +66,10 @@ ion-toolbar {
   height: 45px;
 }
 
+.btnAdicionarCarrinho:active .imgAddCarrinho {
+  opacity: 0.7;
+}
+
 .noPratos {
   margin: 0px 25px;
 }
