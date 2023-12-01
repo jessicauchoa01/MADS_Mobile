@@ -240,7 +240,7 @@ const Homepage: React.FC = () => {
               </IonCol>
               <IonCol>
                 <div className="icons">
-                  <Link to="/restaurant">
+                  <Link to="/restaurants">
                     <IonIcon icon={restauranteFooter} size="large" />
                   </Link>
                 </div>

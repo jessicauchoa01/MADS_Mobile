@@ -1,0 +1,42 @@
+.image {
+  text-align: center;
+  margin: -1rem 0rem 4rem;
+}
+
+.content {
+  --background: #ffffff;
+  --color: black;
+}
+
+.scroll {
+  flex-wrap: nowrap;
+  overflow-y: hidden;
+  overflow-x: scroll !important;
+}
+
+.menu1 {
+  width: 200px;
+  height: 300px;
+  display: flex;
+  align-items: end;
+  justify-content: end;
+}
+
+.imagemRest {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.texto {
+  color: black;
+  padding-top: 10px;
+  margin: 10px;
+}
+
+.btnAdicionarCarrinhoRest {
+  position: absolute;
+  --background: transparent;
+  --box-shadow: none;
+  margin: 0rem -0.5rem;
+}
