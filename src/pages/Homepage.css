@@ -53,7 +53,7 @@ ion-toolbar {
 .btnAdicionarCarrinho {
   --background: transparent;
   --box-shadow: none;
-  margin: -0.8rem -2rem;
+  margin: -1.3rem -1rem;
 }
 
 .btnAdicionarCarrinho::part(native) {

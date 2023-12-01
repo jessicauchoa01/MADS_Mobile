@@ -26,25 +26,26 @@ import { PATH, PATH_imagem } from "./apiConfig";
 
 const Menu: React.FC = () => {
   return (
-    <IonPage className="homePage">  
-          <img className="menuPizza" src={menu}alt="menu"  />
+    <IonPage className="homePage">
+      <img className="menuPizza" src={menu} alt="menu" />
       <IonContent className="bodyMenu">
         <IonGrid>
           <IonRow>
             <IonCol>
               <p className="pTitulo">Título</p>
-              <p className="pDescricao">Lorem ipsum dolor sit amet consectetur adipisicing elit. In odit similique saepe odio, ea soluta quam cum cumque esse rerum, ipsum animi. Nam earum amet, placeat iste molestias sequi id. milique saepe odio, ea soluta quam cum cumque esse rerum, ipsum animi. Nam earum amet, placeat iste molestias sequi id</p>
+              <p className="pDescricao">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. In odit
+                similique saepe odio, ea soluta quam cum cumque esse rerum,
+                ipsum animi. Nam earum amet, placeat iste molestias sequi id.
+                milique saepe odio, ea soluta quam cum cumque esse rerum, ipsum
+                animi. Nam earum amet, placeat iste molestias sequi id
+              </p>
             </IonCol>
           </IonRow>
         </IonGrid>
-        <IonButton
-              className="btnMenu"
-              size="large"
-              shape="round"
-              type="button"
-            >
-              Adicionar ao Carrinho
-            </IonButton>
+        <IonButton className="btnMenu" size="large" shape="round" type="button">
+          Adicionar ao Carrinho
+        </IonButton>
       </IonContent>
       <IonFooter className="footer">
         <IonToolbar class="footer-icons ion-text-center">

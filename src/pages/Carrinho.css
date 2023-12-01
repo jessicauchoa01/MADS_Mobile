@@ -118,7 +118,6 @@
 .imgPizza {
   width: 5rem;
   height: 5rem;
-  background-color: #155263;
   display: flex;
   object-fit: cover;
   margin: 0 auto;
@@ -134,7 +133,15 @@
   border: none;
   padding: 0;
   align-self: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
+}
+
+.removerPrato::part(native) {
+  box-shadow: none;
+}
+
+.adicionarPrato::part(native) {
+  box-shadow: none;
 }
 
 .quantidade img {

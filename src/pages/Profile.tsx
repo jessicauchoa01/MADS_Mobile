@@ -22,42 +22,39 @@ import { Link } from "react-router-dom";
 import { PATH, PATH_imagem } from "./apiConfig";
 
 const Profile: React.FC = () => {
-  console.log(localStorage.getItem('token'));
+  console.log(localStorage.getItem("token"));
   const logout = async () => {
     localStorage.clear();
     window.location.href = "/homepage";
   };
 
   return (
-    <IonPage>
-      <IonContent className="content">
-        <div className="button">
-          <IonButton className="buttonLogout" onClick={() => logout()}>
-            <IonIcon slot="end" icon={logOutOutline}></IonIcon>Logout
-          </IonButton>
-        </div>
+    <IonPage className="encomendasPage">
+      <div className="containerEncomendas">
+        <IonRow className="ion-justify-content-end">
+          <IonCol size="auto">
+            <IonButton className="buttonProfile" onClick={() => logout()}>
+              <IonIcon slot="end" icon={logOutOutline}></IonIcon>Logout
+            </IonButton>
+          </IonCol>
+        </IonRow>
+
         <div className="image">
-          <img src={profileImg} alt="" width={"150px"} />
+          <img src={profileImg} alt="" width={"100px"} />
         </div>
-        <div className="menus">
-          <h1 className="title">Encomendas</h1>
-          <div className="menu">
-            <img src={food} alt="" />
-            <p>Bife grelhado com batata frita</p>
-            <p>15,00€</p>
+
+        <h1 className="encomendas">Encomendas</h1>
+
+        <div className="cardEncomendas">
+          <div className="linhaEncomendas"></div>
+          <div className="contentCardEncomendas">
+            <img className="imgPizzaEncomendas" src={food} alt="imagem pizza" />
+            <p className="pizzaEncomendas">Nome</p>
+            <p className="precoEncomendas">Preço€</p>
           </div>
-          <div className="menu">
-            <img src={food} alt="" />
-            <p>Bife grelhado com batata frita</p>
-            <p>15,00€</p>
-          </div>
-          <div className="menu">
-            <img src={food} alt="" />
-            <p>Bife grelhado com batata frita</p>
-            <p>15,00€</p>
-          </div>
+          <div className="linhaEncomendas"></div>
         </div>
-      </IonContent>
+      </div>
       <IonFooter className="footer">
         <IonToolbar class="footer-icons ion-text-center">
           <IonGrid>

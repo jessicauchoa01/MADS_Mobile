@@ -216,14 +216,15 @@ const Homepage: React.FC = () => {
                         alt="mais"
                       />
                     </IonButton>
-                  ): 
-                  null}
+                  ) : null}
                 </div>
               </div>
             </IonCard>
           ))
         ) : (
-          <div className="noPratos"><h4>Desculpe, nenhum prato foi encontrado.</h4></div>
+          <div className="noPratos">
+            <h4>Desculpe, nenhum prato foi encontrado.</h4>
+          </div>
         )}
       </IonContent>
       <IonFooter className="footer">
