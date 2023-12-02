@@ -29,20 +29,23 @@ import { Link } from "react-router-dom";
 import useBasketStore from "../../src/store/basketStore";
 import { PATH, PATH_imagem } from "./apiConfig";
 import Carrinho from "./Carrinho";
+import { arrowUp } from "ionicons/icons";
 
 const Homepage: React.FC = () => {
-  //PROCURA O JSON TOKEN NO STORAGE
-  //const token = localStorage.getItem("token");
-  //const carrinho = localStorage.getItem("carrinho");
   const [pratos, setPratos] = useState<any[]>([]);
   const [tipo_id, getTipo_id] = useState(Number);
   const { addPrato } = useBasketStore();
   const { lista } = useBasketStore();
-  // console.log(lista);
-  // console.log("https://goeat:8890/sourceMobile/FiltrarPratosMobile.php?tipo_id=" + tipo_id);
 
   const adicionar = (prato: any) => {
     addPrato(prato);
+  };
+
+  const scrollToTop = () => {
+    const topElement = document.getElementById("top");
+    if (topElement) {
+      topElement.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   //TRY PARA O GET DIRETO NA HOMEPAGE
@@ -89,9 +92,6 @@ const Homepage: React.FC = () => {
   }
 
   return (
-    // console.log(token),
-    // console.log(carrinho),
-    //   console.log(typeof(carrinho)),
     <IonPage className="homePage">
       <IonHeader className="header">
         <IonToolbar>
@@ -182,6 +182,10 @@ const Homepage: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent className="body">
+        <div id="top"></div>
+        <button className="scrollTop" onClick={scrollToTop}>
+          <IonIcon icon={arrowUp} />
+        </button>
         <IonGrid>
           <IonRow>
             <IonCol></IonCol>
