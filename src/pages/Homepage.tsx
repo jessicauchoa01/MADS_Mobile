@@ -67,15 +67,25 @@ const Homepage: React.FC = () => {
   const filtrarPratos = async (tipo_id: number) => {
     try {
       const response = await fetch(
-        // mudar para o vosso localhost
         `${PATH}FiltrarPratosMobile.php?tipo_id=` + tipo_id
       );
 
-      const pratos = await response.json();
+      if (!response.ok) {
+        throw new Error("Erro ao buscar pratos");
+      }
 
-      setPratos(pratos);
+      const contentType = response.headers.get("content-type");
+      if (contentType && contentType.indexOf("application/json") !== -1) {
+        const pratos = await response.json();
+        setPratos(pratos);
+      } else {
+        throw new Error("Resposta inesperada do servidor");
+      }
     } catch (error) {
       console.error("Erro na solicitação do filtro:", error);
+      // Aqui você pode fazer algo para lidar com o erro, como exibir uma mensagem para o usuário.
+      // Por exemplo, setar pratos como um array vazio para evitar problemas de exibição.
+      setPratos([]);
     }
   };
 
@@ -151,7 +161,7 @@ const Homepage: React.FC = () => {
                   onClick={() => filtrarPratos(5)}
                 >
                   <div>
-                    <p>Vegatariano</p>
+                    <p>Vegetariano</p>
                   </div>
                 </IonButton>
               </IonCol>
