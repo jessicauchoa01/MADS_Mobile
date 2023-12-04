@@ -1,38 +1,63 @@
-.menus{
-    padding-left: 20px;
-    padding-right: 20px;
-}
-.menu {
-    background-color: #FFD057;
-    color: #000000;
-    padding: 10px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    border-style: solid;
-    border-left: #FFD057;
-    border-right: #FFD057;
-    border-bottom: none;
+.encomendasPage {
+  background-color: #ffc107;
+  color: #000000;
+  font-weight: 600;
 }
 
 .image {
-    text-align: center;
+  margin-top: -2rem;
+  text-align: center;
 }
 
-.content {
-    --background: #FFD057;
-}
-.button {
-    text-align: end;
-    padding: 10px;
-}
-.buttonLogout {
-    --background: #1D1B20;
-    margin-bottom: 30px;
+.buttonProfile {
+  margin: 0px 15px;
+  --background: #1d1b20;
+  width: 100px;
+  height: 40px;
+  font-size: 13px;
 }
 
-.title {
-    color: #000000;
-    padding: 10px;
+.encomendas {
+  margin: 2rem 0px 1rem 25px;
+}
+
+.cardEncomendas {
+  margin: 0 25px;
+}
+
+.pizzaEncomendas {
+  justify-content: center;
+  font-weight: 500;
+  text-align: center;
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.imgPizzaEncomendas {
+  width: 5rem;
+  height: 5rem;
+  display: flex;
+  object-fit: cover;
+  margin: 1rem 0;
+  border-radius: 4px;
+}
+
+.precoEncomendas {
+  margin-right: 1.5rem;
+}
+
+.linhaEncomendas {
+  border: none;
+  height: 1px;
+  background-color: #000;
+  opacity: 30%;
+}
+
+.contentCardEncomendas {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 15px;
 }

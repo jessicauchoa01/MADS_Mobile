@@ -1,0 +1,34 @@
+.bodyMenu {
+  --background: #ffc107;
+}
+
+.menuPizza {
+  margin: 0 auto;
+  object-fit: cover;
+  width: 100%;
+  height: 245px;
+}
+
+.pTitulo {
+  font-size: 24px;
+  font-weight: bolder;
+}
+
+.pDescricao {
+  display: -webkit-box;
+  overflow: hidden;
+  font-size: 16px;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 6;
+}
+
+.btnMenu {
+  position: fixed;
+  display: flex;
+  font-size: 16px;
+  --background: #155263;
+  width: 70%;
+  top: 40rem;
+  left: 15%;
+}

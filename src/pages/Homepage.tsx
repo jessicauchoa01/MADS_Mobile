@@ -27,17 +27,25 @@ import restauranteFooter from "../assets/restauranteFooter.svg";
 import homeFooter from "../assets/homeFooter.svg";
 import { Link } from "react-router-dom";
 import useBasketStore from "../../src/store/basketStore";
+import { PATH, PATH_imagem } from "./apiConfig";
+import Carrinho from "./Carrinho";
+import { arrowUp } from "ionicons/icons";
 
 const Homepage: React.FC = () => {
   const [pratos, setPratos] = useState<any[]>([]);
   const [tipo_id, getTipo_id] = useState(Number);
   const { addPrato } = useBasketStore();
   const { lista } = useBasketStore();
-  console.log(lista);
-  // console.log("https://goeat:8890/sourceMobile/FiltrarPratosMobile.php?tipo_id=" + tipo_id);
 
   const adicionar = (prato: any) => {
     addPrato(prato);
+  };
+
+  const scrollToTop = () => {
+    const topElement = document.getElementById("top");
+    if (topElement) {
+      topElement.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   //TRY PARA O GET DIRETO NA HOMEPAGE
@@ -45,7 +53,7 @@ const Homepage: React.FC = () => {
     try {
       const response = await fetch(
         // mudar para o vosso localhost
-        "http://localhost/MADS_Web/sourceWeb/sourceMobile/PratosMobile.php"
+        `${PATH}PratosMobile.php`
       );
 
       const pratos = await response.json();
@@ -59,16 +67,25 @@ const Homepage: React.FC = () => {
   const filtrarPratos = async (tipo_id: number) => {
     try {
       const response = await fetch(
-        // mudar para o vosso localhost
-        "http://localhost/MADS_Web/sourceWeb/sourceMobile/FiltrarPratosMobile.php?tipo_id=" +
-          tipo_id
+        `${PATH}FiltrarPratosMobile.php?tipo_id=` + tipo_id
       );
 
-      const pratos = await response.json();
+      if (!response.ok) {
+        throw new Error("Erro ao buscar pratos");
+      }
 
-      setPratos(pratos);
+      const contentType = response.headers.get("content-type");
+      if (contentType && contentType.indexOf("application/json") !== -1) {
+        const pratos = await response.json();
+        setPratos(pratos);
+      } else {
+        throw new Error("Resposta inesperada do servidor");
+      }
     } catch (error) {
       console.error("Erro na solicitação do filtro:", error);
+      // Aqui você pode fazer algo para lidar com o erro, como exibir uma mensagem para o usuário.
+      // Por exemplo, setar pratos como um array vazio para evitar problemas de exibição.
+      setPratos([]);
     }
   };
 
@@ -144,7 +161,7 @@ const Homepage: React.FC = () => {
                   onClick={() => filtrarPratos(5)}
                 >
                   <div>
-                    <p>Vegatariano</p>
+                    <p>Vegetariano</p>
                   </div>
                 </IonButton>
               </IonCol>
@@ -175,18 +192,21 @@ const Homepage: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent className="body">
+        <div id="top"></div>
+        <button className="scrollTop" onClick={scrollToTop}>
+          <IonIcon icon={arrowUp} />
+        </button>
         <IonGrid>
           <IonRow>
             <IonCol></IonCol>
           </IonRow>
         </IonGrid>
-        {pratos.length > 0 ? (
+        {pratos != null && pratos.length > 0 ? (
           pratos.map((prato) => (
             <IonCard key={prato.id} className="comidas">
               <img
                 className="imagemEmenta"
-                // mudar para o vosso localhost
-                src={`http://localhost/MADS_Web/sourceWeb/${prato.imagem}`}
+                src={`${PATH_imagem}${prato.imagem}`}
                 alt=""
                 style={{
                   width: "100%",
@@ -199,13 +219,26 @@ const Homepage: React.FC = () => {
                 <h4>{prato.descricao}</h4>
                 <div className="ult-linha">
                   <h4>{`Preço: ${prato.preco}.00 €`}</h4>
-                  <IonButton onClick={() => adicionar(prato)}></IonButton>
+                  {localStorage.getItem("token") !== null ? (
+                    <IonButton
+                      className="btnAdicionarCarrinho"
+                      onClick={() => adicionar(prato)}
+                    >
+                      <img
+                        src={addCarrinho}
+                        className="imgAddCarrinho"
+                        alt="mais"
+                      />
+                    </IonButton>
+                  ) : null}
                 </div>
               </div>
             </IonCard>
           ))
         ) : (
-          <div>Nenhum prato encontrado.</div>
+          <div className="noPratos">
+            <h4>Desculpe, nenhum prato foi encontrado.</h4>
+          </div>
         )}
       </IonContent>
       <IonFooter className="footer">
@@ -221,7 +254,7 @@ const Homepage: React.FC = () => {
               </IonCol>
               <IonCol>
                 <div className="icons">
-                  <Link to="/restaurant">
+                  <Link to="/restaurants">
                     <IonIcon icon={restauranteFooter} size="large" />
                   </Link>
                 </div>
@@ -235,9 +268,15 @@ const Homepage: React.FC = () => {
               </IonCol>
               <IonCol>
                 <div className="icons">
-                  <Link to="/login">
-                    <IonIcon icon={perfilFooter} size="large" />
-                  </Link>
+                  {localStorage.getItem("token") === null ? (
+                    <Link to="/login">
+                      <IonIcon icon={perfilFooter} size="large" />
+                    </Link>
+                  ) : (
+                    <Link to="/Profile">
+                      <IonIcon icon={perfilFooter} size="large" />
+                    </Link>
+                  )}
                 </div>
               </IonCol>
             </IonRow>

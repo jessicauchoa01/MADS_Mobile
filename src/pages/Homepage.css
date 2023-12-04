@@ -49,6 +49,8 @@ ion-toolbar {
 .descricao {
   height: 8rem;
   margin: 1rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .ult-linha {
@@ -56,11 +58,47 @@ ion-toolbar {
   justify-content: space-between;
 }
 
-.imagemAddCarrinho {
-  margin-top: 1rem;
+.btnAdicionarCarrinho {
+  --background: transparent;
+  --box-shadow: none;
+  margin: -1.3rem -1rem;
 }
 
-.carrinho {
-  position: relative;
-  top: -5rem;
+.btnAdicionarCarrinho::part(native) {
+  box-shadow: none;
+}
+
+.imgAddCarrinho {
+  margin: 0 auto;
+  width: 45px;
+  height: 45px;
+}
+
+.btnAdicionarCarrinho:active .imgAddCarrinho {
+  opacity: 0.7;
+}
+
+.noPratos {
+  margin: 0px 25px;
+}
+
+.scrollTop {
+  background-color: rgba(169, 169, 169, 0.6);
+  color: #fff;
+  padding: 15px 15px;
+  position: fixed;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999;
+  border-radius: 50%;
+  font-size: 24px;
+}
+
+.scrollTop:active {
+  opacity: 0.7;
+}
+
+.scrollTop {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }

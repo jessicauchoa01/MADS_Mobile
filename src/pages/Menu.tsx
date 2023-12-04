@@ -15,70 +15,37 @@ import {
   IonToolbar,
 } from "@ionic/react";
 import logo from "../assets/logo.svg";
-import "./Homepage.css";
+import "./Menu.css";
 import carrinhoFooter from "../assets/carrinhoFooter.svg";
 import perfilFooter from "../assets/perfilFooter.svg";
 import restauranteFooter from "../assets/restauranteFooter.svg";
 import homeFooter from "../assets/homeFooter.svg";
 import { Link } from "react-router-dom";
+import menu from "../assets/Menu.svg";
+import { PATH, PATH_imagem } from "./apiConfig";
 
-const Homepage: React.FC = () => {
-  const [pratos, setPratos] = useState<any[]>([]);
-
-  const buscarPratos = async () => {
-    try {
-      const response = await fetch(
-        "http://localhost/MADS_Web/sourceWeb/sourceMobile/PratosMobile.php"
-      );
-      const data = await response.json();
-      setPratos(data);
-    } catch (error) {
-      console.error("Erro ao buscar pratos:", error);
-    }
-  };
-
-  useEffect(() => {
-    buscarPratos();
-  }, []);
-
+const Menu: React.FC = () => {
   return (
     <IonPage className="homePage">
-      <IonHeader className="header">
-        <div className="imagem ion-text-center">
-          <img src={logo} alt="GoEat logo" width={"100px"} />
-        </div>
-      </IonHeader>
-      <IonContent className="body">
+      <img className="menuPizza" src={menu} alt="menu" />
+      <IonContent className="bodyMenu">
         <IonGrid>
           <IonRow>
-            <IonCol></IonCol>
+            <IonCol>
+              <p className="pTitulo">Título</p>
+              <p className="pDescricao">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. In odit
+                similique saepe odio, ea soluta quam cum cumque esse rerum,
+                ipsum animi. Nam earum amet, placeat iste molestias sequi id.
+                milique saepe odio, ea soluta quam cum cumque esse rerum, ipsum
+                animi. Nam earum amet, placeat iste molestias sequi id
+              </p>
+            </IonCol>
           </IonRow>
         </IonGrid>
-        {pratos.length > 0 ? (
-          pratos.map((prato) => (
-            <IonCard key={prato.id} className="comidas">
-              <img
-                className="imagemEmenta"
-                src={`http://localhost/MADS_Web/sourceWeb/${prato.imagem}`}
-                alt=""
-                style={{
-                  width: "100%",
-                  height: "150px",
-                  objectFit: "cover",
-                }}
-              />
-              <div className="descricao">
-                <h2>{prato.nome}</h2>
-                <h4>{prato.descricao}</h4>
-                <div className="ult-linha">
-                  <h4>{`Preço: ${prato.preco}`}</h4>
-                </div>
-              </div>
-            </IonCard>
-          ))
-        ) : (
-          <div>Nenhum prato encontrado.</div>
-        )}
+        <IonButton className="btnMenu" size="large" shape="round" type="button">
+          Adicionar ao Carrinho
+        </IonButton>
       </IonContent>
       <IonFooter className="footer">
         <IonToolbar class="footer-icons ion-text-center">
@@ -93,7 +60,7 @@ const Homepage: React.FC = () => {
               </IonCol>
               <IonCol>
                 <div className="icons">
-                  <Link to="/restaurant">
+                  <Link to="/restaurants">
                     <IonIcon icon={restauranteFooter} size="large" />
                   </Link>
                 </div>
@@ -107,9 +74,15 @@ const Homepage: React.FC = () => {
               </IonCol>
               <IonCol>
                 <div className="icons">
-                  <Link to="/login">
-                    <IonIcon icon={perfilFooter} size="large" />
-                  </Link>
+                  {localStorage.getItem("token") === null ? (
+                    <Link to="/login">
+                      <IonIcon icon={perfilFooter} size="large" />
+                    </Link>
+                  ) : (
+                    <Link to="/Profile">
+                      <IonIcon icon={perfilFooter} size="large" />
+                    </Link>
+                  )}
                 </div>
               </IonCol>
             </IonRow>
@@ -120,4 +93,4 @@ const Homepage: React.FC = () => {
   );
 };
 
-export default Homepage;
+export default Menu;
