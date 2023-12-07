@@ -62,7 +62,7 @@ const Homepage: React.FC = () => {
     } catch (error) {
       console.error("Erro na solicitação de pratos:", error);
     }
-  };
+  }; 
 
   const filtrarPratos = async (tipo_id: number) => {
     try {
@@ -83,8 +83,6 @@ const Homepage: React.FC = () => {
       }
     } catch (error) {
       console.error("Erro na solicitação do filtro:", error);
-      // Aqui você pode fazer algo para lidar com o erro, como exibir uma mensagem para o usuário.
-      // Por exemplo, setar pratos como um array vazio para evitar problemas de exibição.
       setPratos([]);
     }
   };
@@ -111,15 +109,22 @@ const Homepage: React.FC = () => {
           <IonGrid>
             <IonRow className="scroll">
               <IonCol>
-                <Link to="/homepage">
-                  <IonButton
-                    className="carrosel"
-                    shape="round"
-                    onClick={() => filtrarPratos(1)}
+                <IonButton
+                  className="carrosel"
+                  shape="round"
+                  onClick={() => listarPratos()}
+                  >
+                    <p>Todos</p>
+                  </IonButton>
+              </IonCol>
+              <IonCol>
+                <IonButton
+                  className="carrosel"
+                  shape="round"
+                  onClick={() => filtrarPratos(1)}
                   >
                     <p>Entradas</p>
                   </IonButton>
-                </Link>
               </IonCol>
               <IonCol>
                 <IonButton
@@ -247,21 +252,21 @@ const Homepage: React.FC = () => {
             <IonRow className="ion-justify-content-center">
               <IonCol>
                 <div className="icons">
-                  <Link to="/homepage">
+                  <Link to="/homepage" onClick={() => listarPratos()}>
                     <IonIcon icon={homeFooter} size="large" />
                   </Link>
                 </div>
               </IonCol>
               <IonCol>
                 <div className="icons">
-                  <Link to="/restaurants">
+                  <Link to="/restaurants" onClick={() => listarPratos()}>
                     <IonIcon icon={restauranteFooter} size="large" />
                   </Link>
                 </div>
               </IonCol>
               <IonCol>
                 <div className="icons">
-                  <Link to="/carrinho">
+                  <Link to="/carrinho" onClick={() => listarPratos()}>
                     <IonIcon icon={carrinhoFooter} size="large" />
                   </Link>
                 </div>
@@ -269,11 +274,11 @@ const Homepage: React.FC = () => {
               <IonCol>
                 <div className="icons">
                   {localStorage.getItem("token") === null ? (
-                    <Link to="/login">
+                    <Link to="/login" onClick={() => listarPratos()}>
                       <IonIcon icon={perfilFooter} size="large" />
                     </Link>
                   ) : (
-                    <Link to="/Profile">
+                    <Link to="/Profile" onClick={() => listarPratos()}>
                       <IonIcon icon={perfilFooter} size="large" />
                     </Link>
                   )}
