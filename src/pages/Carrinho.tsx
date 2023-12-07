@@ -30,6 +30,7 @@ import encomendar from "../assets/encomendar.svg";
 import { Link } from "react-router-dom";
 import useBasketStore from "../store/basketStore";
 import { PATH, PATH_imagem } from "./apiConfig";
+import { exit } from "ionicons/icons";
 
 const Carrinho: React.FC = () => {
   const { addPrato } = useBasketStore();
@@ -37,6 +38,42 @@ const Carrinho: React.FC = () => {
   const { lista } = useBasketStore();
   const { total } = useBasketStore();
   console.log(lista);
+  console.log(total);
+  console.log(`${PATH}EfetuarEncomenda.php?token=` + localStorage.getItem("token"));
+  const token = localStorage.getItem("token");
+  
+
+  const efetuarEncomenda = async () => {
+    try {
+      const response = await fetch(
+        `${PATH}EfetuarEncomenda.php`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            // token: token,
+            pratos: lista,
+            total: total,
+          }),
+        }
+      );
+
+      if (response.ok) {
+        // Registo bem-sucedido, redirecione ou faça qualquer outra ação necessária
+        console.log("Encomenda efetuada");
+        window.location.href = "/carrinho";
+      } else {
+        // Exiba uma mensagem de erro ou realize ações específicas em caso de falha
+        console.error("Falha na encomenda");
+        //window.location.href = "/register";
+      }
+    } catch (error) {
+      console.error("Erro na solicitação:", error);
+    }
+  }
 
   return (
     <IonPage className="carrinhoPage">
@@ -110,9 +147,10 @@ const Carrinho: React.FC = () => {
               size="large"
               shape="round"
               type="button"
+              onClick={() => efetuarEncomenda()}
             >
               Encomendar
-              <IonIcon icon={encomendar} slot="end" />
+              <IonIcon icon={encomendar} slot="end"/>
             </IonButton>
           </>
         ) : null}
