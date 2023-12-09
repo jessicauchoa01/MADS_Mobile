@@ -38,11 +38,10 @@ const Carrinho: React.FC = () => {
   const { lista } = useBasketStore();
   const { total } = useBasketStore();
   console.log(lista);
-  console.log(total);
-  console.log(`${PATH}EfetuarEncomenda.php?token=` + localStorage.getItem("token"));
+  // console.log(total);
+  // console.log(`${PATH}EfetuarEncomenda.php?token=` + localStorage.getItem("token"));
   const token = localStorage.getItem("token");
   
-
   const efetuarEncomenda = async () => {
     try {
       const response = await fetch(
@@ -54,8 +53,7 @@ const Carrinho: React.FC = () => {
             "Authorization": `Bearer ${token}`,
           },
           body: JSON.stringify({
-            // token: token,
-            pratos: lista,
+            lista: lista,
             total: total,
           }),
         }
