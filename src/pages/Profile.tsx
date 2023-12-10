@@ -15,7 +15,7 @@ import perfilFooter from "../assets/perfilFooter.svg";
 import restauranteFooter from "../assets/restauranteFooter.svg";
 import homeFooter from "../assets/homeFooter.svg";
 import "../pages/Profile.css";
-import { logOutOutline } from "ionicons/icons";
+import { arrowBackOutline, logOutOutline } from "ionicons/icons";
 import profileImg from "../assets/profileImg.svg";
 import food from "../assets/food.svg";
 import { Link } from "react-router-dom";
@@ -30,6 +30,11 @@ const Profile: React.FC = () => {
 
   return (
     <IonPage className="encomendasPage">
+      <div className="seta">
+        <Link to="/homepage">
+          <IonIcon id="seta" icon={arrowBackOutline} />
+        </Link>
+      </div>
       <div className="containerEncomendas">
         <IonRow className="ion-justify-content-end">
           <IonCol size="auto">
@@ -51,6 +56,20 @@ const Profile: React.FC = () => {
             <img className="imgPizzaEncomendas" src={food} alt="imagem pizza" />
             <p className="pizzaEncomendas">Nome</p>
             <p className="precoEncomendas">Preço€</p>
+            <p>Estado</p>
+          </div>
+          <div className="linhaEncomendas"></div>
+        </div>
+
+        <h1 className="encomendas">Histórico</h1>
+
+        <div className="cardEncomendas">
+          <div className="linhaEncomendas"></div>
+          <div className="contentCardEncomendas">
+            <img className="imgPizzaEncomendas" src={food} alt="imagem pizza" />
+            <p className="pizzaEncomendas">Nome</p>
+            <p className="precoEncomendas">Preço€</p>
+            <p>Estado</p>
           </div>
           <div className="linhaEncomendas"></div>
         </div>

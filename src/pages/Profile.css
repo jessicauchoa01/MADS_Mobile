@@ -4,13 +4,8 @@
   font-weight: 600;
 }
 
-.image {
-  margin-top: -2rem;
-  text-align: center;
-}
-
 .buttonProfile {
-  margin: 0px 15px;
+  margin: -12rem 15px 0rem;
   --background: #1d1b20;
   width: 100px;
   height: 40px;
@@ -23,6 +18,10 @@
 
 .cardEncomendas {
   margin: 0 25px;
+}
+
+#seta {
+  margin: -2rem 0px 1rem 25px;
 }
 
 .pizzaEncomendas {

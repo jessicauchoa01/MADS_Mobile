@@ -63,7 +63,7 @@ const Homepage: React.FC = () => {
     } catch (error) {
       console.error("Erro na solicitação de pratos:", error);
     }
-  }; 
+  };
 
   const filtrarPratos = async (tipo_id: number) => {
     try {
@@ -114,18 +114,18 @@ const Homepage: React.FC = () => {
                   className="carrosel"
                   shape="round"
                   onClick={() => listarPratos()}
-                  >
-                    <p>Todos</p>
-                  </IonButton>
+                >
+                  <p>Todos</p>
+                </IonButton>
               </IonCol>
               <IonCol>
                 <IonButton
                   className="carrosel"
                   shape="round"
                   onClick={() => filtrarPratos(1)}
-                  >
-                    <p>Entradas</p>
-                  </IonButton>
+                >
+                  <p>Entradas</p>
+                </IonButton>
               </IonCol>
               <IonCol>
                 <IonButton
@@ -197,13 +197,9 @@ const Homepage: React.FC = () => {
           </IonGrid>
         </IonToolbar>
       </IonHeader>
-      <IonContent>  
+      <IonContent>
         <IonGrid>
-          <IonRow>
-            <IonCol>
-              <div id="fantasma" ></div>
-            </IonCol>
-          </IonRow>
+          <IonRow></IonRow>
         </IonGrid>
         {pratos != null && pratos.length > 0 ? (
           pratos.map((prato) => (
@@ -245,9 +241,11 @@ const Homepage: React.FC = () => {
           </div>
         )}
         <div id="top"></div>
-                <button className="scrollTop" onClick={scrollToTop}>
-                <IonIcon icon={arrowUp} />
-                </button>
+        {pratos != null && pratos.length > 2 && (
+          <button className="scrollTop" onClick={scrollToTop}>
+            <IonIcon icon={arrowUp} />
+          </button>
+        )}
       </IonContent>
       <IonFooter className="footer">
         <IonToolbar class="footer-icons ion-text-center">
