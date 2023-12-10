@@ -78,10 +78,9 @@ ion-toolbar {
   background-color: rgba(169, 169, 169, 0.6);
   color: #fff;
   padding: 15px 15px;
-  position: fixed;
-  bottom: 80px;
-  left: 50%;
-  transform: translateX(-50%);
+  position: relative;
+  bottom: 20px;
+  left: 80%;
   z-index: 999;
   border-radius: 50%;
   font-size: 24px;

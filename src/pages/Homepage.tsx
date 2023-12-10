@@ -42,9 +42,10 @@ const Homepage: React.FC = () => {
   };
 
   const scrollToTop = () => {
+    const scrollComida = document.getElementById("fantasma")!;
     const topElement = document.getElementById("top");
     if (topElement) {
-      topElement.scrollIntoView({ behavior: "smooth" });
+      scrollComida.scrollIntoView({ behavior: "smooth" });
     }
   };
 
@@ -196,14 +197,12 @@ const Homepage: React.FC = () => {
           </IonGrid>
         </IonToolbar>
       </IonHeader>
-      <IonContent className="body">
-        <div id="top"></div>
-        <button className="scrollTop" onClick={scrollToTop}>
-          <IonIcon icon={arrowUp} />
-        </button>
+      <IonContent>  
         <IonGrid>
           <IonRow>
-            <IonCol></IonCol>
+            <IonCol>
+              <div id="fantasma" ></div>
+            </IonCol>
           </IonRow>
         </IonGrid>
         {pratos != null && pratos.length > 0 ? (
@@ -245,6 +244,10 @@ const Homepage: React.FC = () => {
             <h4>Desculpe, nenhum prato foi encontrado.</h4>
           </div>
         )}
+        <div id="top"></div>
+                <button className="scrollTop" onClick={scrollToTop}>
+                <IonIcon icon={arrowUp} />
+                </button>
       </IonContent>
       <IonFooter className="footer">
         <IonToolbar class="footer-icons ion-text-center">
