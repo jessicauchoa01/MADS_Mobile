@@ -200,6 +200,9 @@ const Homepage: React.FC = () => {
       <IonContent>
         <IonGrid>
           <IonRow></IonRow>
+          <IonCol>
+            <div id="fantasma"></div>
+          </IonCol>
         </IonGrid>
         {pratos != null && pratos.length > 0 ? (
           pratos.map((prato) => (
