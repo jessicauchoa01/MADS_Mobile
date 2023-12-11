@@ -1,79 +1,140 @@
 import {
   IonButton,
+  IonCard,
+  IonCardContent,
   IonCol,
   IonContent,
   IonFooter,
   IonGrid,
+  IonHeader,
   IonIcon,
+  IonImg,
+  IonMenu,
   IonPage,
   IonRow,
+  IonText,
   IonToolbar,
 } from "@ionic/react";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import carrinhoFooter from "../assets/carrinhoFooter.svg";
 import perfilFooter from "../assets/perfilFooter.svg";
 import restauranteFooter from "../assets/restauranteFooter.svg";
 import homeFooter from "../assets/homeFooter.svg";
 import "../pages/Profile.css";
-import { arrowBackOutline, logOutOutline } from "ionicons/icons";
+import { arrowBackOutline, arrowUp, logOutOutline } from "ionicons/icons";
 import profileImg from "../assets/profileImg.svg";
 import food from "../assets/food.svg";
 import { Link } from "react-router-dom";
 import { PATH, PATH_imagem } from "./apiConfig";
 
 const Profile: React.FC = () => {
-  console.log(localStorage.getItem("token"));
-  const logout = async () => {
-    localStorage.clear();
-    window.location.href = "/homepage";
-  };
+    const [ultimaEncomenda, setUltimaEncomenda] = useState<any[]>([]);
+    const [encomendas, setPratos] = useState<any[]>([]);
+    const token = localStorage.getItem("token");
 
-  return (
-    <IonPage className="encomendasPage">
-      <div className="seta">
-        <Link to="/homepage">
-          <IonIcon id="seta" icon={arrowBackOutline} />
-        </Link>
-      </div>
-      <div className="containerEncomendas">
+    const logout = async () => {
+      localStorage.clear();
+      window.location.href = "/homepage";
+  
+    };
+
+    const listarUltimaEncomenda = async () => {
+      try {
+        const response = await fetch(
+          `${PATH}ultimaEncomendaMobile.php?token=` + token
+        );
+  
+        const ultimaEncomenda = await response.json();
+  
+        setUltimaEncomenda(ultimaEncomenda);
+      } catch (error) {
+        console.error("Erro na solicitação de encomendas:", error);
+      }
+    };
+
+    const listarEncomendas = async () => {
+      try {
+        const response = await fetch(
+          `${PATH}HistoricoEncomendasMobile.php?token=` + token
+        );
+  
+        const encomendas = await response.json();
+  
+        setPratos(encomendas);
+      } catch (error) {
+        console.error("Erro na solicitação de encomendas:", error);
+      }
+    };
+
+    useEffect(() => {
+      listarUltimaEncomenda();
+    }, []);
+
+    useEffect(() => {
+      listarEncomendas();
+    }, []);    
+  
+    return (
+      <IonPage className="encomendasPage">
+        <div className="seta">
+          <Link to="/homepage">
+            <IonIcon id="seta" icon={arrowBackOutline} />
+          </Link>
+        </div>
         <IonRow className="ion-justify-content-end">
           <IonCol size="auto">
             <IonButton className="buttonProfile" onClick={() => logout()}>
               <IonIcon slot="end" icon={logOutOutline}></IonIcon>Logout
             </IonButton>
           </IonCol>
-        </IonRow>
-
+        </IonRow>   
         <div className="image">
           <img src={profileImg} alt="" width={"100px"} />
         </div>
-
-        <h1 className="encomendas">Encomendas</h1>
-
-        <div className="cardEncomendas">
-          <div className="linhaEncomendas"></div>
-          <div className="contentCardEncomendas">
-            <img className="imgPizzaEncomendas" src={food} alt="imagem pizza" />
-            <p className="pizzaEncomendas">Nome</p>
-            <p className="precoEncomendas">Preço€</p>
-            <p>Estado</p>
+        <IonContent>
+        <h1 className="encomendas">Última Encomenda</h1>
+        {ultimaEncomenda != null && ultimaEncomenda.length > 0 ? (
+        ultimaEncomenda.map((encomenda) => (
+          <div className="cardEncomendas">
+            <div className="linhaEncomendas"></div>
+            <div className="contentCardEncomendas">
+              <p className="pizzaEncomendas">{encomenda.nome}</p>
+              <p className="precoEncomendas">{encomenda.quantidade} unidade(s)</p>
+              <p>{encomenda.situacao}</p>
+            </div>
+            <div className="linhaEncomendas"></div>
           </div>
-          <div className="linhaEncomendas"></div>
-        </div>
-
+        ))
+        ) : (
+          <div className="noPratos">
+            <h4>Desculpe, nenhuma encomenda foi encontrada.</h4>
+          </div>
+        )}
+        <IonGrid>
+          <IonRow></IonRow>
+          <IonCol>
+            <div id="fantasma"></div>
+          </IonCol>
+        </IonGrid>
         <h1 className="encomendas">Histórico</h1>
-
-        <div className="cardEncomendas">
-          <div className="linhaEncomendas"></div>
-          <div className="contentCardEncomendas">
-            <img className="imgPizzaEncomendas" src={food} alt="imagem pizza" />
-            <p className="pizzaEncomendas">Nome</p>
-            <p className="precoEncomendas">Preço€</p>
-            <p>Estado</p>
+        {encomendas != null && encomendas.length > 0 ? (
+          encomendas.map((encomenda) => (
+          <div className="cardEncomendas">
+            <div className="linhaEncomendas"></div>
+            <div className="contentCardEncomendas">
+              <p className="pizzaEncomendas">{encomenda.nome}</p>
+              <p className="precoEncomendas">{encomenda.quantidade} unidade(s)</p>
+              <p>{encomenda.situacao}</p>
+            </div>
+            <div className="linhaEncomendas"></div>
           </div>
-          <div className="linhaEncomendas"></div>
-        </div>
-      </div>
+          ))
+        ) : (
+          <div className="noPratos">
+            <h4>Desculpe, nenhuma encomenda foi encontrada.</h4>
+          </div>
+        )}
+      </IonContent>
       <IonFooter className="footer">
         <IonToolbar class="footer-icons ion-text-center">
           <IonGrid>

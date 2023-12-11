@@ -53,7 +53,6 @@ const Homepage: React.FC = () => {
   const listarPratos = async () => {
     try {
       const response = await fetch(
-        // mudar para o vosso localhost
         `${PATH}PratosMobile.php`
       );
 
