@@ -39,7 +39,7 @@ const Profile: React.FC = () => {
 
   const listarUltimaEncomenda = async () => {
     try {
-      const response = await fetch(`${PATH}ultimaEncomenda.php?token=` + token);
+      const response = await fetch(`${PATH}ultimaEncomendaMobile.php?token=` + token);
 
       const ultimaEncomenda = await response.json();
 
