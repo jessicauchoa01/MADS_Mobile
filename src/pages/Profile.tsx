@@ -28,83 +28,82 @@ import { Link } from "react-router-dom";
 import { PATH, PATH_imagem } from "./apiConfig";
 
 const Profile: React.FC = () => {
-    const [ultimaEncomenda, setUltimaEncomenda] = useState<any[]>([]);
-    const [encomendas, setPratos] = useState<any[]>([]);
-    const token = localStorage.getItem("token");
+  const [ultimaEncomenda, setUltimaEncomenda] = useState<any[]>([]);
+  const [encomendas, setPratos] = useState<any[]>([]);
+  const token = localStorage.getItem("token");
 
-    const logout = async () => {
-      localStorage.clear();
-      window.location.href = "/homepage";
-  
-    };
+  const logout = async () => {
+    localStorage.clear();
+    window.location.href = "/homepage";
+  };
 
-    const listarUltimaEncomenda = async () => {
-      try {
-        const response = await fetch(
-          `${PATH}ultimaEncomendaMobile.php?token=` + token
-        );
-  
-        const ultimaEncomenda = await response.json();
-  
-        setUltimaEncomenda(ultimaEncomenda);
-      } catch (error) {
-        console.error("Erro na solicitação de encomendas:", error);
-      }
-    };
+  const listarUltimaEncomenda = async () => {
+    try {
+      const response = await fetch(`${PATH}ultimaEncomenda.php?token=` + token);
 
-    const listarEncomendas = async () => {
-      try {
-        const response = await fetch(
-          `${PATH}HistoricoEncomendasMobile.php?token=` + token
-        );
-  
-        const encomendas = await response.json();
-  
-        setPratos(encomendas);
-      } catch (error) {
-        console.error("Erro na solicitação de encomendas:", error);
-      }
-    };
+      const ultimaEncomenda = await response.json();
 
-    useEffect(() => {
-      listarUltimaEncomenda();
-    }, []);
+      setUltimaEncomenda(ultimaEncomenda);
+    } catch (error) {
+      console.error("Erro na solicitação de encomendas:", error);
+    }
+  };
 
-    useEffect(() => {
-      listarEncomendas();
-    }, []);    
-  
-    return (
-      <IonPage className="encomendasPage">
-        <div className="seta">
-          <Link to="/homepage">
-            <IonIcon id="seta" icon={arrowBackOutline} />
-          </Link>
-        </div>
-        <IonRow className="ion-justify-content-end">
-          <IonCol size="auto">
-            <IonButton className="buttonProfile" onClick={() => logout()}>
-              <IonIcon slot="end" icon={logOutOutline}></IonIcon>Logout
-            </IonButton>
-          </IonCol>
-        </IonRow>   
-        <div className="image">
-          <img src={profileImg} alt="" width={"100px"} />
-        </div>
-        <IonContent>
+  const listarEncomendas = async () => {
+    try {
+      const response = await fetch(
+        `${PATH}HistoricoEncomendasMobile.php?token=` + token
+      );
+
+      const encomendas = await response.json();
+
+      setPratos(encomendas);
+    } catch (error) {
+      console.error("Erro na solicitação de encomendas:", error);
+    }
+  };
+
+  useEffect(() => {
+    listarUltimaEncomenda();
+  }, []);
+
+  useEffect(() => {
+    listarEncomendas();
+  }, []);
+
+  return (
+    <IonPage className="encomendasPage">
+      <div className="seta">
+        <Link to="/homepage">
+          <IonIcon id="seta" icon={arrowBackOutline} />
+        </Link>
+      </div>
+      <IonRow className="ion-justify-content-end">
+        <IonCol size="auto">
+          <IonButton className="buttonProfile" onClick={() => logout()}>
+            <IonIcon slot="end" icon={logOutOutline}></IonIcon>Logout
+          </IonButton>
+        </IonCol>
+      </IonRow>
+      <div className="image">
+        <img src={profileImg} alt="" width={"100px"} />
+      </div>
+      <IonContent>
         <h1 className="encomendas">Última Encomenda</h1>
         {ultimaEncomenda != null && ultimaEncomenda.length > 0 ? (
-        ultimaEncomenda.map((encomenda) => (
-          <div className="cardEncomendas">
-            <div className="linhaEncomendas"></div>
-            <div className="contentCardEncomendas">
-              <p className="pizzaEncomendas">{encomenda.nome}</p>
-              <p className="precoEncomendas">{encomenda.quantidade} unidade(s)</p>
-              <p>{encomenda.situacao}</p>
+          ultimaEncomenda.map((encomenda) => (
+            <div className="cardEncomendas">
+              <div className="linhaEncomendas"></div>
+              <div className="contentCardEncomendas">
+                <p className="pizzaEncomendas">{encomenda.nome}</p>
+                <p className="precoEncomendas">
+                  {encomenda.quantidade} unidade(s)
+                </p>
+                <p>{encomenda.situacao}</p>
+              </div>
+              <div className="linhaEncomendas"></div>
             </div>
-            <div className="linhaEncomendas"></div>
-          </div>
-        ))
+          ))
         ) : (
           <div className="noPratos">
             <h4>Desculpe, nenhuma encomenda foi encontrada.</h4>
@@ -119,15 +118,17 @@ const Profile: React.FC = () => {
         <h1 className="encomendas">Histórico</h1>
         {encomendas != null && encomendas.length > 0 ? (
           encomendas.map((encomenda) => (
-          <div className="cardEncomendas">
-            <div className="linhaEncomendas"></div>
-            <div className="contentCardEncomendas">
-              <p className="pizzaEncomendas">{encomenda.nome}</p>
-              <p className="precoEncomendas">{encomenda.quantidade} unidade(s)</p>
-              <p>{encomenda.situacao}</p>
+            <div className="cardEncomendas">
+              <div className="linhaEncomendas"></div>
+              <div className="contentCardEncomendas">
+                <p className="pizzaEncomendas">{encomenda.nome}</p>
+                <p className="precoEncomendas">
+                  {encomenda.quantidade} unidade(s)
+                </p>
+                <p>{encomenda.situacao}</p>
+              </div>
+              <div className="linhaEncomendas"></div>
             </div>
-            <div className="linhaEncomendas"></div>
-          </div>
           ))
         ) : (
           <div className="noPratos">
