@@ -32,6 +32,7 @@ import "./Restaurantes";
 import useBasketStore from "../../src/store/basketStore";
 import { PATH, PATH_imagem } from "./apiConfig";
 import food from "../assets/food.svg";
+import { arrowBackOutline, arrowUp, logOutOutline } from "ionicons/icons";
 
 const Restaurants: React.FC = () => {
   const [pratos, setPratos] = useState<any[]>([]);
@@ -64,7 +65,7 @@ const Restaurants: React.FC = () => {
                 <img className="imagemRest" src={food} alt="imagem pizza" />
                 <IonButton
                   className="btnAdicionarCarrinhoRest"
-                  onClick={() => adicionar(prato)}
+                  onClick={() => adicionar(pratos)}
                 >
                   <img
                     src={addCarrinho}
@@ -79,7 +80,7 @@ const Restaurants: React.FC = () => {
                 <img className="imagemRest" src={food} alt="imagem pizza" />
                 <IonButton
                   className="btnAdicionarCarrinhoRest"
-                  onClick={() => adicionar(prato)}
+                  onClick={() => adicionar(pratos)}
                 >
                   <img
                     src={addCarrinho}
@@ -94,7 +95,7 @@ const Restaurants: React.FC = () => {
                 <img className="imagemRest" src={food} alt="imagem pizza" />
                 <IonButton
                   className="btnAdicionarCarrinhoRest"
-                  onClick={() => adicionar(prato)}
+                  onClick={() => adicionar(pratos)}
                 >
                   <img
                     src={addCarrinho}
@@ -109,7 +110,7 @@ const Restaurants: React.FC = () => {
                 <img className="imagemRest" src={food} alt="imagem pizza" />
                 <IonButton
                   className="btnAdicionarCarrinhoRest"
-                  onClick={() => adicionar(prato)}
+                  onClick={() => adicionar(pratos)}
                 >
                   <img
                     src={addCarrinho}
@@ -133,7 +134,7 @@ const Restaurants: React.FC = () => {
                 <img className="imagemRest" src={food} alt="imagem pizza" />
                 <IonButton
                   className="btnAdicionarCarrinhoRest"
-                  onClick={() => adicionar(prato)}
+                  onClick={() => adicionar(pratos)}
                 >
                   <img
                     src={addCarrinho}
@@ -148,7 +149,7 @@ const Restaurants: React.FC = () => {
                 <img className="imagemRest" src={food} alt="imagem pizza" />
                 <IonButton
                   className="btnAdicionarCarrinhoRest"
-                  onClick={() => adicionar(prato)}
+                  onClick={() => adicionar(pratos)}
                 >
                   <img
                     src={addCarrinho}
@@ -163,7 +164,7 @@ const Restaurants: React.FC = () => {
                 <img className="imagemRest" src={food} alt="imagem pizza" />
                 <IonButton
                   className="btnAdicionarCarrinhoRest"
-                  onClick={() => adicionar(prato)}
+                  onClick={() => adicionar(pratos)}
                 >
                   <img
                     src={addCarrinho}
@@ -178,7 +179,7 @@ const Restaurants: React.FC = () => {
                 <img className="imagemRest" src={food} alt="imagem pizza" />
                 <IonButton
                   className="btnAdicionarCarrinhoRest"
-                  onClick={() => adicionar(prato)}
+                  onClick={() => adicionar(pratos)}
                 >
                   <img
                     src={addCarrinho}
@@ -202,7 +203,7 @@ const Restaurants: React.FC = () => {
                 <img className="imagemRest" src={food} alt="imagem pizza" />
                 <IonButton
                   className="btnAdicionarCarrinhoRest"
-                  onClick={() => adicionar(prato)}
+                  onClick={() => adicionar(pratos)}
                 >
                   <img
                     src={addCarrinho}
@@ -217,7 +218,7 @@ const Restaurants: React.FC = () => {
                 <img className="imagemRest" src={food} alt="imagem pizza" />
                 <IonButton
                   className="btnAdicionarCarrinhoRest"
-                  onClick={() => adicionar(prato)}
+                  onClick={() => adicionar(pratos)}
                 >
                   <img
                     src={addCarrinho}
@@ -232,7 +233,7 @@ const Restaurants: React.FC = () => {
                 <img className="imagemRest" src={food} alt="imagem pizza" />
                 <IonButton
                   className="btnAdicionarCarrinhoRest"
-                  onClick={() => adicionar(prato)}
+                  onClick={() => adicionar(pratos)}
                 >
                   <img
                     src={addCarrinho}
@@ -247,7 +248,7 @@ const Restaurants: React.FC = () => {
                 <img className="imagemRest" src={food} alt="imagem pizza" />
                 <IonButton
                   className="btnAdicionarCarrinhoRest"
-                  onClick={() => adicionar(prato)}
+                  onClick={() => adicionar(pratos)}
                 >
                   <img
                     src={addCarrinho}

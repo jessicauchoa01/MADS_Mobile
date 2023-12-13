@@ -30,6 +30,7 @@ import useBasketStore from "../store/basketStore";
 import { PATH, PATH_imagem } from "./apiConfig";
 import Carrinho from "./Carrinho";
 import Kfc from "../assets/KFC.svg";
+import { arrowBackOutline, arrowUp, logOutOutline } from "ionicons/icons";
 
 const Restaurante: React.FC = () => {
   //PROCURA O JSON TOKEN NO STORAGE
@@ -95,6 +96,11 @@ const Restaurante: React.FC = () => {
     //   console.log(typeof(carrinho)),
     <IonPage className="homePage">
       <img className="imgRestaurante" src={Kfc} alt="GoEat logo" />
+      <div className="seta">
+        <Link to="/restaurants">
+          <IonIcon id="seta" icon={arrowBackOutline} />
+        </Link>
+      </div>
       <IonContent className="body">
         <IonGrid>
           <IonRow>
