@@ -43,6 +43,62 @@ const Restaurants: React.FC = () => {
   const adicionar = (prato: any) => {
     addPrato(prato);
   };
+
+  const scrollToTop = () => {
+    const scrollComida = document.getElementById("fantasma")!;
+    const topElement = document.getElementById("top");
+    if (topElement) {
+      scrollComida.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  //TRY PARA O GET DIRETO NA HOMEPAGE
+  const listarPratos = async () => {
+    try {
+      const response = await fetch(`${PATH}PratosMobile.php`);
+
+      const pratos = await response.json();
+
+      setPratos(pratos);
+    } catch (error) {
+      console.error("Erro na solicitação de pratos:", error);
+    }
+  };
+
+  const filtrarPratos = async (tipo_id: number) => {
+    try {
+      const response = await fetch(
+        `${PATH}FiltrarPratosMobile.php?tipo_id=` + tipo_id
+      );
+
+      if (!response.ok) {
+        throw new Error("Erro ao buscar pratos");
+      }
+
+      const contentType = response.headers.get("content-type");
+      if (contentType && contentType.indexOf("application/json") !== -1) {
+        const pratos = await response.json();
+        setPratos(pratos);
+      } else {
+        throw new Error("Resposta inesperada do servidor");
+      }
+    } catch (error) {
+      console.error("Erro na solicitação do filtro:", error);
+      setPratos([]);
+    }
+  };
+
+  if (tipo_id == 0) {
+    useEffect(() => {
+      listarPratos();
+    }, []);
+  }
+
+  if (tipo_id != 0) {
+    useEffect(() => {
+      filtrarPratos(tipo_id);
+    }, []);
+  }
   return (
     <IonPage>
       <IonHeader>
@@ -52,214 +108,42 @@ const Restaurants: React.FC = () => {
           </div>
         </IonToolbar>
       </IonHeader>
-      <IonContent className="content">
+      <IonContent className="contentRestaurante">
         <IonGrid>
-          <div className="texto">
-            <Link to={"/restaurantes"} className="texto">
-              Restaurante 1
-            </Link>
-          </div>
-          <IonRow className="scroll">
-            <IonCol>
-              <IonCard className="menu1">
-                <img className="imagemRest" src={food} alt="imagem pizza" />
-                <IonButton
-                  className="btnAdicionarCarrinhoRest"
-                  onClick={() => adicionar(pratos)}
-                >
-                  <img
-                    src={addCarrinho}
-                    className="imgAddCarrinho"
-                    alt="mais"
-                  />
-                </IonButton>
-              </IonCard>
-            </IonCol>
-            <IonCol>
-              <IonCard className="menu1">
-                <img className="imagemRest" src={food} alt="imagem pizza" />
-                <IonButton
-                  className="btnAdicionarCarrinhoRest"
-                  onClick={() => adicionar(pratos)}
-                >
-                  <img
-                    src={addCarrinho}
-                    className="imgAddCarrinho"
-                    alt="mais"
-                  />
-                </IonButton>
-              </IonCard>
-            </IonCol>
-            <IonCol>
-              <IonCard className="menu1">
-                <img className="imagemRest" src={food} alt="imagem pizza" />
-                <IonButton
-                  className="btnAdicionarCarrinhoRest"
-                  onClick={() => adicionar(pratos)}
-                >
-                  <img
-                    src={addCarrinho}
-                    className="imgAddCarrinho"
-                    alt="mais"
-                  />
-                </IonButton>
-              </IonCard>
-            </IonCol>
-            <IonCol>
-              <IonCard className="menu1">
-                <img className="imagemRest" src={food} alt="imagem pizza" />
-                <IonButton
-                  className="btnAdicionarCarrinhoRest"
-                  onClick={() => adicionar(pratos)}
-                >
-                  <img
-                    src={addCarrinho}
-                    className="imgAddCarrinho"
-                    alt="mais"
-                  />
-                </IonButton>
-              </IonCard>
-            </IonCol>
-          </IonRow>
+          <IonRow></IonRow>
+          <IonCol>
+            <div id="fantasma"></div>
+          </IonCol>
         </IonGrid>
-        <IonGrid>
-          <div className="texto">
-            <Link to={"/restaurantes"} className="texto">
-              Restaurante 2
+        {pratos != null && pratos.length > 0 ? (
+          pratos.map((prato) => (
+            <Link to={`/restaurantes/${prato.id}`} key={prato.id}>
+              <IonCard key={prato.id} className="cardRestaurantes">
+                <div className="cardImage">
+                  <img
+                    className="imagemRestaurante"
+                    src={`${PATH_imagem}${prato.imagem}`}
+                    alt={prato.nome}
+                  />
+                  <div className="overlay"></div>
+                  <div className="nomeRestaurante">
+                    <h2>{prato.nome}</h2>
+                  </div>
+                </div>
+              </IonCard>
             </Link>
+          ))
+        ) : (
+          <div className="noPRestaurantes">
+            <h4>Desculpe, nenhum restaurante foi encontrado.</h4>
           </div>
-          <IonRow className="scroll">
-            <IonCol>
-              <IonCard className="menu1">
-                <img className="imagemRest" src={food} alt="imagem pizza" />
-                <IonButton
-                  className="btnAdicionarCarrinhoRest"
-                  onClick={() => adicionar(pratos)}
-                >
-                  <img
-                    src={addCarrinho}
-                    className="imgAddCarrinho"
-                    alt="mais"
-                  />
-                </IonButton>
-              </IonCard>
-            </IonCol>
-            <IonCol>
-              <IonCard className="menu1">
-                <img className="imagemRest" src={food} alt="imagem pizza" />
-                <IonButton
-                  className="btnAdicionarCarrinhoRest"
-                  onClick={() => adicionar(pratos)}
-                >
-                  <img
-                    src={addCarrinho}
-                    className="imgAddCarrinho"
-                    alt="mais"
-                  />
-                </IonButton>
-              </IonCard>
-            </IonCol>
-            <IonCol>
-              <IonCard className="menu1">
-                <img className="imagemRest" src={food} alt="imagem pizza" />
-                <IonButton
-                  className="btnAdicionarCarrinhoRest"
-                  onClick={() => adicionar(pratos)}
-                >
-                  <img
-                    src={addCarrinho}
-                    className="imgAddCarrinho"
-                    alt="mais"
-                  />
-                </IonButton>
-              </IonCard>
-            </IonCol>
-            <IonCol>
-              <IonCard className="menu1">
-                <img className="imagemRest" src={food} alt="imagem pizza" />
-                <IonButton
-                  className="btnAdicionarCarrinhoRest"
-                  onClick={() => adicionar(pratos)}
-                >
-                  <img
-                    src={addCarrinho}
-                    className="imgAddCarrinho"
-                    alt="mais"
-                  />
-                </IonButton>
-              </IonCard>
-            </IonCol>
-          </IonRow>
-        </IonGrid>
-        <IonGrid>
-          <div className="texto">
-            <Link to={"/restaurantes"} className="texto">
-              Restaurante 3
-            </Link>
-          </div>
-          <IonRow className="scroll">
-            <IonCol>
-              <IonCard className="menu1">
-                <img className="imagemRest" src={food} alt="imagem pizza" />
-                <IonButton
-                  className="btnAdicionarCarrinhoRest"
-                  onClick={() => adicionar(pratos)}
-                >
-                  <img
-                    src={addCarrinho}
-                    className="imgAddCarrinho"
-                    alt="mais"
-                  />
-                </IonButton>
-              </IonCard>
-            </IonCol>
-            <IonCol>
-              <IonCard className="menu1">
-                <img className="imagemRest" src={food} alt="imagem pizza" />
-                <IonButton
-                  className="btnAdicionarCarrinhoRest"
-                  onClick={() => adicionar(pratos)}
-                >
-                  <img
-                    src={addCarrinho}
-                    className="imgAddCarrinho"
-                    alt="mais"
-                  />
-                </IonButton>
-              </IonCard>
-            </IonCol>
-            <IonCol>
-              <IonCard className="menu1">
-                <img className="imagemRest" src={food} alt="imagem pizza" />
-                <IonButton
-                  className="btnAdicionarCarrinhoRest"
-                  onClick={() => adicionar(pratos)}
-                >
-                  <img
-                    src={addCarrinho}
-                    className="imgAddCarrinho"
-                    alt="mais"
-                  />
-                </IonButton>
-              </IonCard>
-            </IonCol>
-            <IonCol>
-              <IonCard className="menu1">
-                <img className="imagemRest" src={food} alt="imagem pizza" />
-                <IonButton
-                  className="btnAdicionarCarrinhoRest"
-                  onClick={() => adicionar(pratos)}
-                >
-                  <img
-                    src={addCarrinho}
-                    className="imgAddCarrinhoRes"
-                    alt="mais"
-                  />
-                </IonButton>
-              </IonCard>
-            </IonCol>
-          </IonRow>
-        </IonGrid>
+        )}
+        <div id="top"></div>
+        {pratos != null && pratos.length > 2 && (
+          <button className="scrollTop" onClick={scrollToTop}>
+            <IonIcon icon={arrowUp} />
+          </button>
+        )}
       </IonContent>
       <IonFooter className="footer">
         <IonToolbar class="footer-icons ion-text-center">

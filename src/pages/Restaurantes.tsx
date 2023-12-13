@@ -33,27 +33,17 @@ import Kfc from "../assets/KFC.svg";
 import { arrowBackOutline, arrowUp, logOutOutline } from "ionicons/icons";
 
 const Restaurante: React.FC = () => {
-  //PROCURA O JSON TOKEN NO STORAGE
-  //const token = localStorage.getItem("token");
-  //const carrinho = localStorage.getItem("carrinho");
   const [pratos, setPratos] = useState<any[]>([]);
   const [tipo_id, getTipo_id] = useState(Number);
   const { addPrato } = useBasketStore();
   const { lista } = useBasketStore();
-  // console.log(lista);
-  // console.log("https://goeat:8890/sourceMobile/FiltrarPratosMobile.php?tipo_id=" + tipo_id);
 
   const adicionar = (prato: any) => {
     addPrato(prato);
   };
-
-  //TRY PARA O GET DIRETO NA HOMEPAGE
   const listarPratos = async () => {
     try {
-      const response = await fetch(
-        // mudar para o vosso localhost
-        `${PATH}PratosMobile.php`
-      );
+      const response = await fetch(`${PATH}PratosMobile.php`);
 
       const pratos = await response.json();
 
@@ -91,9 +81,6 @@ const Restaurante: React.FC = () => {
   }
 
   return (
-    // console.log(token),
-    // console.log(carrinho),
-    //   console.log(typeof(carrinho)),
     <IonPage className="homePage">
       <img className="imgRestaurante" src={Kfc} alt="GoEat logo" />
       <div className="seta">
