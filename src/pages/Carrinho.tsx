@@ -31,6 +31,7 @@ import { Link } from "react-router-dom";
 import useBasketStore from "../store/basketStore";
 import { PATH, PATH_imagem } from "./apiConfig";
 import { exit } from "ionicons/icons";
+import logo from "../assets/logo.svg";
 
 const Carrinho: React.FC = () => {
   const { addPrato } = useBasketStore();
@@ -74,7 +75,17 @@ const Carrinho: React.FC = () => {
   }
 
   return (
-    <IonPage className="carrinhoPage">
+    <IonPage className={`carrinhoPage ${lista.length > 0 ? "bg-white" : "bg-yellow"}`}>
+      {lista.length > 0 ? (
+    <IonHeader>
+      <IonToolbar className="carrinhoHeader">
+        <div className="imageCarrinho">
+          <img src={logo} alt="GoEat logo" width={"100px"} />
+        </div>
+      </IonToolbar>
+    </IonHeader>
+) : null}
+
       <IonContent>
         <h1>Carrinho</h1>
         {lista.length > 0 ? (

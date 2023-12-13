@@ -1,5 +1,14 @@
-.carrinhoPage {
+.bg-white{
+  --ion-background-color: white;
+}
+
+.bg-yellow{
   --ion-background-color: #ffc107;
+}
+
+.imageCarrinho{
+  text-align: center;
+  margin: -4rem 0rem 2rem;
 }
 
 .carrinhoPage h1 {
