@@ -82,8 +82,9 @@ const Restaurante: React.FC = () => {
 
   return (
     <IonPage className="homePage">
+      <div className="overlayRest"></div>
       <img className="imgRestaurante" src={Kfc} alt="GoEat logo" />
-      <div className="seta">
+      <div className="setaRest">
         <Link to="/restaurants">
           <IonIcon id="seta" icon={arrowBackOutline} />
         </Link>
