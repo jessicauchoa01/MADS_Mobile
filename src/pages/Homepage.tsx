@@ -49,7 +49,6 @@ const Homepage: React.FC = () => {
     }
   };
 
-  //TRY PARA O GET DIRETO NA HOMEPAGE
   const listarPratos = async () => {
     try {
       const response = await fetch(

@@ -14,6 +14,7 @@ import {
   IonRow,
   IonText,
   IonToolbar,
+  useIonViewDidEnter,
 } from "@ionic/react";
 import React, { useEffect, useState } from "react";
 import logo from "../assets/logo.svg";
@@ -33,17 +34,24 @@ import Kfc from "../assets/KFC.svg";
 import { arrowBackOutline, arrowUp, logOutOutline } from "ionicons/icons";
 
 const Restaurante: React.FC = () => {
+  const urlInfo = window.location.search;
+  const urlParams = new URLSearchParams(urlInfo);
+  const restaurante_id = urlParams.get('restaurante_id');
+  const nome = urlParams.get('nome');
+  const img = urlParams.get('img');
   const [pratos, setPratos] = useState<any[]>([]);
-  const [tipo_id, getTipo_id] = useState(Number);
   const { addPrato } = useBasketStore();
   const { lista } = useBasketStore();
+
+  // console.log(`${PATH}PratosPorRestauranteMobile.php?restaurante_id=` + restaurante_id);
 
   const adicionar = (prato: any) => {
     addPrato(prato);
   };
+
   const listarPratos = async () => {
     try {
-      const response = await fetch(`${PATH}PratosMobile.php`);
+      const response = await fetch(`${PATH}PratosPorRestauranteMobile.php?restaurante_id=` + restaurante_id);
 
       const pratos = await response.json();
 
@@ -53,37 +61,14 @@ const Restaurante: React.FC = () => {
     }
   };
 
-  const filtrarPratos = async (tipo_id: number) => {
-    try {
-      const response = await fetch(
-        // mudar para o vosso localhost
-        `${PATH}FiltrarPratosMobile.php?tipo_id=` + tipo_id
-      );
-
-      const pratos = await response.json();
-
-      setPratos(pratos);
-    } catch (error) {
-      console.error("Erro na solicitação do filtro:", error);
-    }
-  };
-
-  if (tipo_id == 0) {
-    useEffect(() => {
-      listarPratos();
-    }, []);
-  }
-
-  if (tipo_id != 0) {
-    useEffect(() => {
-      filtrarPratos(tipo_id);
-    }, []);
-  }
+  useEffect(() => {
+    listarPratos();
+  }, []);
 
   return (
     <IonPage className="homePage">
       <div className="overlayRest"></div>
-      <img className="imgRestaurante" src={Kfc} alt="GoEat logo" />
+      <img className="imgRestaurante" src={`${PATH_imagem}${img}`} alt="restaurante logo" />
       <div className="setaRest">
         <Link to="/restaurants">
           <IonIcon id="seta" icon={arrowBackOutline} />
@@ -93,7 +78,7 @@ const Restaurante: React.FC = () => {
         <IonGrid>
           <IonRow>
             <IonCol>
-              <p className="restName">Nome do Restaurante</p>
+              <p className="restName">{nome}</p>
             </IonCol>
           </IonRow>
         </IonGrid>

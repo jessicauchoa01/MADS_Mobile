@@ -35,14 +35,7 @@ import food from "../assets/food.svg";
 import { arrowBackOutline, arrowUp, logOutOutline } from "ionicons/icons";
 
 const Restaurants: React.FC = () => {
-  const [pratos, setPratos] = useState<any[]>([]);
-  const [tipo_id, getTipo_id] = useState(Number);
-  const { addPrato } = useBasketStore();
-  const { lista } = useBasketStore();
-
-  const adicionar = (prato: any) => {
-    addPrato(prato);
-  };
+  const [restaurantes, setRestaurantes] = useState<any[]>([]);
 
   const scrollToTop = () => {
     const scrollComida = document.getElementById("fantasma")!;
@@ -52,53 +45,22 @@ const Restaurants: React.FC = () => {
     }
   };
 
-  //TRY PARA O GET DIRETO NA HOMEPAGE
-  const listarPratos = async () => {
+  const listarRestaurantes = async () => {
     try {
-      const response = await fetch(`${PATH}PratosMobile.php`);
+      const response = await fetch(`${PATH}ListarRestaurantesMobile.php`);
 
-      const pratos = await response.json();
+      const restaurantes = await response.json();
 
-      setPratos(pratos);
+      setRestaurantes(restaurantes);
     } catch (error) {
-      console.error("Erro na solicitação de pratos:", error);
+      console.error("Erro na solicitação de restaurantes:", error);
     }
   };
 
-  const filtrarPratos = async (tipo_id: number) => {
-    try {
-      const response = await fetch(
-        `${PATH}FiltrarPratosMobile.php?tipo_id=` + tipo_id
-      );
-
-      if (!response.ok) {
-        throw new Error("Erro ao buscar pratos");
-      }
-
-      const contentType = response.headers.get("content-type");
-      if (contentType && contentType.indexOf("application/json") !== -1) {
-        const pratos = await response.json();
-        setPratos(pratos);
-      } else {
-        throw new Error("Resposta inesperada do servidor");
-      }
-    } catch (error) {
-      console.error("Erro na solicitação do filtro:", error);
-      setPratos([]);
-    }
-  };
-
-  if (tipo_id == 0) {
-    useEffect(() => {
-      listarPratos();
-    }, []);
-  }
-
-  if (tipo_id != 0) {
-    useEffect(() => {
-      filtrarPratos(tipo_id);
-    }, []);
-  }
+  useEffect(() => {
+    listarRestaurantes();
+  }, []);
+  
   return (
     <IonPage>
       <IonHeader>
@@ -115,19 +77,19 @@ const Restaurants: React.FC = () => {
             <div id="fantasma"></div>
           </IonCol>
         </IonGrid>
-        {pratos != null && pratos.length > 0 ? (
-          pratos.map((prato) => (
-            <Link to={`/restaurantes/${prato.id}`} key={prato.id}>
-              <IonCard key={prato.id} className="cardRestaurantes">
+        {restaurantes != null && restaurantes.length > 0 ? (
+          restaurantes.map((restaurante) => (
+            <Link to={`/restaurantes/?restaurante_id=${restaurante.id}&nome=${restaurante.nome}&img=${restaurante.imagem}`} key={restaurante.id}>
+              <IonCard key={restaurante.id} className="cardRestaurantes">
                 <div className="cardImage">
                   <img
                     className="imagemRestaurante"
-                    src={`${PATH_imagem}${prato.imagem}`}
-                    alt={prato.nome}
+                    src={`${PATH_imagem}${restaurante.imagem}`}
+                    alt={restaurante.nome}
                   />
                   <div className="overlay"></div>
                   <div className="nomeRestaurante">
-                    <h2>{prato.nome}</h2>
+                    <h2>{restaurante.nome}</h2>
                   </div>
                 </div>
               </IonCard>
@@ -139,7 +101,7 @@ const Restaurants: React.FC = () => {
           </div>
         )}
         <div id="top"></div>
-        {pratos != null && pratos.length > 2 && (
+        {restaurantes != null && restaurantes.length > 2 && (
           <button className="scrollTop" onClick={scrollToTop}>
             <IonIcon icon={arrowUp} />
           </button>
