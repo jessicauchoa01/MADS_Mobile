@@ -66,7 +66,7 @@ const Restaurante: React.FC = () => {
   
   useEffect(() => {
     listarPratos(restaurante_id);
-  }, []);
+  }, [restaurante_id]);
 
   return (
     <IonPage className="homePage">
