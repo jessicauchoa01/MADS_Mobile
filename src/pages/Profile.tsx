@@ -26,6 +26,7 @@ import profileImg from "../assets/profileImg.svg";
 import food from "../assets/food.svg";
 import { Link } from "react-router-dom";
 import { PATH, PATH_imagem } from "./apiConfig";
+import { pencilOutline } from "ionicons/icons";
 
 const Profile: React.FC = () => {
   const [ultimaEncomenda, setUltimaEncomenda] = useState<any[]>([]);
@@ -33,13 +34,16 @@ const Profile: React.FC = () => {
   const token = localStorage.getItem("token");
 
   const logout = async () => {
+    localStorage.removeItem("profileImage");
     localStorage.clear();
     window.location.href = "/homepage";
   };
 
   const listarUltimaEncomenda = async () => {
     try {
-      const response = await fetch(`${PATH}ultimaEncomendaMobile.php?token=` + token);
+      const response = await fetch(
+        `${PATH}ultimaEncomendaMobile.php?token=` + token
+      );
 
       const ultimaEncomenda = await response.json();
 
@@ -71,6 +75,36 @@ const Profile: React.FC = () => {
     listarEncomendas();
   }, []);
 
+  const [profileImage, setProfileImage] = useState<string | null>(profileImg);
+
+  const handleProfileImageChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const selectedFile = event.target.files?.[0];
+    if (selectedFile) {
+      const reader = new FileReader();
+
+      reader.onloadend = () => {
+        const imageUrl = reader.result as string;
+        setProfileImage(imageUrl);
+
+        // Armazenamento no localStorage
+        localStorage.setItem("profileImage", imageUrl);
+      };
+
+      reader.readAsDataURL(selectedFile);
+    }
+  };
+
+  useEffect(() => {
+    const savedProfileImage = localStorage.getItem("profileImage");
+    if (savedProfileImage) {
+      setProfileImage(savedProfileImage);
+    } else {
+      setProfileImage(profileImg); // Define a imagem padrão se não houver uma imagem salva
+    }
+  }, []);
+
   return (
     <IonPage className="encomendasPage">
       <div className="seta">
@@ -85,8 +119,22 @@ const Profile: React.FC = () => {
           </IonButton>
         </IonCol>
       </IonRow>
-      <div className="image">
-        <img src={profileImg} alt="" width={"100px"} />
+      <div
+        className="image"
+        onClick={() => document.getElementById("fileInput")?.click()}
+      >
+        <img
+          src={profileImage || profileImg}
+          alt=""
+          className="profile-image"
+        />
+        <input
+          id="fileInput"
+          type="file"
+          accept="image/*"
+          onChange={handleProfileImageChange}
+          style={{ display: "none" }}
+        />
       </div>
       <IonContent>
         <h1 className="encomendas">Última Encomenda</h1>
