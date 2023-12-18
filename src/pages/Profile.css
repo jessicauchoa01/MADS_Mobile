@@ -13,7 +13,8 @@
 }
 
 .encomendas {
-  margin: 2rem 0px 1rem 25px;
+  margin: 2rem 0px 4rem 25px;
+  font-weight: bold;
 }
 
 .cardEncomendas {

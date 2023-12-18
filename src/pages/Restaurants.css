@@ -60,3 +60,7 @@
   right: 0;
   background-color: rgba(0, 0, 0, 0.2);
 }
+
+.noPRestaurantes {
+  margin: -40px 25px;
+}
