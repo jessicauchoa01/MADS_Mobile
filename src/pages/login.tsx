@@ -21,15 +21,12 @@ import { PATH, PATH_imagem } from "./apiConfig";
 const Login: React.FC = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  // const mensagem = "";
+  const [message, setMessage] = useState("");
 
   const doLogin = async (event: React.FormEvent) => {
     event.preventDefault();
 
     try {
-      console.log("Form submitted!");
-      console.log(JSON.stringify({ email: username, password: password }));
-
       const response = await fetch(
         // mudar para o vosso localhost
         `${PATH}loginValidaMobile.php`,
@@ -44,18 +41,14 @@ const Login: React.FC = () => {
 
       const responseData = await response.json();
 
+      setMessage(responseData.message);
+
       if (response.ok) {
         localStorage.setItem("token", responseData["token"]);
-        console.log(responseData);
+        console.log(message);
         window.location.href = "/homepage";
       } else {
-        // Exiba uma mensagem de erro ou realize ações específicas em caso de falha
-        //ELIMINA O TOKEN DA STORAGE
-        //localStorage.setItem("token", "");
-        // console.log(mensagem);
-        // console.log(typeof(mensagem));
-        console.error(responseData);
-        // window.location.href = "/login";
+        console.error(message);
       }
     } catch (error) {
       console.error("Error:", error);
@@ -113,7 +106,7 @@ const Login: React.FC = () => {
               <IonIcon icon={logInOutline} slot="end" />
             </IonButton>
             <IonAlert
-              header="é preciso ir buscar a mensagem!"
+              header={message}
               trigger="login"
               onDidDismiss={({ detail }) =>
                 console.log(`Dismissed with role: ${detail.role}`)
