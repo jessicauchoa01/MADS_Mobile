@@ -86,9 +86,11 @@ const Profile: React.FC = () => {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${token}`,
               },
-              body: JSON.stringify({imgPerfil: 'assets/imagensPerfil/' + nome}),
+              body: JSON.stringify({
+                imgPerfil: "assets/imagensPerfil/" + nome,
+              }),
             });
-      
+
             if (response.ok) {
               console.log("Imagem Guardada");
             } else {
@@ -100,7 +102,6 @@ const Profile: React.FC = () => {
         };
 
         GuardarImgPerfil(selectedFile.name);
-        
       };
 
       reader.readAsDataURL(selectedFile);
@@ -116,7 +117,8 @@ const Profile: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    const savedProfileImage = `${PATH_imagem}` + localStorage.getItem('imgPerfil');
+    const savedProfileImage =
+      `${PATH_imagem}` + localStorage.getItem("imgPerfil");
     if (savedProfileImage) {
       setProfileImage(savedProfileImage);
     } else {
@@ -156,7 +158,7 @@ const Profile: React.FC = () => {
         />
       </div>
       <IonContent>
-        <h1 className="encomendas">Última Encomenda</h1>
+        <h1 className="encomendas">Encomenda Ativas</h1>
         {ultimaEncomenda != null && ultimaEncomenda.length > 0 ? (
           ultimaEncomenda.map((encomenda) => (
             <div className="cardEncomendas">
