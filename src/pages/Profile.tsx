@@ -32,9 +32,9 @@ const Profile: React.FC = () => {
   const [ultimaEncomenda, setUltimaEncomenda] = useState<any[]>([]);
   const [encomendas, setPratos] = useState<any[]>([]);
   const token = localStorage.getItem("token");
+  const [profileImage, setProfileImage] = useState<string | null>(profileImg);
 
   const logout = async () => {
-    localStorage.removeItem("profileImage");
     localStorage.clear();
     window.location.href = "/homepage";
   };
@@ -67,16 +67,6 @@ const Profile: React.FC = () => {
     }
   };
 
-  useEffect(() => {
-    listarUltimaEncomenda();
-  }, []);
-
-  useEffect(() => {
-    listarEncomendas();
-  }, []);
-
-  const [profileImage, setProfileImage] = useState<string | null>(profileImg);
-
   const handleProfileImageChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
@@ -88,8 +78,29 @@ const Profile: React.FC = () => {
         const imageUrl = reader.result as string;
         setProfileImage(imageUrl);
 
-        // Armazenamento no localStorage
-        localStorage.setItem("profileImage", imageUrl);
+        const GuardarImgPerfil = async (nome: string) => {
+          try {
+            const response = await fetch(`${PATH}GuardarImgPerfilMobile.php`, {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+              },
+              body: JSON.stringify({imgPerfil: 'assets/imagensPerfil/' + nome}),
+            });
+      
+            if (response.ok) {
+              console.log("Imagem Guardada");
+            } else {
+              console.error("Falha a guardar a imagem");
+            }
+          } catch (error) {
+            console.error("Erro na solicitação:", error);
+          }
+        };
+
+        GuardarImgPerfil(selectedFile.name);
+        
       };
 
       reader.readAsDataURL(selectedFile);
@@ -97,11 +108,19 @@ const Profile: React.FC = () => {
   };
 
   useEffect(() => {
-    const savedProfileImage = localStorage.getItem("profileImage");
+    listarUltimaEncomenda();
+  }, []);
+
+  useEffect(() => {
+    listarEncomendas();
+  }, []);
+
+  useEffect(() => {
+    const savedProfileImage = `${PATH_imagem}` + localStorage.getItem('imgPerfil');
     if (savedProfileImage) {
       setProfileImage(savedProfileImage);
     } else {
-      setProfileImage(profileImg); // Define a imagem padrão se não houver uma imagem salva
+      setProfileImage(profileImg);
     }
   }, []);
 
@@ -173,7 +192,6 @@ const Profile: React.FC = () => {
                 <p className="precoEncomendas">
                   {encomenda.quantidade} unidade(s)
                 </p>
-                <p>{encomenda.situacao}</p>
               </div>
               <div className="linhaEncomendas"></div>
             </div>

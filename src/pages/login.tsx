@@ -45,6 +45,7 @@ const Login: React.FC = () => {
 
       if (response.ok) {
         localStorage.setItem("token", responseData["token"]);
+        localStorage.setItem("imgPerfil", responseData["imgPerfil"]);
         console.log(message);
         window.location.href = "/homepage";
       } else {

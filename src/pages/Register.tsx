@@ -1,4 +1,5 @@
 import {
+  IonAlert,
   IonBackButton,
   IonButton,
   IonButtons,
@@ -36,6 +37,7 @@ const Register: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmacao, setConfirmacao] = useState("");
+  const [message, setMessage] = useState("");
 
   const doRegister = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -67,15 +69,13 @@ const Register: React.FC = () => {
 
       const responseData = await response.json();
 
+      setMessage(responseData.message);
+
       if (response.ok) {
-        // Registo bem-sucedido, redirecione ou faça qualquer outra ação necessária
-        console.log("Registo bem-sucedido");
+        console.log(message);
         window.location.href = "/login";
       } else {
-        // Exiba uma mensagem de erro ou realize ações específicas em caso de falha
-        console.error("Falha no registo");
-        console.log(responseData);
-        //window.location.href = "/register";
+        console.log(message);
       }
     } catch (error) {
       console.error("Erro na solicitação:", error);
@@ -195,10 +195,17 @@ const Register: React.FC = () => {
               value={confirmacao}
               onIonInput={(e) => setConfirmacao(e.detail.value!)}
             ></IonInput>
-            <IonButton type="submit" expand="block" className="btn-hp">
+            <IonButton type="submit" expand="block" className="btn-hp" id="btn-hp">
               Criar conta
               <IonIcon icon={checkmarkDoneOutline} slot="end" />
             </IonButton>
+            <IonAlert
+              header={message}
+              trigger="btn-hp"
+              onDidDismiss={({ detail }) =>
+                console.log(`Dismissed with role: ${detail.role}`)
+              }
+            ></IonAlert>
           </form>
         </div>
       </IonContent>
