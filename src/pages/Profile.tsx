@@ -31,14 +31,10 @@ import { PATH, PATH_imagem } from "./apiConfig";
 import { pencilOutline } from "ionicons/icons";
 
 const Profile: React.FC = () => {
-
   const contentRef = useRef<HTMLIonContentElement | null>(null);
-  const scrollToTop= () => {
-      contentRef.current && contentRef.current.scrollToTop(500);
+  const scrollToTop = () => {
+    contentRef.current && contentRef.current.scrollToTop(500);
   };
-
-
-
 
   const [ultimaEncomenda, setUltimaEncomenda] = useState<any[]>([]);
   const [encomendas, setPratos] = useState<any[]>([]);
@@ -137,6 +133,23 @@ const Profile: React.FC = () => {
     }
   }, []);
 
+  function getColorForStatus(status: string): string {
+    switch (status) {
+      case "Submetida":
+        return "green";
+      case "Em Processamento":
+        return "blue";
+      case "Por Levantar":
+        return "orange";
+      case "Entregue":
+        return "purple";
+      case "Cancelada":
+        return "red";
+      default:
+        return "black";
+    }
+  }
+
   return (
     <IonPage className="encomendasPage">
       <div className="seta">
@@ -174,11 +187,15 @@ const Profile: React.FC = () => {
         {ultimaEncomenda != null && ultimaEncomenda.length > 0 ? (
           ultimaEncomenda.map((encomenda) => (
             <div className="cardEncomendas">
-              <div className="linhaEncomendas"></div>
               <div className="contentCardEncomendas">
                 <p className="pizzaEncomendas">{encomenda.nome}</p>
                 <p className="precoEncomendas">{encomenda.quantidade}</p>
-                <p>{encomenda.situacao}</p>
+                <p
+                  className="situacaoEncomendas"
+                  style={{ color: getColorForStatus(encomenda.situacao) }}
+                >
+                  {encomenda.situacao}
+                </p>
               </div>
               <div className="linhaEncomendas"></div>
             </div>
@@ -199,12 +216,14 @@ const Profile: React.FC = () => {
         {encomendas != null && encomendas.length > 0 ? (
           encomendas.map((encomenda) => (
             <div className="cardEncomendas">
-              <div className="linhaEncomendas"></div>
               <div className="contentCardEncomendas">
                 <p className="pizzaEncomendas">{encomenda.nome}</p>
-                <p className="precoEncomendas">
-                {encomenda.quantidade}
-                <p>{encomenda.situacao}</p>
+                <p className="precoEncomendas">{encomenda.quantidade}</p>
+                <p
+                  className="situacaoEncomendas"
+                  style={{ color: getColorForStatus(encomenda.situacao) }}
+                >
+                  {encomenda.situacao}
                 </p>
               </div>
               <div className="linhaEncomendas"></div>
@@ -216,10 +235,10 @@ const Profile: React.FC = () => {
           </div>
         )}
         <IonFab slot="fixed" vertical="bottom" horizontal="end">
-          <IonFabButton className="btnTop" onClick={()=>scrollToTop()}>
+          <IonFabButton className="btnTop" onClick={() => scrollToTop()}>
             <IonIcon icon={arrowUp}></IonIcon>
           </IonFabButton>
-          </IonFab>
+        </IonFab>
       </IonContent>
       <IonFooter className="footer">
         <IonToolbar class="footer-icons ion-text-center">
@@ -264,7 +283,6 @@ const Profile: React.FC = () => {
         </IonToolbar>
       </IonFooter>
     </IonPage>
-   
   );
 };
 

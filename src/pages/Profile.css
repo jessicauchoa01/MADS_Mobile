@@ -33,18 +33,14 @@
   margin-bottom: 1rem;
 }
 
-.linhaEncomendas {
-  border: none;
-  height: 1px;
-  background-color: #000;
-  opacity: 30%;
-  margin: 0 10px;
+.quantidades {
+  text-align: center;
 }
 
 .contentCardEncomendas {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between; /* Adiciona espaçamento entre os elementos */
   padding: 1rem;
 }
 
@@ -53,15 +49,25 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  margin: 1;
   flex: 1;
+  max-width: 100px; /* Define a largura máxima para o nome */
 }
 
-.quantidades, .precoEncomendas, .situacaoEncomenda {
-  flex: 8rem;
+.situacaoEncomendas {
+  font-weight: 500;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin: 0;
+  flex: 1;
+  max-width: 100px; /* Define a largura máxima para o nome */
+}
+
+.precoEncomendas {
   text-align: center;
   margin: 0;
 }
-
 
 .footer {
   background-color: #1d1b20;
@@ -82,8 +88,8 @@
 }
 
 .profile-image {
-  border-radius: 50%; 
-  width: 100px; 
+  border-radius: 50%;
+  width: 100px;
   height: 100px;
-  object-fit: cover; 
+  object-fit: cover;
 }
