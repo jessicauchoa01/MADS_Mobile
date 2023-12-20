@@ -23,7 +23,12 @@ import perfilFooter from "../assets/perfilFooter.svg";
 import restauranteFooter from "../assets/restauranteFooter.svg";
 import homeFooter from "../assets/homeFooter.svg";
 import "../pages/Profile.css";
-import { arrowBackOutline, arrowUp, image, logOutOutline } from "ionicons/icons";
+import {
+  arrowBackOutline,
+  arrowUp,
+  image,
+  logOutOutline,
+} from "ionicons/icons";
 import profileImg from "../assets/profileImg.svg";
 import food from "../assets/food.svg";
 import { Link } from "react-router-dom";
@@ -88,7 +93,11 @@ const Profile: React.FC = () => {
         const GuardarImgPerfil = async () => {
           try {
             const formData = new FormData();
-            formData.append('imgPerfil', new Blob([selectedFile], { type: selectedFile.type }), selectedFile.name);
+            formData.append(
+              "imgPerfil",
+              new Blob([selectedFile], { type: selectedFile.type }),
+              selectedFile.name
+            );
 
             const response = await fetch(`${PATH}GuardarImgPerfilMobile.php`, {
               method: "POST",
@@ -100,7 +109,10 @@ const Profile: React.FC = () => {
 
             if (response.ok) {
               console.log("Imagem Guardada");
-              localStorage.setItem("imgPerfil", 'assets/imagensPerfil/' + selectedFile.name);
+              localStorage.setItem(
+                "imgPerfil",
+                "assets/imagensPerfil/" + selectedFile.name
+              );
             } else {
               console.error("Falha a guardar a imagem");
             }
@@ -110,7 +122,6 @@ const Profile: React.FC = () => {
         };
 
         GuardarImgPerfil();
-
       };
 
       reader.readAsDataURL(selectedFile);
@@ -126,7 +137,8 @@ const Profile: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    const savedProfileImage = `${PATH_imagem}` + localStorage.getItem('imgPerfil');
+    const savedProfileImage =
+      `${PATH_imagem}` + localStorage.getItem("imgPerfil");
     setProfileImage(savedProfileImage);
   }, []);
 
@@ -147,6 +159,8 @@ const Profile: React.FC = () => {
     }
   }
 
+  const defaultProfileImage = "./assets/default.png";
+
   return (
     <IonPage className="encomendasPage">
       <div className="seta">
@@ -166,7 +180,7 @@ const Profile: React.FC = () => {
         onClick={() => document.getElementById("fileInput")?.click()}
       >
         <img
-          src={profileImage || profileImg}
+          src={profileImage || defaultProfileImage || profileImg}
           alt=""
           className="profile-image"
         />
@@ -180,7 +194,9 @@ const Profile: React.FC = () => {
       </div>
       <IonContent>
         <h1 className="encomendas">Encomendas ativas</h1>
-        <p className="quantidades">Quant.</p>
+        {encomendas != null && encomendas.length > 0 && (
+          <p className="quantidades">Quant.</p>
+        )}
         {ultimaEncomenda != null && ultimaEncomenda.length > 0 ? (
           ultimaEncomenda.map((encomenda) => (
             <div className="cardEncomendas">
@@ -209,7 +225,9 @@ const Profile: React.FC = () => {
           </IonCol>
         </IonGrid>
         <h1 className="encomendas">Histórico de encomendas</h1>
-        <p className="quantidades">Quant.</p>
+        {encomendas != null && encomendas.length > 0 && (
+          <p className="quantidades">Quant.</p>
+        )}
         {encomendas != null && encomendas.length > 0 ? (
           encomendas.map((encomenda) => (
             <div className="cardEncomendas">

@@ -69,6 +69,10 @@
   margin: 0;
 }
 
+.noPratos {
+  margin: 1rem;
+}
+
 .footer {
   background-color: #1d1b20;
   color: #fff;
