@@ -4,6 +4,10 @@
   font-weight: 600;
 }
 
+.seta {
+  margin: 1rem 0 1rem 1rem;
+}
+
 .buttonProfile {
   margin: 0.5rem 15px 0rem;
   --background: #1d1b20;
@@ -12,40 +16,21 @@
   font-size: 13px;
 }
 
+.image {
+  text-align: center;
+  margin-top: 1rem;
+}
+
 .encomendas {
-  margin: 2rem 0px 4rem 25px;
+  margin: 2rem 0 1rem 1rem;
   font-weight: bold;
 }
 
 .cardEncomendas {
-  margin: 0 25px;
-}
-
-#seta {
-  margin: -2rem 0px 1rem 25px;
-}
-
-.pizzaEncomendas {
-  justify-content: center;
-  font-weight: 500;
-  text-align: center;
-  display: block;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-
-.imgPizzaEncomendas {
-  width: 5rem;
-  height: 5rem;
-  display: flex;
-  object-fit: cover;
-  margin: 1rem 0;
-  border-radius: 4px;
-}
-
-.precoEncomendas {
-  margin-right: 1.5rem;
+  margin: 0 1rem;
+  border: 1px solid #000; /* Adicionei uma borda para separar visualmente os cartões */
+  border-radius: 8px;
+  margin-bottom: 1rem;
 }
 
 .linhaEncomendas {
@@ -53,11 +38,44 @@
   height: 1px;
   background-color: #000;
   opacity: 30%;
+  margin: 0 10px;
 }
 
 .contentCardEncomendas {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 15px;
+  padding: 1rem;
+}
+
+.pizzaEncomendas {
+  font-weight: 500;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  flex: 1;
+}
+
+.quantidades, .precoEncomendas, .situacaoEncomenda {
+  flex: 8rem;
+  text-align: center;
+  margin: 0;
+}
+
+.footer {
+  background-color: #1d1b20;
+  color: #fff;
+}
+
+.footer-icons {
+  padding: 1rem;
+}
+
+.icons {
+  margin: 0.5rem;
+}
+
+.btnTop {
+  --background: #212529;
+  --color: #ffc107;
 }

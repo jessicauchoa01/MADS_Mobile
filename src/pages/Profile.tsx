@@ -4,6 +4,8 @@ import {
   IonCardContent,
   IonCol,
   IonContent,
+  IonFab,
+  IonFabButton,
   IonFooter,
   IonGrid,
   IonHeader,
@@ -15,7 +17,7 @@ import {
   IonText,
   IonToolbar,
 } from "@ionic/react";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import carrinhoFooter from "../assets/carrinhoFooter.svg";
 import perfilFooter from "../assets/perfilFooter.svg";
 import restauranteFooter from "../assets/restauranteFooter.svg";
@@ -28,6 +30,15 @@ import { Link } from "react-router-dom";
 import { PATH, PATH_imagem } from "./apiConfig";
 
 const Profile: React.FC = () => {
+
+  const contentRef = useRef<HTMLIonContentElement | null>(null);
+  const scrollToTop= () => {
+      contentRef.current && contentRef.current.scrollToTop(500);
+  };
+
+
+
+
   const [ultimaEncomenda, setUltimaEncomenda] = useState<any[]>([]);
   const [encomendas, setPratos] = useState<any[]>([]);
   const token = localStorage.getItem("token");
@@ -89,16 +100,15 @@ const Profile: React.FC = () => {
         <img src={profileImg} alt="" width={"100px"} />
       </div>
       <IonContent>
-        <h1 className="encomendas">Última Encomenda</h1>
+        <h1 className="encomendas">Encomendas ativas</h1>
+        <p className="quantidades">Quant.</p>
         {ultimaEncomenda != null && ultimaEncomenda.length > 0 ? (
           ultimaEncomenda.map((encomenda) => (
             <div className="cardEncomendas">
               <div className="linhaEncomendas"></div>
               <div className="contentCardEncomendas">
                 <p className="pizzaEncomendas">{encomenda.nome}</p>
-                <p className="precoEncomendas">
-                  {encomenda.quantidade} unidade(s)
-                </p>
+                <p className="precoEncomendas">{encomenda.quantidade}</p>
                 <p>{encomenda.situacao}</p>
               </div>
               <div className="linhaEncomendas"></div>
@@ -115,7 +125,8 @@ const Profile: React.FC = () => {
             <div id="fantasma"></div>
           </IonCol>
         </IonGrid>
-        <h1 className="encomendas">Histórico</h1>
+        <h1 className="encomendas">Histórico de encomendas</h1>
+        <p className="quantidades">Quant.</p>
         {encomendas != null && encomendas.length > 0 ? (
           encomendas.map((encomenda) => (
             <div className="cardEncomendas">
@@ -123,7 +134,7 @@ const Profile: React.FC = () => {
               <div className="contentCardEncomendas">
                 <p className="pizzaEncomendas">{encomenda.nome}</p>
                 <p className="precoEncomendas">
-                  {encomenda.quantidade} unidade(s)
+                  {encomenda.quantidade}
                 </p>
                 <p>{encomenda.situacao}</p>
               </div>
@@ -135,6 +146,11 @@ const Profile: React.FC = () => {
             <h4>Desculpe, nenhuma encomenda foi encontrada.</h4>
           </div>
         )}
+        <IonFab slot="fixed" vertical="bottom" horizontal="end">
+          <IonFabButton className="btnTop" onClick={()=>scrollToTop()}>
+            <IonIcon icon={arrowUp}></IonIcon>
+          </IonFabButton>
+          </IonFab>
       </IonContent>
       <IonFooter className="footer">
         <IonToolbar class="footer-icons ion-text-center">
@@ -179,6 +195,7 @@ const Profile: React.FC = () => {
         </IonToolbar>
       </IonFooter>
     </IonPage>
+   
   );
 };
 
