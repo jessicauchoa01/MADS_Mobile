@@ -203,7 +203,8 @@ const Profile: React.FC = () => {
               <div className="contentCardEncomendas">
                 <p className="pizzaEncomendas">{encomenda.nome}</p>
                 <p className="precoEncomendas">
-                  {encomenda.quantidade}
+                {encomenda.quantidade}
+                <p>{encomenda.situacao}</p>
                 </p>
               </div>
               <div className="linhaEncomendas"></div>

@@ -28,7 +28,7 @@
 
 .cardEncomendas {
   margin: 0 1rem;
-  border: 1px solid #000; /* Adicionei uma borda para separar visualmente os cartões */
+  border: 1px solid #000;
   border-radius: 8px;
   margin-bottom: 1rem;
 }
@@ -62,6 +62,7 @@
   margin: 0;
 }
 
+
 .footer {
   background-color: #1d1b20;
   color: #fff;
@@ -78,4 +79,11 @@
 .btnTop {
   --background: #212529;
   --color: #ffc107;
+}
+
+.profile-image {
+  border-radius: 50%; 
+  width: 100px; 
+  height: 100px;
+  object-fit: cover; 
 }
