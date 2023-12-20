@@ -23,7 +23,7 @@ import perfilFooter from "../assets/perfilFooter.svg";
 import restauranteFooter from "../assets/restauranteFooter.svg";
 import homeFooter from "../assets/homeFooter.svg";
 import "../pages/Profile.css";
-import { arrowBackOutline, arrowUp, logOutOutline } from "ionicons/icons";
+import { arrowBackOutline, arrowUp, image, logOutOutline } from "ionicons/icons";
 import profileImg from "../assets/profileImg.svg";
 import food from "../assets/food.svg";
 import { Link } from "react-router-dom";
@@ -85,21 +85,22 @@ const Profile: React.FC = () => {
         const imageUrl = reader.result as string;
         setProfileImage(imageUrl);
 
-        const GuardarImgPerfil = async (nome: string) => {
+        const GuardarImgPerfil = async () => {
           try {
+            const formData = new FormData();
+            formData.append('imgPerfil', new Blob([selectedFile], { type: selectedFile.type }), selectedFile.name);
+
             const response = await fetch(`${PATH}GuardarImgPerfilMobile.php`, {
               method: "POST",
               headers: {
-                "Content-Type": "application/json",
                 Authorization: `Bearer ${token}`,
               },
-              body: JSON.stringify({
-                imgPerfil: "assets/imagensPerfil/" + nome,
-              }),
+              body: formData,
             });
 
             if (response.ok) {
               console.log("Imagem Guardada");
+              localStorage.setItem("imgPerfil", 'assets/imagensPerfil/' + selectedFile.name);
             } else {
               console.error("Falha a guardar a imagem");
             }
@@ -108,7 +109,8 @@ const Profile: React.FC = () => {
           }
         };
 
-        GuardarImgPerfil(selectedFile.name);
+        GuardarImgPerfil();
+
       };
 
       reader.readAsDataURL(selectedFile);
@@ -124,13 +126,8 @@ const Profile: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    const savedProfileImage =
-      `${PATH_imagem}` + localStorage.getItem("imgPerfil");
-    if (savedProfileImage) {
-      setProfileImage(savedProfileImage);
-    } else {
-      setProfileImage(profileImg);
-    }
+    const savedProfileImage = `${PATH_imagem}` + localStorage.getItem('imgPerfil');
+    setProfileImage(savedProfileImage);
   }, []);
 
   function getColorForStatus(status: string): string {
