@@ -93,11 +93,7 @@ const Profile: React.FC = () => {
         const GuardarImgPerfil = async () => {
           try {
             const formData = new FormData();
-            formData.append(
-              "imgPerfil",
-              new Blob([selectedFile], { type: selectedFile.type }),
-              selectedFile.name
-            );
+            formData.append('imgPerfil', new Blob([selectedFile], {type: selectedFile.type}), selectedFile.name);
 
             const response = await fetch(`${PATH}GuardarImgPerfilMobile.php`, {
               method: "POST",
@@ -109,10 +105,7 @@ const Profile: React.FC = () => {
 
             if (response.ok) {
               console.log("Imagem Guardada");
-              localStorage.setItem(
-                "imgPerfil",
-                "assets/imagensPerfil/" + selectedFile.name
-              );
+              localStorage.setItem('imgPerfil', 'assets/imagensPerfil/' + selectedFile.name);
             } else {
               console.error("Falha a guardar a imagem");
             }
@@ -137,8 +130,7 @@ const Profile: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    const savedProfileImage =
-      `${PATH_imagem}` + localStorage.getItem("imgPerfil");
+    const savedProfileImage = `${PATH_imagem}` + localStorage.getItem('imgPerfil');
     setProfileImage(savedProfileImage);
   }, []);
 
@@ -159,8 +151,6 @@ const Profile: React.FC = () => {
     }
   }
 
-  const defaultProfileImage = "./assets/default.png";
-
   return (
     <IonPage className="encomendasPage">
       <div className="seta">
@@ -180,7 +170,7 @@ const Profile: React.FC = () => {
         onClick={() => document.getElementById("fileInput")?.click()}
       >
         <img
-          src={profileImage || defaultProfileImage || profileImg}
+          src={profileImage || profileImg}
           alt=""
           className="profile-image"
         />
