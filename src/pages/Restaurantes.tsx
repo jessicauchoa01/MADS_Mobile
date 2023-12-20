@@ -32,6 +32,7 @@ import { PATH, PATH_imagem } from "./apiConfig";
 import Carrinho from "./Carrinho";
 import Kfc from "../assets/KFC.svg";
 import { arrowBackOutline, arrowUp, logOutOutline } from "ionicons/icons";
+import { NavigationContainer, useFocusEffect } from '@react-navigation/native';
 
 const Restaurante: React.FC = () => {
   const urlInfo = window.location.search;
@@ -49,7 +50,7 @@ const Restaurante: React.FC = () => {
     addPrato(prato);
   };
 
-  const listarPratos = async () => {
+  const listarPratos = async (restaurante_id: string | null) => {
     try {
       const response = await fetch(`${PATH}PratosPorRestauranteMobile.php?restaurante_id=` + restaurante_id);
 
@@ -61,9 +62,11 @@ const Restaurante: React.FC = () => {
     }
   };
 
+  // console.log(pratos);
+  
   useEffect(() => {
-    listarPratos();
-  }, []);
+    listarPratos(restaurante_id);
+  }, [restaurante_id]);
 
   return (
     <IonPage className="homePage">

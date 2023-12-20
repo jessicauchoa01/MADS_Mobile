@@ -42,23 +42,20 @@ const Carrinho: React.FC = () => {
   // console.log(total);
   // console.log(`${PATH}EfetuarEncomenda.php?token=` + localStorage.getItem("token"));
   const token = localStorage.getItem("token");
-  
+
   const efetuarEncomenda = async () => {
     try {
-      const response = await fetch(
-        `${PATH}EfetuarEncomenda.php`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${token}`,
-          },
-          body: JSON.stringify({
-            lista: lista,
-            total: total,
-          }),
-        }
-      );
+      const response = await fetch(`${PATH}EfetuarEncomenda.php`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          lista: lista,
+          total: total,
+        }),
+      });
 
       if (response.ok) {
         // Registo bem-sucedido, redirecione ou faça qualquer outra ação necessária
@@ -72,19 +69,21 @@ const Carrinho: React.FC = () => {
     } catch (error) {
       console.error("Erro na solicitação:", error);
     }
-  }
+  };
 
   return (
-    <IonPage className={`carrinhoPage ${lista.length > 0 ? "bg-white" : "bg-yellow"}`}>
+    <IonPage
+      className={`carrinhoPage ${lista.length > 0 ? "bg-white" : "bg-yellow"}`}
+    >
       {lista.length > 0 ? (
-    <IonHeader>
-      <IonToolbar className="carrinhoHeader">
-        <div className="imageCarrinho">
-          <img src={logo} alt="GoEat logo" width={"100px"} />
-        </div>
-      </IonToolbar>
-    </IonHeader>
-) : null}
+        <IonHeader>
+          <IonToolbar className="carrinhoHeader">
+            <div className="imageCarrinho">
+              <img src={logo} alt="GoEat logo" width={"100px"} />
+            </div>
+          </IonToolbar>
+        </IonHeader>
+      ) : null}
 
       <IonContent>
         <h1>Carrinho</h1>
@@ -159,7 +158,7 @@ const Carrinho: React.FC = () => {
               onClick={() => efetuarEncomenda()}
             >
               Encomendar
-              <IonIcon icon={encomendar} slot="end"/>
+              <IonIcon icon={encomendar} slot="end" />
             </IonButton>
           </>
         ) : null}

@@ -28,6 +28,7 @@ import profileImg from "../assets/profileImg.svg";
 import food from "../assets/food.svg";
 import { Link } from "react-router-dom";
 import { PATH, PATH_imagem } from "./apiConfig";
+import { pencilOutline } from "ionicons/icons";
 
 const Profile: React.FC = () => {
 
@@ -42,6 +43,7 @@ const Profile: React.FC = () => {
   const [ultimaEncomenda, setUltimaEncomenda] = useState<any[]>([]);
   const [encomendas, setPratos] = useState<any[]>([]);
   const token = localStorage.getItem("token");
+  const [profileImage, setProfileImage] = useState<string | null>(profileImg);
 
   const logout = async () => {
     localStorage.clear();
@@ -50,7 +52,9 @@ const Profile: React.FC = () => {
 
   const listarUltimaEncomenda = async () => {
     try {
-      const response = await fetch(`${PATH}ultimaEncomendaMobile.php?token=` + token);
+      const response = await fetch(
+        `${PATH}ultimaEncomendaMobile.php?token=` + token
+      );
 
       const ultimaEncomenda = await response.json();
 
@@ -74,12 +78,63 @@ const Profile: React.FC = () => {
     }
   };
 
+  const handleProfileImageChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const selectedFile = event.target.files?.[0];
+    if (selectedFile) {
+      const reader = new FileReader();
+
+      reader.onloadend = () => {
+        const imageUrl = reader.result as string;
+        setProfileImage(imageUrl);
+
+        const GuardarImgPerfil = async (nome: string) => {
+          try {
+            const response = await fetch(`${PATH}GuardarImgPerfilMobile.php`, {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+              },
+              body: JSON.stringify({
+                imgPerfil: "assets/imagensPerfil/" + nome,
+              }),
+            });
+
+            if (response.ok) {
+              console.log("Imagem Guardada");
+            } else {
+              console.error("Falha a guardar a imagem");
+            }
+          } catch (error) {
+            console.error("Erro na solicitação:", error);
+          }
+        };
+
+        GuardarImgPerfil(selectedFile.name);
+      };
+
+      reader.readAsDataURL(selectedFile);
+    }
+  };
+
   useEffect(() => {
     listarUltimaEncomenda();
   }, []);
 
   useEffect(() => {
     listarEncomendas();
+  }, []);
+
+  useEffect(() => {
+    const savedProfileImage =
+      `${PATH_imagem}` + localStorage.getItem("imgPerfil");
+    if (savedProfileImage) {
+      setProfileImage(savedProfileImage);
+    } else {
+      setProfileImage(profileImg);
+    }
   }, []);
 
   return (
@@ -96,8 +151,22 @@ const Profile: React.FC = () => {
           </IonButton>
         </IonCol>
       </IonRow>
-      <div className="image">
-        <img src={profileImg} alt="" width={"100px"} />
+      <div
+        className="image"
+        onClick={() => document.getElementById("fileInput")?.click()}
+      >
+        <img
+          src={profileImage || profileImg}
+          alt=""
+          className="profile-image"
+        />
+        <input
+          id="fileInput"
+          type="file"
+          accept="image/*"
+          onChange={handleProfileImageChange}
+          style={{ display: "none" }}
+        />
       </div>
       <IonContent>
         <h1 className="encomendas">Encomendas ativas</h1>
@@ -136,7 +205,6 @@ const Profile: React.FC = () => {
                 <p className="precoEncomendas">
                   {encomenda.quantidade}
                 </p>
-                <p>{encomenda.situacao}</p>
               </div>
               <div className="linhaEncomendas"></div>
             </div>
