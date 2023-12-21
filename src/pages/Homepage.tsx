@@ -4,6 +4,8 @@ import {
   IonCardContent,
   IonCol,
   IonContent,
+  IonFab,
+  IonFabButton,
   IonFooter,
   IonGrid,
   IonHeader,
@@ -15,7 +17,7 @@ import {
   IonText,
   IonToolbar,
 } from "@ionic/react";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import logo from "../assets/logo.svg";
 import pizza from "../assets/pizza.svg";
 import iconCarrinho from "../assets/iconCarrinho.svg";
@@ -41,12 +43,16 @@ const Homepage: React.FC = () => {
     addPrato(prato);
   };
 
-  const scrollToTop = () => {
+/*  const scrollToTop = () => {
     const scrollComida = document.getElementById("fantasma")!;
     const topElement = document.getElementById("top");
     if (topElement) {
       scrollComida.scrollIntoView({ behavior: "smooth" });
     }
+  };*/
+  const contentRef = useRef<HTMLIonContentElement | null>(null);
+  const scrollToTop = () => {
+    contentRef.current && contentRef.current.scrollToTop(500);
   };
 
   const listarPratos = async () => {
@@ -195,7 +201,7 @@ const Homepage: React.FC = () => {
           </IonGrid>
         </IonToolbar>
       </IonHeader>
-      <IonContent>
+      <IonContent ref={contentRef} scrollEvents={true}>
         <IonGrid>
           <IonRow></IonRow>
           <IonCol>
@@ -241,12 +247,11 @@ const Homepage: React.FC = () => {
             <h4>Desculpe, nenhum prato foi encontrado.</h4>
           </div>
         )}
-        <div id="top"></div>
-        {pratos != null && pratos.length > 2 && (
-          <button className="scrollTop" onClick={scrollToTop}>
-            <IonIcon icon={arrowUp} />
-          </button>
-        )}
+        <IonFab slot="fixed" vertical="bottom" horizontal="end">
+          <IonFabButton className="btnTop" onClick={()=>scrollToTop()}>
+            <IonIcon icon={arrowUp}></IonIcon>
+          </IonFabButton>
+        </IonFab>
       </IonContent>
       <IonFooter className="footer">
         <IonToolbar class="footer-icons ion-text-center">
