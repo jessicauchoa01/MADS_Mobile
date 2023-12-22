@@ -42,14 +42,7 @@ const Homepage: React.FC = () => {
   const adicionar = (prato: any) => {
     addPrato(prato);
   };
-
-/*  const scrollToTop = () => {
-    const scrollComida = document.getElementById("fantasma")!;
-    const topElement = document.getElementById("top");
-    if (topElement) {
-      scrollComida.scrollIntoView({ behavior: "smooth" });
-    }
-  };*/
+  
   const contentRef = useRef<HTMLIonContentElement | null>(null);
   const scrollToTop = () => {
     contentRef.current && contentRef.current.scrollToTop(500);
@@ -247,7 +240,7 @@ const Homepage: React.FC = () => {
             <h4>Desculpe, nenhum prato foi encontrado.</h4>
           </div>
         )}
-        <IonFab slot="fixed" vertical="bottom" horizontal="end">
+        <IonFab slot="fixed" vertical="bottom" horizontal="center">
           <IonFabButton className="btnTop" onClick={()=>scrollToTop()}>
             <IonIcon icon={arrowUp}></IonIcon>
           </IonFabButton>

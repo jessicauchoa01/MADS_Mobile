@@ -87,8 +87,8 @@
 }
 
 .btnTop {
-  --background: #212529;
-  --color: #ffc107;
+  --background: transparent;
+  --color: grey;
 }
 
 .profile-image {
