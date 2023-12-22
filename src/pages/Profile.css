@@ -2,7 +2,9 @@
   background-color: #ffc107;
   color: #000000;
   font-weight: 600;
+
 }
+
 
 .seta {
   margin: 1rem 0 1rem 1rem;
@@ -26,9 +28,11 @@
   font-weight: bold;
 }
 
+
 .cardEncomendas {
+  display: flex;
+  flex-direction: column; /* Altera a direção do flex para coluna */
   margin: 0 1rem;
-  border: 1px solid #000;
   border-radius: 8px;
   margin-bottom: 1rem;
 }
@@ -41,7 +45,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between; /* Adiciona espaçamento entre os elementos */
-  padding: 1rem;
+  border-top: solid;
+  border-width: 2px;
+  padding: 0rem;
+  margin: -10px;
 }
 
 .pizzaEncomendas {
@@ -89,6 +96,7 @@
 .btnTop {
   --background: #212529;
   --color: #ffc107;
+  opacity: 50%;
 }
 
 .profile-image {

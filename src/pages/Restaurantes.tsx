@@ -32,7 +32,6 @@ import { PATH, PATH_imagem } from "./apiConfig";
 import Carrinho from "./Carrinho";
 import Kfc from "../assets/KFC.svg";
 import { arrowBackOutline, arrowUp, logOutOutline } from "ionicons/icons";
-import { NavigationContainer, useFocusEffect } from '@react-navigation/native';
 
 const Restaurante: React.FC = () => {
   const urlInfo = window.location.search;

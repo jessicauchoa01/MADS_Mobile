@@ -239,7 +239,7 @@ const Profile: React.FC = () => {
             <h4>Desculpe, nenhuma encomenda foi encontrada.</h4>
           </div>
         )}
-        <IonFab slot="fixed" vertical="bottom" horizontal="end">
+        <IonFab slot="fixed" vertical="bottom" horizontal="center">
           <IonFabButton className="btnTop" onClick={() => scrollToTop()}>
             <IonIcon icon={arrowUp}></IonIcon>
           </IonFabButton>
