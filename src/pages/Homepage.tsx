@@ -42,14 +42,7 @@ const Homepage: React.FC = () => {
   const adicionar = (prato: any) => {
     addPrato(prato);
   };
-
-/*  const scrollToTop = () => {
-    const scrollComida = document.getElementById("fantasma")!;
-    const topElement = document.getElementById("top");
-    if (topElement) {
-      scrollComida.scrollIntoView({ behavior: "smooth" });
-    }
-  };*/
+  
   const contentRef = useRef<HTMLIonContentElement | null>(null);
   const scrollToTop = () => {
     contentRef.current && contentRef.current.scrollToTop(500);
