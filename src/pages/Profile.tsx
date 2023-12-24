@@ -44,6 +44,7 @@ const Profile: React.FC = () => {
   const [ultimaEncomenda, setUltimaEncomenda] = useState<any[]>([]);
   const [encomendas, setPratos] = useState<any[]>([]);
   const token = localStorage.getItem("token");
+  const nome = localStorage.getItem("nomePerfil");
   const [profileImage, setProfileImage] = useState<string | null>(profileImg);
 
   const logout = async () => {
@@ -181,6 +182,7 @@ const Profile: React.FC = () => {
           onChange={handleProfileImageChange}
           style={{ display: "none" }}
         />
+        <h1 className="nomePerfil">{nome}</h1>
       </div>
       <IonContent>
         <h1 className="encomendas">Encomendas ativas</h1>
