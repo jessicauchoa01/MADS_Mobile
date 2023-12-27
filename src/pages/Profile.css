@@ -1,27 +1,42 @@
-.encomendasPage {
+.header {
   background-color: #ffc107;
   color: #000000;
   font-weight: 600;
-
+  height: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
 }
 
-
-.seta {
-  margin: 1rem 0 1rem 1rem;
+.setaPerfil #setaPerfil {
+  margin-bottom: 9rem;
+  color: #000000;
+  font-size: 40px;
 }
 
 .buttonProfile {
-  margin: 0.5rem 15px 0rem;
+  margin-top: 1.5rem;
   --background: #1d1b20;
   width: 100px;
   height: 40px;
   font-size: 13px;
 }
 
-.image {
+.imagePerfil {
+  margin-right: 1.5rem; 
+  margin-left: auto;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  margin-top: 1rem;
 }
+
+
+.nomePerfil{
+  font-weight: bold;
+}
+
+
 
 .encomendas {
   margin: 2rem 0 1rem 1rem;
@@ -44,11 +59,8 @@
 .contentCardEncomendas {
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Adiciona espaçamento entre os elementos */
-  border-top: solid;
+  justify-content: space-between; 
   border-width: 2px;
-  padding: 0rem;
-  margin: -10px;
 }
 
 .pizzaEncomendas {
@@ -71,6 +83,13 @@
   max-width: 100px; /* Define a largura máxima para o nome */
 }
 
+.linhaEncomendas {
+  border: none;
+  height: 1px;
+  background-color: #000;
+  opacity: 30%;
+  margin-top: 1rem;
+}
 .precoEncomendas {
   text-align: center;
   margin: 0;

@@ -154,36 +154,43 @@ const Profile: React.FC = () => {
 
   return (
     <IonPage className="encomendasPage">
-      <div className="seta">
-        <Link to="/homepage">
-          <IonIcon id="seta" icon={arrowBackOutline} />
-        </Link>
-      </div>
-      <IonRow className="ion-justify-content-end">
-        <IonCol size="auto">
-          <IonButton className="buttonProfile" onClick={() => logout()}>
-            <IonIcon slot="end" icon={logOutOutline}></IonIcon>Logout
-          </IonButton>
-        </IonCol>
-      </IonRow>
-      <div
-        className="image"
-        onClick={() => document.getElementById("fileInput")?.click()}
-      >
-        <img
-          src={profileImage || profileImg}
-          alt=""
-          className="profile-image"
-        />
-        <input
-          id="fileInput"
-          type="file"
-          accept="image/*"
-          onChange={handleProfileImageChange}
-          style={{ display: "none" }}
-        />
-        <h1 className="nomePerfil">{nome}</h1>
-      </div>
+      <IonHeader className="header">
+    <div className="setaPerfil">
+      <Link to="/homepage">
+        <IonIcon id="setaPerfil" icon={arrowBackOutline} />
+      </Link>
+    </div>
+
+    <IonRow className="ion-justify-content-center align-items-center">
+      <IonCol size="auto">
+        <div
+          className="imagePerfil"
+          onClick={() => document.getElementById("fileInput")?.click()}
+        >
+          <img
+            src={profileImage || profileImg}
+            alt=""
+            className="profile-image"
+          />
+          <input
+            id="fileInput"
+            type="file"
+            accept="image/*"
+            onChange={handleProfileImageChange}
+            style={{ display: "none" }}
+          />
+          <h1 className="nomePerfil">{nome}</h1>
+        </div>
+      </IonCol>
+
+      <IonCol size="auto">
+        <IonButton className="buttonProfile" onClick={() => logout()}>
+          <IonIcon slot="end" icon={logOutOutline}></IonIcon>Logout
+        </IonButton>
+      </IonCol>
+    </IonRow>
+  </IonHeader>
+      
       <IonContent>
         <h1 className="encomendas">Encomendas ativas</h1>
         {encomendas != null && encomendas.length > 0 && (
@@ -210,12 +217,6 @@ const Profile: React.FC = () => {
             <h4>Desculpe, nenhuma encomenda foi encontrada.</h4>
           </div>
         )}
-        <IonGrid>
-          <IonRow></IonRow>
-          <IonCol>
-            <div id="fantasma"></div>
-          </IonCol>
-        </IonGrid>
         <h1 className="encomendas">Histórico de encomendas</h1>
         {encomendas != null && encomendas.length > 0 && (
           <p className="quantidades">Quant.</p>
@@ -241,11 +242,6 @@ const Profile: React.FC = () => {
             <h4>Desculpe, nenhuma encomenda foi encontrada.</h4>
           </div>
         )}
-        <IonFab slot="fixed" vertical="bottom" horizontal="center">
-          <IonFabButton className="btnTop" onClick={() => scrollToTop()}>
-            <IonIcon icon={arrowUp}></IonIcon>
-          </IonFabButton>
-        </IonFab>
       </IonContent>
       <IonFooter className="footer">
         <IonToolbar class="footer-icons ion-text-center">
