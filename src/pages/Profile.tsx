@@ -94,7 +94,11 @@ const Profile: React.FC = () => {
         const GuardarImgPerfil = async () => {
           try {
             const formData = new FormData();
-            formData.append('imgPerfil', new Blob([selectedFile], {type: selectedFile.type}), selectedFile.name);
+            formData.append(
+              "imgPerfil",
+              new Blob([selectedFile], { type: selectedFile.type }),
+              selectedFile.name
+            );
 
             const response = await fetch(`${PATH}GuardarImgPerfilMobile.php`, {
               method: "POST",
@@ -106,7 +110,10 @@ const Profile: React.FC = () => {
 
             if (response.ok) {
               console.log("Imagem Guardada");
-              localStorage.setItem('imgPerfil', 'assets/imagensPerfil/' + selectedFile.name);
+              localStorage.setItem(
+                "imgPerfil",
+                "assets/imagensPerfil/" + selectedFile.name
+              );
             } else {
               console.error("Falha a guardar a imagem");
             }
@@ -131,7 +138,8 @@ const Profile: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    const savedProfileImage = `${PATH_imagem}` + localStorage.getItem('imgPerfil');
+    const savedProfileImage =
+      `${PATH_imagem}` + localStorage.getItem("imgPerfil");
     setProfileImage(savedProfileImage);
   }, []);
 
@@ -155,42 +163,41 @@ const Profile: React.FC = () => {
   return (
     <IonPage className="encomendasPage">
       <IonHeader className="header">
-    <div className="setaPerfil">
-      <Link to="/homepage">
-        <IonIcon id="setaPerfil" icon={arrowBackOutline} />
-      </Link>
-    </div>
-
-    <IonRow className="ion-justify-content-center align-items-center">
-      <IonCol size="auto">
-        <div
-          className="imagePerfil"
-          onClick={() => document.getElementById("fileInput")?.click()}
-        >
-          <img
-            src={profileImage || profileImg}
-            alt=""
-            className="profile-image"
-          />
-          <input
-            id="fileInput"
-            type="file"
-            accept="image/*"
-            onChange={handleProfileImageChange}
-            style={{ display: "none" }}
-          />
-          <h1 className="nomePerfil">{nome}</h1>
+        <div className="setaPerfil">
+          <Link to="/homepage">
+            <IonIcon id="setaPerfil" icon={arrowBackOutline} />
+          </Link>
         </div>
-      </IonCol>
 
-      <IonCol size="auto">
-        <IonButton className="buttonProfile" onClick={() => logout()}>
-          <IonIcon slot="end" icon={logOutOutline}></IonIcon>Logout
-        </IonButton>
-      </IonCol>
-    </IonRow>
-  </IonHeader>
-      
+        <IonRow className="ion-justify-content-center align-items-center">
+          <IonCol size="auto">
+            <div
+              className="imagePerfil"
+              onClick={() => document.getElementById("fileInput")?.click()}
+            >
+              <img
+                src={profileImage || profileImg}
+                alt=""
+                className="profile-image"
+              />
+              <input
+                id="fileInput"
+                type="file"
+                accept="image/*"
+                onChange={handleProfileImageChange}
+                style={{ display: "none" }}
+              />
+            </div>
+            <h1 className="nomePerfil">{nome}</h1>
+          </IonCol>
+        </IonRow>
+        <IonCol size="auto">
+          <IonButton className="buttonProfile" onClick={() => logout()}>
+            <IonIcon slot="end" icon={logOutOutline}></IonIcon>Logout
+          </IonButton>
+        </IonCol>
+      </IonHeader>
+
       <IonContent>
         <h1 className="encomendas">Encomendas ativas</h1>
         {encomendas != null && encomendas.length > 0 && (

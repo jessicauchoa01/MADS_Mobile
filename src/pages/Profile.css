@@ -10,13 +10,16 @@
 }
 
 .setaPerfil #setaPerfil {
-  margin-bottom: 9rem;
+  position: absolute;
+  top: 2.5rem;
   color: #000000;
   font-size: 40px;
 }
 
 .buttonProfile {
-  margin-top: 1.5rem;
+  position: relative;
+  bottom: 5.5rem;
+  margin-top: 1rem;
   --background: #1d1b20;
   width: 100px;
   height: 40px;
@@ -24,25 +27,31 @@
 }
 
 .imagePerfil {
-  margin-right: 1.5rem; 
-  margin-left: auto;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+  height: 75px;
+  border-radius: 50%;
+  margin-left: 6.9rem;
 }
 
+.profile-image {
+  position: relative;
+  border-radius: 50%;
+  bottom: 7rem;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
 
-.nomePerfil{
+.nomePerfil {
+  position: absolute;
+  top: 5rem;
+  left: 8.3rem;
   font-weight: bold;
 }
-
-
 
 .encomendas {
   margin: 2rem 0 1rem 1rem;
   font-weight: bold;
 }
-
 
 .cardEncomendas {
   display: flex;
@@ -59,7 +68,7 @@
 .contentCardEncomendas {
   display: flex;
   align-items: center;
-  justify-content: space-between; 
+  justify-content: space-between;
   border-width: 2px;
 }
 
@@ -116,11 +125,4 @@
   --background: #212529;
   --color: #ffc107;
   opacity: 50%;
-}
-
-.profile-image {
-  border-radius: 50%;
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
 }
