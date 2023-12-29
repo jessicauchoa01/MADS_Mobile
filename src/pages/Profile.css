@@ -3,49 +3,55 @@
   color: #000000;
   font-weight: 600;
   height: 260px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   padding: 1rem;
+}
+
+.rowProfile {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.colImgName {
+  flex-direction: column;
+  text-align: center;
 }
 
 .setaPerfil #setaPerfil {
   position: absolute;
-  top: 2.5rem;
   color: #000000;
   font-size: 40px;
 }
 
+.colButton {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
 .buttonProfile {
-  position: relative;
-  bottom: 5.5rem;
-  margin-top: 1rem;
   --background: #1d1b20;
   width: 100px;
   height: 40px;
   font-size: 13px;
-}
-
-.imagePerfil {
-  height: 75px;
-  border-radius: 50%;
-  margin-left: 6.9rem;
+  margin-top: -1rem;
 }
 
 .profile-image {
   position: relative;
   border-radius: 50%;
-  bottom: 7rem;
   width: 100px;
   height: 100px;
   object-fit: cover;
+  margin-top: 3.2rem;
+  margin: 3rem 0 0.4rem 0;
 }
 
 .nomePerfil {
-  position: absolute;
-  top: 5rem;
-  left: 8.3rem;
   font-weight: bold;
+  overflow: hidden;
+  max-height: 65px;
+  margin-top: -0.2rem;
 }
 
 .encomendas {

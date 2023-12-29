@@ -163,39 +163,34 @@ const Profile: React.FC = () => {
   return (
     <IonPage className="encomendasPage">
       <IonHeader className="header">
-        <div className="setaPerfil">
-          <Link to="/homepage">
-            <IonIcon id="setaPerfil" icon={arrowBackOutline} />
-          </Link>
-        </div>
-
-        <IonRow className="ion-justify-content-center align-items-center">
-          <IonCol size="auto">
-            <div
-              className="imagePerfil"
+        <IonRow className="rowProfile">
+          <IonCol className="setaPerfil">
+            <Link to="/homepage">
+              <IonIcon id="setaPerfil" icon={arrowBackOutline} />
+            </Link>
+          </IonCol>
+          <IonCol className="colImgName">
+            <img
+              src={profileImage || profileImg}
+              alt=""
+              className="profile-image"
               onClick={() => document.getElementById("fileInput")?.click()}
-            >
-              <img
-                src={profileImage || profileImg}
-                alt=""
-                className="profile-image"
-              />
-              <input
-                id="fileInput"
-                type="file"
-                accept="image/*"
-                onChange={handleProfileImageChange}
-                style={{ display: "none" }}
-              />
-            </div>
+            />
+            <input
+              id="fileInput"
+              type="file"
+              accept="image/*"
+              onChange={handleProfileImageChange}
+              style={{ display: "none" }}
+            />
             <h1 className="nomePerfil">{nome}</h1>
           </IonCol>
+          <IonCol className="colButton">
+            <IonButton className="buttonProfile" onClick={() => logout()}>
+              <IonIcon icon={logOutOutline}></IonIcon>Logout
+            </IonButton>
+          </IonCol>
         </IonRow>
-        <IonCol size="auto">
-          <IonButton className="buttonProfile" onClick={() => logout()}>
-            <IonIcon slot="end" icon={logOutOutline}></IonIcon>Logout
-          </IonButton>
-        </IonCol>
       </IonHeader>
 
       <IonContent>

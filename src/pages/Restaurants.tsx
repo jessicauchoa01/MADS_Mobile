@@ -100,12 +100,6 @@ const Restaurants: React.FC = () => {
             <h4>Desculpe, nenhum restaurante foi encontrado.</h4>
           </div>
         )}
-        <div id="top"></div>
-        {restaurantes != null && restaurantes.length > 2 && (
-          <button className="scrollTop" onClick={scrollToTop}>
-            <IonIcon icon={arrowUp} />
-          </button>
-        )}
       </IonContent>
       <IonFooter className="footer">
         <IonToolbar class="footer-icons ion-text-center">
