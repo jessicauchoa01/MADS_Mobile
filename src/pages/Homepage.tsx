@@ -38,21 +38,15 @@ const Homepage: React.FC = () => {
   const [tipo_id, getTipo_id] = useState(Number);
   const { addPrato } = useBasketStore();
   const { lista } = useBasketStore();
+  const [showButton, setShowButton] = useState(false);
 
   const adicionar = (prato: any) => {
     addPrato(prato);
   };
-  
-  const contentRef = useRef<HTMLIonContentElement | null>(null);
-  const scrollToTop = () => {
-    contentRef.current && contentRef.current.scrollToTop(500);
-  };
 
   const listarPratos = async () => {
     try {
-      const response = await fetch(
-        `${PATH}PratosMobile.php`
-      );
+      const response = await fetch(`${PATH}PratosMobile.php`);
 
       const pratos = await response.json();
 
@@ -96,6 +90,31 @@ const Homepage: React.FC = () => {
       filtrarPratos(tipo_id);
     }, []);
   }
+
+  const contentRef = useRef<HTMLIonContentElement | null>(null);
+  const scrollToTop = () => {
+    contentRef.current && contentRef.current.scrollToTop(500);
+  };
+
+  useEffect(() => {
+    const handleScroll = (event: CustomEvent) => {
+      const scrollPosition = event.detail.scrollTop || 0;
+
+      const scrollThreshold = 500;
+
+      if (scrollPosition > scrollThreshold) {
+        setShowButton(true);
+      } else {
+        setShowButton(false);
+      }
+    };
+
+    contentRef.current?.addEventListener("ionScroll", handleScroll);
+
+    return () => {
+      contentRef.current?.removeEventListener("ionScroll", handleScroll);
+    };
+  }, []);
 
   return (
     <IonPage className="homePage">
@@ -194,7 +213,11 @@ const Homepage: React.FC = () => {
           </IonGrid>
         </IonToolbar>
       </IonHeader>
-      <IonContent ref={contentRef} scrollEvents={true}>
+      <IonContent
+        className="contentScroll"
+        ref={contentRef}
+        scrollEvents={true}
+      >
         <IonGrid>
           <IonRow></IonRow>
           <IonCol>
@@ -241,7 +264,11 @@ const Homepage: React.FC = () => {
           </div>
         )}
         <IonFab slot="fixed" vertical="bottom" horizontal="center">
-          <IonFabButton className="btnTop" onClick={()=>scrollToTop()}>
+          <IonFabButton
+            className="btnTop"
+            style={{ opacity: showButton ? 0.5 : 0 }} // Set opacity based on showButton state
+            onClick={() => scrollToTop()}
+          >
             <IonIcon icon={arrowUp}></IonIcon>
           </IonFabButton>
         </IonFab>

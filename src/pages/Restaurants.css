@@ -17,7 +17,6 @@
 }
 
 .cardImage {
-  /* Define a altura e largura da imagem no card */
   width: 100%;
   height: 100%;
   display: flex;
@@ -28,10 +27,9 @@
 }
 
 .imagemRestaurante {
-  /* Ajusta a imagem para preencher todo o espaço do card */
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Garante que a imagem preencha o espaço sem perder a proporção */
+  object-fit: cover;
   margin: 0 auto;
 }
 

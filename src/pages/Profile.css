@@ -61,7 +61,7 @@
 
 .cardEncomendas {
   display: flex;
-  flex-direction: column; /* Altera a direção do flex para coluna */
+  flex-direction: column;
   margin: 0 1rem;
   border-radius: 8px;
   margin-bottom: 1rem;
@@ -85,7 +85,7 @@
   text-overflow: ellipsis;
   margin: 1;
   flex: 1;
-  max-width: 100px; /* Define a largura máxima para o nome */
+  max-width: 100px;
 }
 
 .situacaoEncomendas {
@@ -95,7 +95,7 @@
   text-overflow: ellipsis;
   margin: 0;
   flex: 1;
-  max-width: 100px; /* Define a largura máxima para o nome */
+  max-width: 100px;
 }
 
 .linhaEncomendas {
@@ -125,10 +125,4 @@
 
 .icons {
   margin: 0.5rem;
-}
-
-.btnTop {
-  --background: #212529;
-  --color: #ffc107;
-  opacity: 50%;
 }
